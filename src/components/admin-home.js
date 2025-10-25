@@ -1,6 +1,7 @@
-import { useState, Fragment,useEffect } from 'react'
+import { useState, Fragment, useEffect } from 'react'
 import Input from '../components/core/Input'
 import MultiSelectInput from '../components/core/MultiSelectInput'
+import DiscoverAlbaniaLogo from '../components/core/Logo'
 import ProductService from '@/untils/services/ProductService'
 import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { categoryOptions } from '../constants/filter'
@@ -56,11 +57,10 @@ const products = [
 const navigation = {
 
   pages: [
-    { name: 'Clothes', href: 'clothes' },
-    { name: 'Beauty', href: 'beauty' },
-    { name: 'Accessories', href: 'accessories' },
-    { name: 'Sports', href: 'sports' },
-    { name: 'Shoes', href: 'shoes' },
+    { name: 'Home', href: '/' },
+    { name: 'Tours', href: 'tours' },
+    { name: 'Blogs', href: 'blogs' },
+    { name: 'Contact', href: 'contact' },
   ],
 }
 
@@ -78,7 +78,7 @@ export default function AdminHome() {
   const [characteristics, setCharacteristics] = useState('')
   const [img, setImages] = useState('')
 
-  const [products, setProducts] = useState([])
+  // const [products, setProducts] = useState([])
   const [totalPages, setTotalPages] = useState(0)
 
   const createProduct = async (event) => {
@@ -110,46 +110,38 @@ export default function AdminHome() {
   }
 
   useEffect(() => {
-    
-    ProductService.getAllProducts().then((response) => {
-      console.log(response.data);
-      const { content, totalPages } = response.data
-      setProducts(content)
-      setTotalPages(totalPages)
-      // setUniversityOptions(
-      //   response.data.map(({ id, name, country }) => {
-      //     return { label: name, value: id, country }
-      //   })
-      // )
-    })
+    // ProductService.getAllProducts().then((response) => {
+    //   console.log(response.data);
+    //   const { content, totalPages } = response.data
+    //   setProducts(content)
+    //   setTotalPages(totalPages)
+    //   // setUniversityOptions(
+    //   //   response.data.map(({ id, name, country }) => {
+    //   //     return { label: name, value: id, country }
+    //   //   })
+    //   // )
+    // })
   }, [])
 
 
-  
+
   return (
     <>
-      ADMINPAGE
+
 
       <header className="relative bg-white">
-        <nav aria-label="Top" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+        <nav aria-label="Top" className="mx-auto  px-4 sm:px-6 lg:px-8">
+
           <div className="border-b border-gray-200">
 
-            <div className="flex h-16 items-center">
-              <div>
-                <button className='font-bold' onClick={() => setAddProduct(!addProduct)}> Add Product</button>
-              </div>
+            <div className="flex h-28 items-center">
 
-              <div className="hidden lg:ml-8 lg:block lg:self-stretch">
+              <div className="hidden  lg:block lg:self-stretch">
+
                 <div className="flex h-full space-x-8">
-                  {navigation.pages.map((page) => (
-                    <a
-                      key={page.name}
-                      href={page.href}
-                      className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
-                    >
-                      {page.name}
-                    </a>
-                  ))}
+                  < DiscoverAlbaniaLogo />
+
                 </div>
               </div>
 
@@ -161,24 +153,18 @@ export default function AdminHome() {
                     <MagnifyingGlassIcon aria-hidden="true" className="size-6" />
                   </a>
                 </div>
+                <div className="flex h-full space-x-8">
+                  {navigation.pages.map((page) => (
+                    <a
+                      key={page.name}
+                      href={page.href}
+                      className="flex items-center text-2xl lg:ml-8 font-medium  font-bold text-teal-900 hover:text-gray-800"
+                    >
+                      {page.name}
+                    </a>
+                  ))}
+                </div>
 
-                {/* Cart */}
-                <div className="ml-4 flow-root lg:ml-6">
-                  <a href="#" className="group -m-2 flex items-center p-2">
-                    <ShoppingBagIcon
-                      aria-hidden="true"
-                      className="size-6 shrink-0 text-gray-400 group-hover:text-gray-500"
-                    />
-                    <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">0</span>
-                    <span className="sr-only">items in cart, view bag</span>
-                  </a>
-                </div>
-                {/* Log out */}
-                <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                  <a href="#" className="text-sm font-medium text-gray-700 hover:text-gray-800">
-                    Log out
-                  </a>
-                </div>
 
               </div>
             </div>
@@ -208,7 +194,7 @@ export default function AdminHome() {
                     <p className="mt-1 text-sm text-gray-500">{product.description}</p>
                     <p className="mt-1 text-sm text-gray-500">{product.characteristics}</p>
                     <p className="mt-1 text-sm text-gray-500">{product.variability}</p>
-                    
+
 
                   </div>
                   <p className="text-sm font-medium text-gray-900">{product.unitPrice}</p>
@@ -308,9 +294,8 @@ export default function AdminHome() {
           </div>
 
         </div>
-
-
       }
+
     </>
   )
 }
