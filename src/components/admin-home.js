@@ -58,8 +58,8 @@ const navigation = {
 
   pages: [
     { name: 'Home', href: '/' },
-    { name: 'Tours', href: 'tours' },
-    { name: 'Blogs', href: 'blogs' },
+    { name: 'Find tours', href: 'tours' },
+    { name: 'Places to go', href: 'blogs' },
     { name: 'Contact', href: 'contact' },
   ],
 }
@@ -172,35 +172,54 @@ export default function AdminHome() {
         </nav>
       </header>
 
-      <div className="bg-white">
-        <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-          <h2 className="text-2xl font-bold tracking-tight text-gray-900">All Products</h2>
+      <div className=" bg-white p-2">
+
+        <div className="mx-auto ">
+          <h2 className="text-2xl font-bold text-emerald-600 ">Book travel packages</h2>
           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
             {products.map((product) => (
-              <div key={product.id} className="group relative">
+              <div
+                key={product.id}
+                className=" gap-2 border item-center rounded-lg"
+              >
                 <img
-                  alt={product.img}
-                  src={product.imageSrc}
-                  className="aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-80"
+                  src="https://images.pexels.com/photos/533769/pexels-photo-533769.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  alt="Vineyard landscape"
+                  className="border rounded-lg "
                 />
-                <div className="mt-4 flex justify-between">
-                  <div>
-                    <h3 className="text-sm text-gray-700">
-                      <a href={product.href}>
-                        <span aria-hidden="true" className="absolute inset-0" />
-                        {product.name}
-                      </a>
-                    </h3>
-                    <p className="mt-1 text-sm text-gray-500">{product.description}</p>
-                    <p className="mt-1 text-sm text-gray-500">{product.characteristics}</p>
-                    <p className="mt-1 text-sm text-gray-500">{product.variability}</p>
+                <h2 className="text-2xl font-bold text-gray-900">
+                  Theth Deal
+                </h2>
 
+                <div className="p-2">
+                  <h2 className="text-1xl font-bold text-slate-900 leading-tight">
+                    Queenstown Deal<br />
+                    Luxury Long Weekend<br />
+                    Escape
+                  </h2>
 
-                  </div>
-                  <p className="text-sm font-medium text-gray-900">{product.unitPrice}</p>
-                  <p className="text-sm font-medium text-gray-900">{product.categories}</p>
+                  <p className="text-slate-600 text-base leading-relaxed">
+                    Includes: Luxury accommodation Rental car, daily breakfast, Massage, Wine Tour & more
+                  </p>
                 </div>
+
+
+                <div className="mb-6">
+                  <div className="text-sm font-semibold text-slate-700 mb-2">Now</div>
+                  <div className="flex items-baseline gap-1 mb-2">
+                    <span className="text-4xl font-bold text-emerald-600">$2599</span>
+                    <span className="text-2xl font-semibold text-emerald-600">NZD</span>
+                  </div>
+                  <div className="text-sm text-slate-600">
+                    Save $400 Per Adult
+                  </div>
+                </div>
+                <button className="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg">
+                  More information
+                </button>
+
               </div>
+
             ))}
           </div>
         </div>
