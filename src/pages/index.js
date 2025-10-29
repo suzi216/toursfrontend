@@ -1,5 +1,6 @@
 // import { useRouter } from 'next/router'
 // import { useSelector } from 'react-redux'
+import 'leaflet/dist/leaflet.css';
 
 import {  SUPER_ADMIN, USER} from '../constants/index.js'
 import DynamicLoader from '../components/hoc/DynamicLoader.js'
