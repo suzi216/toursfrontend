@@ -3,10 +3,10 @@ import Input from '../components/core/Input'
 import MultiSelectInput from '../components/core/MultiSelectInput'
 import DiscoverAlbaniaLogo from '../components/core/Logo'
 import ProductService from '@/untils/services/ProductService'
-import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 import { categoryOptions } from '../constants/filter'
-import { GiMagnifyingGlass, GiPhotoCamera, GiCarWheel, GiCalendar, GiSpookyHouse, GiKnifeFork, GiTicket } from 'react-icons/gi';
-import { HiArrowLeft, HiArrowRight } from "react-icons/hi2";
+import { GiMagnifyingGlass, GiPhotoCamera, GiCarWheel, GiCalendar, GiSpookyHouse, GiKnifeFork, GiTicket, GiEagleEmblem } from 'react-icons/gi';
+import { FaFacebook, FaInstagram, FaYoutube, FaChevronDown } from "react-icons/fa";
 
 
 // import AlbaniaMap from '../components/core/Map'
@@ -153,7 +153,7 @@ export default function AdminHome() {
 
   return (
     <>
-      <div className='mx-3'>
+      <div className=''>
         <header className="relative bg-white">
 
           <nav aria-label="Top" className="mx-auto  px-4 sm:px-6 lg:px-8">
@@ -311,95 +311,111 @@ export default function AdminHome() {
           </div>
         </div>
 
-        {addProduct &&
-          <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 bg-white p-4 shadow-lg w-2/4 h-3/5">
-            <div className='flex flex-row items-center justify-between '>
-              <h3 className='m-4'>Add a New Product</h3>
+        <div className="bg-gradient-to-br from-gray-400 to-gray-600 px-6 py-10 md:px-12 lg:px-24 mt-10">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex items-center justify-center gap-3 mb-20">
+              <span className="text-white text-4xl font-light">Albania</span>
+            </div>
 
-              <div>
-                <button className='font-bold' onClick={() => setAddProduct(!addProduct)}> X</button>
+            <div className="space-y-8">
+              <h1 className="text-white text-4xl md:text-5xl font-light">
+                Acknowledgement of Country
+              </h1>
+
+              <div className="flex items-start gap-8">
+                <div className="flex items-center gap-2 text-red-700">
+                  <GiEagleEmblem size={32} />
+                </div>
+
+                <div className="flex-1 space-y-6">
+                  <p className="text-white text-xl md:text-2xl leading-relaxed font-light">
+                    We acknowledge the ancient Illyrian roots of the Albanian land and honour the generations who have cared for its mountains, rivers, and coasts throughout history. We recognise the enduring spirit, traditions, and culture that continue to shape Albania today.  </p>
+                </div>
               </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-5 w-full md:flex-1">
-              <Input
-                label={'Name' + '*'}
-                placeholder={'Name'}
-                value={name}
-                onChange={setName}
-                backgroundColor=" "
-              />
-              <Input
-                label={'Description' + '*'}
-                placeholder={'Description'}
-                value={description}
-                onChange={setDescription}
-                backgroundColor=" bg-opacity-20"
-              />
-              <Input
-                label={'Unit Price' + '*'}
-                placeholder={'Unit Price'}
-                value={unitPrice}
-                onChange={setUnitPrice}
-                backgroundColor=" bg-opacity-20"
-              />
-              <Input
-                label={'Characteristics' + '*'}
-                placeholder={'Characteristics'}
-                value={characteristics}
-                onChange={setCharacteristics}
-                backgroundColor=" bg-opacity-20"
-              />
-              <Input
-                label={'Size' + '*'}
-                placeholder={'Size'}
-                value={size}
-                onChange={setSize}
-                backgroundColor=" bg-opacity-20"
-              />
-
-              <MultiSelectInput
-                backgroundColor="#F0FBFF"
-                id="language"
-                placeholder={'Category'}
-                selected={categories}
-                onSelect={(value) => {
-                  setCategory(value)
-                }}
-                options={categoryOptions}
-                className="flex-1 mb-3"
-                formatOptionLabel={formatOptionLabel}
-              />
-
-
-              <Input
-                label={'Variability' + '*'}
-                placeholder={'Variability'}
-                value={variability}
-                onChange={setVariability}
-                backgroundColor=" bg-opacity-20"
-              />
-
-              <Input
-                label={'Images' + '*'}
-                placeholder={'Images'}
-                value={img}
-                onChange={setImages}
-                backgroundColor=" bg-opacity-20"
-              />
-            </div>
-
-            <div className='mt-5'>
-              <button
-                type="submit"
-                className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded shadow"
-                onClick={createProduct}
-              >
-                Create Product
-              </button>
-            </div>
-
           </div>
-        }
+          <hr className="border-gray-400 my-10 " />
+
+          <footer className="text-white py-12 px-8">
+            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+              <div>
+                <h3 className="text-lg font-light mb-6">Change Language</h3>
+                <div className="relative">
+                  <button className="w-full flex items-center justify-between border border-white/30 px-4 py-3 hover:bg-white/10 transition-colors">
+                    <span className="font-light">International (English)</span>
+                    <FaChevronDown className="w-5 h-5" />
+                  </button>
+                </div>
+              </div>
+              <div>
+                <h3 className="text-lg font-light mb-6">Find us on</h3>
+                <div className="space-y-4">
+                  <a href="#" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+                    <FaFacebook className="w-5 h-5" />
+                    <span className="font-light">Facebook</span>
+                  </a>
+                  <a href="#" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+                    <FaYoutube className="w-5 h-5" />
+                    <span className="font-light">YouTube</span>
+                  </a>
+                  <a href="#" className="flex items-center gap-3 hover:opacity-80 transition-opacity mt-6">
+                    <FaInstagram className="w-5 h-5" />
+                    <span className="font-light">Instagram</span>
+                  </a>
+
+                </div>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-light mb-6">About this site</h3>
+                <ul className="space-y-3">
+                  <li>
+                    <a href="#" className="font-light hover:opacity-80 transition-opacity">
+                      Privacy Policy
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="font-light hover:opacity-80 transition-opacity">
+                      Terms and Conditions
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="font-light hover:opacity-80 transition-opacity">
+                      Accessibility Statement
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="font-light hover:opacity-80 transition-opacity">
+                      Sitemap
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-light mb-6">Other sites</h3>
+                <ul className="space-y-3">
+                  <li>
+                    <a href="#" className="font-light hover:opacity-80 transition-opacity">
+                      Media & Industry
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="font-light hover:opacity-80 transition-opacity">
+                      Business Events
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="font-light hover:opacity-80 transition-opacity">
+                      Tourism Investment
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </footer>
+        </div>
+
       </div>
     </>
   )
