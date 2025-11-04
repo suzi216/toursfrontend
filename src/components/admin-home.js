@@ -199,7 +199,7 @@ export default function AdminHome() {
 
         </header>
 
-        <div className='flex justify-center mt-10 p-2'>
+        <div className='lg:flex sm:flex-row justify-center mt-10 p-2'>
 
           <div className="w-full">
             {isClient ? (
@@ -214,7 +214,7 @@ export default function AdminHome() {
             )}
           </div>
 
-          <div className=" bg-gradient-to-br   flex items-center justify-center w-full">
+          <div className=" bg-gradient-to-br flex items-center justify-center w-full mt-5">
             <div className="w-full max-w-lg space-y-8">
               {/* Search Bar */}
               <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
@@ -248,8 +248,8 @@ export default function AdminHome() {
               </div>
             </div>
           </div>
+          
         </div>
-
 
 
         <div className="bg-white p-2 mt-5">
@@ -261,7 +261,7 @@ export default function AdminHome() {
             </div>
 
             <div className="mt-6 overflow-x-auto no-scrollbar scroll-smooth">
-              <div className="flex gap-x-6 sm:gap-x-6 lg:gap-x-8">
+              <div className="flex gap-x-6 sm:gap-x-2 lg:gap-x-8">
                 {products.map((product) => (
                   <div
                     key={product.id}
