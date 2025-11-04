@@ -162,7 +162,7 @@ export default function AdminHome() {
 
               <div className="flex h-28 items-center">
 
-                <div className="hidden lg:block lg:self-stretch">
+                <div className="lg:block lg:self-stretch">
 
                   <div className="flex h-full space-x-8">
                     < DiscoverAlbaniaLogo />
@@ -171,14 +171,7 @@ export default function AdminHome() {
                 </div>
 
                 <div className="ml-auto flex items-center">
-                  {/* Search */}
-                  <div className="flex lg:ml-6">
-                    <a href="#" className="p-2 text-gray-400 hover:text-gray-500">
-                      <span className="sr-only">Search</span>
-                      <MagnifyingGlassIcon aria-hidden="true" className="size-6" />
-                    </a>
-                  </div>
-                  <div className="flex h-full space-x-8">
+                  <div className="flex h-full space-x-8 mx-3">
                     {navigation.pages.map((page) => (
                       <a
                         key={page.name}
