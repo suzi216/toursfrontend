@@ -1,10 +1,6 @@
 import { useState, Fragment, useEffect, useRef } from 'react'
-import Input from '../components/core/Input'
-import MultiSelectInput from '../components/core/MultiSelectInput'
-import DiscoverAlbaniaLogo from '../components/core/Logo'
+import Header from '../components/core/Header'
 import ProductService from '@/untils/services/ProductService'
-import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
-import { categoryOptions } from '../constants/filter'
 import { GiMagnifyingGlass, GiPhotoCamera, GiCarWheel, GiCalendar, GiSpookyHouse, GiKnifeFork, GiTicket, GiEagleEmblem } from 'react-icons/gi';
 import { FaFacebook, FaInstagram, FaYoutube, FaChevronDown } from "react-icons/fa";
 
@@ -65,15 +61,6 @@ const products = [
   }
 ]
 
-const navigation = {
-
-  pages: [
-    { name: 'Home', href: '/' },
-    { name: 'Find tours', href: 'tours' },
-    { name: 'Places to go', href: 'blogs' },
-    { name: 'Contact', href: 'contact' },
-  ],
-}
 
 const categoried = [
   { icon: GiPhotoCamera, label: 'Attractions', color: 'bg-emerald-600' },
@@ -153,46 +140,10 @@ export default function AdminHome() {
 
   return (
     <>
-      <div className=''>
-        <header className="relative bg-white">
 
-          <nav aria-label="Top" className="mx-auto  px-4 sm:px-6 lg:px-8">
+    < Header />
 
-            <div className="border-b border-gray-200">
-
-              <div className="flex h-28 items-center">
-
-                <div className="lg:block lg:self-stretch">
-
-                  <div className="flex h-full space-x-8">
-                    < DiscoverAlbaniaLogo />
-
-                  </div>
-                </div>
-
-                <div className="ml-auto flex items-center">
-                  <div className="flex h-full space-x-8 mx-3">
-                    {navigation.pages.map((page) => (
-                      <a
-                        key={page.name}
-                        href={page.href}
-                        className="flex items-center text-2xl lg:ml-8 font-medium  font-bold text-teal-900 hover:text-gray-800"
-                      >
-                        {page.name}
-                      </a>
-                    ))}
-                  </div>
-
-
-                </div>
-              </div>
-            </div>
-
-          </nav>
-
-        </header>
-
-        <div className='lg:flex sm:flex-row justify-center mt-10 p-2'>
+        <div className='lg:flex md-flex-row sm:flex-row mt-10 p-2'>
 
           <div className="w-full">
             {isClient ? (
@@ -209,7 +160,6 @@ export default function AdminHome() {
 
           <div className=" bg-gradient-to-br flex items-center justify-center w-full mt-5">
             <div className="w-full max-w-lg space-y-8">
-              {/* Search Bar */}
               <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <div className="flex items-center gap-4 p-5">
                   <GiMagnifyingGlass className="w-6 h-6 text-gray-400 flex-shrink-0" strokeWidth={2} />
@@ -221,7 +171,6 @@ export default function AdminHome() {
                 </div>
               </div>
 
-              {/* Categories Grid */}
               <div className="bg-white rounded-3xl shadow-lg p-8">
                 <div className="grid grid-cols-3 gap-8">
                   {categoried.map((category) => (
@@ -409,7 +358,6 @@ export default function AdminHome() {
           </footer>
         </div>
 
-      </div>
     </>
   )
 }

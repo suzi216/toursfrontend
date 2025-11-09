@@ -25,7 +25,7 @@ const attractions = [
 
 const AlbaniaMap = () => {
   return (
-<div className="w-full h-[500px] rounded-3xl overflow-hidden shadow-2xl">
+<div className=" h-[500px] rounded-3xl overflow-hidden shadow-2xl">
       <MapContainer
         center={[41.1533, 20.1683]} // center of Albania
         zoom={7}
