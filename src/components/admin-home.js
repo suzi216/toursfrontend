@@ -1,9 +1,8 @@
 import { useState, Fragment, useEffect, useRef } from 'react'
 import Header from '../components/core/Header'
+import Footer from '../components/core/Footer';
 import ProductService from '@/untils/services/ProductService'
-import { GiMagnifyingGlass, GiPhotoCamera, GiCarWheel, GiCalendar, GiSpookyHouse, GiKnifeFork, GiTicket, GiEagleEmblem } from 'react-icons/gi';
-import { FaFacebook, FaInstagram, FaYoutube, FaChevronDown } from "react-icons/fa";
-
+import { GiMagnifyingGlass, GiPhotoCamera, GiCarWheel, GiCalendar, GiSpookyHouse, GiKnifeFork, GiTicket } from 'react-icons/gi';
 
 // import AlbaniaMap from '../components/core/Map'
 
@@ -141,222 +140,119 @@ export default function AdminHome() {
   return (
     <>
 
-    < Header />
+      <Header />
 
-        <div className='lg:flex md-flex-row sm:flex-row mt-10 p-2'>
+      <div className='lg:flex md-flex-row sm:flex-row mt-10 p-2'>
 
-          <div className="w-full">
-            {isClient ? (
-              <AlbaniaMap key="map" />
-            ) : (
-              <div
-                key="placeholder"
-                className="flex items-center justify-center  text-gray-400"
-              >
-                Loading map...
-              </div>
-            )}
-          </div>
-
-          <div className=" bg-gradient-to-br flex items-center justify-center w-full mt-5">
-            <div className="w-full max-w-lg space-y-8">
-              <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div className="flex items-center gap-4 p-5">
-                  <GiMagnifyingGlass className="w-6 h-6 text-gray-400 flex-shrink-0" strokeWidth={2} />
-                  <input
-                    type="text"
-                    placeholder="Search destinations"
-                    className="flex-1 text-lg text-gray-800 placeholder-gray-400 bg-transparent border-none outline-none"
-                  />
-                </div>
-              </div>
-
-              <div className="bg-white rounded-3xl shadow-lg p-8">
-                <div className="grid grid-cols-3 gap-8">
-                  {categoried.map((category) => (
-                    <button
-                      key={category.label}
-                      className="flex flex-col items-center gap-3 group transition-transform duration-200 hover:scale-105 active:scale-95"
-                    >
-                      <div className={`${category.color} w-16 h-16 rounded-full flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow duration-200`}>
-                        <category.icon className="w-8 h-8 text-white" strokeWidth={2} />
-                      </div>
-                      <span className="text-sm font-semibold text-gray-800">
-                        {category.label}
-                      </span>
-                    </button>
-                  ))}
-                </div>
-              </div>
+        <div className="w-full">
+          {isClient ? (
+            <AlbaniaMap key="map" />
+          ) : (
+            <div
+              key="placeholder"
+              className="flex items-center justify-center  text-gray-400"
+            >
+              Loading map...
             </div>
-          </div>
-          
+          )}
         </div>
 
-
-        <div className="bg-white p-2 mt-5">
-          <div className="mx-auto px-2">
-            <div className="grid place-items-center py-5">
-              <div>
-                <h2 className="font-serif text-4xl font-bold text-gray-700">Book travel packages</h2>
+        <div className=" bg-gradient-to-br flex items-center justify-center w-full mt-5">
+          <div className="w-full max-w-lg space-y-8">
+            <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <div className="flex items-center gap-4 p-5">
+                <GiMagnifyingGlass className="w-6 h-6 text-gray-400 flex-shrink-0" strokeWidth={2} />
+                <input
+                  type="text"
+                  placeholder="Search destinations"
+                  className="flex-1 text-lg text-gray-800 placeholder-gray-400 bg-transparent border-none outline-none"
+                />
               </div>
             </div>
 
-            <div className="mt-6 overflow-x-auto no-scrollbar scroll-smooth">
-              <div className="flex gap-x-6 sm:gap-x-2 lg:gap-x-8">
-                {products.map((product) => (
-                  <div
-                    key={product.id}
-                    className="gap-2 border item-center rounded-lg flex-shrink-0 w-[280px] sm:w-[320px] lg:w-[350px]"
+            <div className="bg-white rounded-3xl shadow-lg p-8">
+              <div className="grid grid-cols-3 gap-8">
+                {categoried.map((category) => (
+                  <button
+                    key={category.label}
+                    className="flex flex-col items-center gap-3 group transition-transform duration-200 hover:scale-105 active:scale-95"
                   >
-                    <img
-                      src="https://images.pexels.com/photos/533769/pexels-photo-533769.jpeg?auto=compress&cs=tinysrgb&w=800"
-                      alt="Vineyard landscape"
-                      className="border rounded-lg "
-                    />
-                    <h2 className="text-2xl font-bold text-gray-900">
-                      Theth Deal
-                    </h2>
-
-                    <div className="p-2">
-                      <h2 className="text-1xl font-bold text-slate-900 leading-tight">
-                        Queenstown Deal<br />
-                        Luxury Long Weekend<br />
-                        Escape
-                      </h2>
-
-                      <p className="text-slate-600 text-base leading-relaxed">
-                        Includes: Luxury accommodation Rental car, daily breakfast, Massage, Wine Tour & more
-                      </p>
+                    <div className={`${category.color} w-16 h-16 rounded-full flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow duration-200`}>
+                      <category.icon className="w-8 h-8 text-white" strokeWidth={2} />
                     </div>
-
-
-                    <div className="mb-6">
-                      <div className="text-sm font-semibold text-slate-700 mb-2">Now</div>
-                      <div className="flex items-baseline gap-1 mb-2">
-                        <span className="text-4xl font-bold text-teal-600">$2599</span>
-                        <span className="text-2xl font-semibold text-teal-600">NZD</span>
-                      </div>
-                      <div className="text-sm text-slate-600">
-                        Save $400 Per Adult
-                      </div>
-                    </div>
-                    <button className="w-full  bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg">
-                      More information
-                    </button>
-
-                  </div>
-
+                    <span className="text-sm font-semibold text-gray-800">
+                      {category.label}
+                    </span>
+                  </button>
                 ))}
               </div>
             </div>
           </div>
         </div>
 
-        <div className="bg-gradient-to-br from-gray-400 to-gray-600 px-6 py-10 md:px-12 lg:px-24 mt-10">
-          <div className="max-w-7xl mx-auto">
-            <div className="flex items-center justify-center gap-3 mb-20">
-              <span className="text-white text-4xl font-light">Albania</span>
-            </div>
+      </div>
 
-            <div className="space-y-8">
-              <h1 className="text-white text-4xl md:text-5xl font-light">
-                Acknowledgement of Country
-              </h1>
 
-              <div className="flex items-start gap-8">
-                <div className="flex items-center gap-2 text-red-700">
-                  <GiEagleEmblem size={32} />
-                </div>
-
-                <div className="flex-1 space-y-6">
-                  <p className="text-white text-xl md:text-2xl leading-relaxed font-light">
-                    We acknowledge the ancient Illyrian roots of the Albanian land and honour the generations who have cared for its mountains, rivers, and coasts throughout history. We recognise the enduring spirit, traditions, and culture that continue to shape Albania today.  </p>
-                </div>
-              </div>
+      <div className="bg-white p-2 mt-5">
+        <div className="mx-auto px-2">
+          <div className="grid place-items-center py-5">
+            <div>
+              <h2 className="font-serif text-4xl font-bold text-gray-700">Book travel packages</h2>
             </div>
           </div>
-          <hr className="border-gray-400 my-10 " />
 
-          <footer className="text-white py-12 px-8">
-            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-              <div>
-                <h3 className="text-lg font-light mb-6">Change Language</h3>
-                <div className="relative">
-                  <button className="w-full flex items-center justify-between border border-white/30 px-4 py-3 hover:bg-white/10 transition-colors">
-                    <span className="font-light">International (English)</span>
-                    <FaChevronDown className="w-5 h-5" />
+          <div className="mt-6 overflow-x-auto no-scrollbar scroll-smooth">
+            <div className="flex gap-x-6 sm:gap-x-2 lg:gap-x-8">
+              {products.map((product) => (
+                <div
+                  key={product.id}
+                  className="gap-2 border item-center rounded-lg flex-shrink-0 w-[280px] sm:w-[320px] lg:w-[350px]"
+                >
+                  <img
+                    src="https://images.pexels.com/photos/533769/pexels-photo-533769.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    alt="Vineyard landscape"
+                    className="border rounded-lg "
+                  />
+                  <h2 className="text-2xl font-bold text-gray-900">
+                    Theth Deal
+                  </h2>
+
+                  <div className="p-2">
+                    <h2 className="text-1xl font-bold text-slate-900 leading-tight">
+                      Queenstown Deal<br />
+                      Luxury Long Weekend<br />
+                      Escape
+                    </h2>
+
+                    <p className="text-slate-600 text-base leading-relaxed">
+                      Includes: Luxury accommodation Rental car, daily breakfast, Massage, Wine Tour & more
+                    </p>
+                  </div>
+
+
+                  <div className="mb-6">
+                    <div className="text-sm font-semibold text-slate-700 mb-2">Now</div>
+                    <div className="flex items-baseline gap-1 mb-2">
+                      <span className="text-4xl font-bold text-teal-600">$2599</span>
+                      <span className="text-2xl font-semibold text-teal-600">NZD</span>
+                    </div>
+                    <div className="text-sm text-slate-600">
+                      Save $400 Per Adult
+                    </div>
+                  </div>
+                  <button className="w-full  bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg">
+                    More information
                   </button>
-                </div>
-              </div>
-              <div>
-                <h3 className="text-lg font-light mb-6">Find us on</h3>
-                <div className="space-y-4">
-                  <a href="#" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-                    <FaFacebook className="w-5 h-5" />
-                    <span className="font-light">Facebook</span>
-                  </a>
-                  <a href="#" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-                    <FaYoutube className="w-5 h-5" />
-                    <span className="font-light">YouTube</span>
-                  </a>
-                  <a href="#" className="flex items-center gap-3 hover:opacity-80 transition-opacity mt-6">
-                    <FaInstagram className="w-5 h-5" />
-                    <span className="font-light">Instagram</span>
-                  </a>
 
                 </div>
-              </div>
 
-              <div>
-                <h3 className="text-lg font-light mb-6">About this site</h3>
-                <ul className="space-y-3">
-                  <li>
-                    <a href="#" className="font-light hover:opacity-80 transition-opacity">
-                      Privacy Policy
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="font-light hover:opacity-80 transition-opacity">
-                      Terms and Conditions
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="font-light hover:opacity-80 transition-opacity">
-                      Accessibility Statement
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="font-light hover:opacity-80 transition-opacity">
-                      Sitemap
-                    </a>
-                  </li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-light mb-6">Other sites</h3>
-                <ul className="space-y-3">
-                  <li>
-                    <a href="#" className="font-light hover:opacity-80 transition-opacity">
-                      Media & Industry
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="font-light hover:opacity-80 transition-opacity">
-                      Business Events
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="font-light hover:opacity-80 transition-opacity">
-                      Tourism Investment
-                    </a>
-                  </li>
-                </ul>
-              </div>
+              ))}
             </div>
-          </footer>
+          </div>
         </div>
+      </div>
+
+      <Footer />
 
     </>
   )
