@@ -6,7 +6,6 @@ const navigation = {
     pages: [
         { name: 'Home', href: '/' },
         { name: 'Find tours', href: 'tours' },
-        { name: 'Places to go', href: 'blogs' },
         { name: 'Contact', href: 'contact' },
     ],
 }
@@ -19,7 +18,7 @@ export default function Header() {
 
                 <nav aria-label="Top" className="mx-aut px-2 sm:px-6 lg:px-8">
 
-                    <div className="border-b border-gray-200">
+                    <div className="border-gray-200">
 
                         <div className="flex justify-between">
 
@@ -37,7 +36,7 @@ export default function Header() {
                                         <a
                                             key={page.name}
                                             href={page.href}
-                                            className="px-2 text-12 lg:text-2xl "
+                                            className="px-2 text-14 lg:text-2xl "
                                         >
                                             {page.name}
                                         </a>

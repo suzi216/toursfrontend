@@ -26,13 +26,13 @@ export default function LocationFilter({ onFilterChange }) {
 
   return (
     <div className="">
-      <div className="bg-white rounded-lg p-6 px-12 shadow-sm">
+      <div className="bg-white rounded-lg lg:p-6 lg:px-12 p-2">
         <h2 className="text-lg font-bold tracking-wide mb-6">FILTERS</h2>
 
         <div>
           <h3 className="text-sm font-semibold text-gray-900 mb-4">Location</h3>
 
-          <div className="space-y-3">
+          <div className="flex lg:flex-col flex-row flex-wrap lg:space-y-3">
             {locations.map((location) => (
               <label
                 key={location}
@@ -42,9 +42,9 @@ export default function LocationFilter({ onFilterChange }) {
                   type="checkbox"
                   checked={selectedLocations.includes(location)}
                   onChange={() => handleLocationChange(location)}
-                  className="w-4 h-4 rounded border-gray-300 text-blue-600 cursor-pointer"
+                  className="lg:w-4 lg:h-4 rounded border-gray-300 text-blue-600 cursor-pointer"
                 />
-                <span className="ml-3 text-sm font-medium text-gray-700 group-hover:text-gray-900">
+                <span className="lg:ml-3 mx-2 text-sm font-medium text-gray-700 group-hover:text-gray-900">
                   {location}
                 </span>
               </label>

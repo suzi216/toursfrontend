@@ -52,36 +52,28 @@ export default function Tours() {
         <>
             < Header />
             <div>
-                <div className="flex items-center justify-center h-[15vh] bg-gradient-to-br from-sky-100 via-teal-100 to-yellow-100">
-                    <h1 className="text-5xl font-semibold text-gray-900 drop-shadow-lg">
+                <div className="flex items-center justify-center mt-2 h-[15vh] bg-gradient-to-br from-teal-50 ">
+                    <h1 className="lg:text-5xl text-3xl font-semibold text-gray-900 drop-shadow-lg">
                         Albania Touristic Package
                     </h1>
                 </div>
 
 
-                <div className='flex justify-between'>
+                <div className='lg:flex lg:justify-between'>
 
-                    <div className="bg-gray-50 w-2/6">
-                        <div className="max-w-7xl mx-auto">
-                            <div className="">
-
-                                <div className="p-12 pb-6">
-                                    <p className="text-gray-600">Select filters to see results</p>
-                                </div>
+                    <div className="lg:w-2/6">
                                 <div>
                                     <LocationFilter onFilterChange={handleFilterChange} />
                                 </div>
-                            </div>
-                        </div>
                     </div>
 
-                    <div className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow w-full">
-                        <div className="mt-6 ">
-                            <div className="flex flex-wrap gap-x-6 sm:gap-x-2 lg:gap-x-8 gap-y-6 justify-center ">
+                    <div className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow lg:w-full">
+                        <div className="lg:mt-6">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
                                 {tour.map((tour) => (
                                     <div
                                         key={tour.id}
-                                        className="gap-2 border item-center rounded-lg flex-shrink-0 w-[280px] sm:w-[320px] lg:w-[350px]"
+                                        className="p-4 flex flex-col"
                                     >
                                         <img
                                             src="https://images.pexels.com/photos/533769/pexels-photo-533769.jpeg?auto=compress&cs=tinysrgb&w=800"
