@@ -14,7 +14,7 @@ export default function Header() {
 
     return (
         <>
-            <header className=" bg-white">
+            <header className="mb-2 bg-white">
 
                 <nav aria-label="Top" className="mx-aut px-2 sm:px-6 lg:px-8">
 

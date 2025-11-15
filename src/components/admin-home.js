@@ -1,5 +1,7 @@
 import { useState, Fragment, useEffect, useRef } from 'react'
 import Header from '../components/core/Header'
+import Link from "next/link";
+
 import Footer from '../components/core/Footer';
 import ProductService from '@/untils/services/ProductService'
 import { GiMagnifyingGlass, GiPhotoCamera, GiCarWheel, GiCalendar, GiSpookyHouse, GiKnifeFork, GiTicket } from 'react-icons/gi';
@@ -62,12 +64,12 @@ const products = [
 
 
 const categoried = [
-  { icon: GiPhotoCamera, label: 'Attractions', color: 'bg-emerald-600' },
-  { icon: GiCarWheel, label: 'Trips', color: 'bg-rose-600' },
-  { icon: GiCalendar, label: 'Events', color: 'bg-emerald-600' },
-  { icon: GiSpookyHouse, label: 'Hotels', color: 'bg-red-500' },
-  { icon: GiKnifeFork, label: 'Food & Drink', color: 'bg-cyan-600' },
-  { icon: GiTicket, label: 'Experiences', color: 'bg-amber-500' },
+  { icon: GiPhotoCamera, label: 'Attractions', color: 'bg-emerald-600', link: '/attractions' },
+  { icon: GiCarWheel, label: 'Trips', color: 'bg-rose-600', link: '/trips'  },
+  { icon: GiCalendar, label: 'Events', color: 'bg-emerald-600', link: '/events'  },
+  { icon: GiSpookyHouse, label: 'Hotels', color: 'bg-red-500', link: '/hotels' },
+  { icon: GiKnifeFork, label: 'Food & Drink', color: 'bg-cyan-600', link: '/gastronomy'},
+  { icon: GiTicket, label: 'Experiences', color: 'bg-amber-500', link: '/experiences'},
 ];
 
 const formatOptionLabel = ({ label }) => (label)
@@ -173,18 +175,23 @@ export default function AdminHome() {
             <div className="bg-white rounded-3xl shadow-lg p-8">
               <div className="grid grid-cols-3 gap-8">
                 {categoried.map((category) => (
-                  <button
-                    key={category.label}
-                    className="flex flex-col items-center gap-3 group transition-transform duration-200 hover:scale-105 active:scale-95"
-                  >
-                    <div className={`${category.color} w-16 h-16 rounded-full flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow duration-200`}>
-                      <category.icon className="w-8 h-8 text-white" strokeWidth={2} />
-                    </div>
-                    <span className="text-sm font-semibold text-gray-800">
-                      {category.label}
-                    </span>
-                  </button>
+                  <Link key={category.label} href={category.link}>
+                    <button
+                      className="flex flex-col items-center gap-3 group transition-transform duration-200 hover:scale-105 active:scale-95"
+                    >
+                      <div
+                        className={`${category.color} w-16 h-16 rounded-full flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow duration-200`}
+                      >
+                        <category.icon className="w-8 h-8 text-white" strokeWidth={2} />
+                      </div>
+
+                      <span className="text-sm font-semibold text-gray-800">
+                        {category.label}
+                      </span>
+                    </button>
+                  </Link>
                 ))}
+
               </div>
             </div>
           </div>
