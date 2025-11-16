@@ -65,11 +65,11 @@ const products = [
 
 const categoried = [
   { icon: GiPhotoCamera, label: 'Attractions', color: 'bg-emerald-600', link: '/attractions' },
-  { icon: GiCarWheel, label: 'Trips', color: 'bg-rose-600', link: '/trips'  },
-  { icon: GiCalendar, label: 'Events', color: 'bg-emerald-600', link: '/events'  },
-  { icon: GiSpookyHouse, label: 'Hotels', color: 'bg-red-500', link: '/hotels' },
+  // { icon: GiCarWheel, label: 'Trips', color: 'bg-rose-600', link: '/trips'  },
+  // { icon: GiCalendar, label: 'Events', color: 'bg-emerald-600', link: '/events'  },
+  // { icon: GiSpookyHouse, label: 'Hotels', color: 'bg-red-500', link: '/hotels' },
   { icon: GiKnifeFork, label: 'Food & Drink', color: 'bg-cyan-600', link: '/gastronomy'},
-  { icon: GiTicket, label: 'Experiences', color: 'bg-amber-500', link: '/experiences'},
+  { icon: GiTicket, label: 'Experiences', color: 'bg-red-500', link: '/experiences'},
 ];
 
 const formatOptionLabel = ({ label }) => (label)
