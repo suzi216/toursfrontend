@@ -1,7 +1,7 @@
 import { useState, Fragment, useEffect, useRef } from 'react'
 import Header from '../components/core/Header'
 import Link from "next/link";
-
+import { useRouter } from "next/router";
 import Footer from '../components/core/Footer';
 import ProductService from '@/untils/services/ProductService'
 import { GiMagnifyingGlass, GiPhotoCamera, GiCarWheel, GiCalendar, GiSpookyHouse, GiKnifeFork, GiTicket } from 'react-icons/gi';
@@ -68,8 +68,8 @@ const categoried = [
   // { icon: GiCarWheel, label: 'Trips', color: 'bg-rose-600', link: '/trips'  },
   // { icon: GiCalendar, label: 'Events', color: 'bg-emerald-600', link: '/events'  },
   // { icon: GiSpookyHouse, label: 'Hotels', color: 'bg-red-500', link: '/hotels' },
-  { icon: GiKnifeFork, label: 'Food & Drink', color: 'bg-cyan-600', link: '/gastronomy'},
-  { icon: GiTicket, label: 'Experiences', color: 'bg-red-500', link: '/experiences'},
+  { icon: GiKnifeFork, label: 'Food & Drink', color: 'bg-cyan-600', link: '/gastronomy' },
+  { icon: GiTicket, label: 'Experiences', color: 'bg-red-500', link: '/experiences' },
 ];
 
 const formatOptionLabel = ({ label }) => (label)
@@ -77,6 +77,8 @@ const formatOptionLabel = ({ label }) => (label)
 export default function AdminHome() {
   const [addProduct, setAddProduct] = useState(false)
   const scrollRef = useRef(null);
+  const router = useRouter();
+
 
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
@@ -247,7 +249,9 @@ export default function AdminHome() {
                       Save $400 Per Adult
                     </div>
                   </div>
-                  <button className="w-full  bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg">
+                  <button
+                    onClick={() => router.push("/checkout")}
+                    className="w-full  bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg">
                     More information
                   </button>
 
