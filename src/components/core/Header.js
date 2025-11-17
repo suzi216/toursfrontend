@@ -41,6 +41,12 @@ export default function Header() {
                                             {page.name}
                                         </a>
                                     ))}
+                                    <a
+                                        href="/createTour"
+                                        className="px-2 text-14 lg:text-2xl "
+                                    >
+                                        Add Tours
+                                    </a>
                                 </div>
 
 
