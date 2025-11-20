@@ -1,6 +1,7 @@
-import { GiBookmark } from 'react-icons/gi';
 import Header from '../components/core/Header';
 import Footer from '@/components/core/Footer';
+import { useRouter } from "next/router";
+
 import LocationFilter from '@/components/core/LocationFilter';
 
 const tour = [{
@@ -42,6 +43,7 @@ const tour = [{
 
 
 export default function Tours() {
+  const router = useRouter();
 
     const handleFilterChange = (selectedLocations) => {
         console.log("Selected locations:", selectedLocations);
@@ -62,9 +64,9 @@ export default function Tours() {
                 <div className='lg:flex lg:justify-between'>
 
                     <div className="lg:w-2/6">
-                                <div>
-                                    <LocationFilter onFilterChange={handleFilterChange} />
-                                </div>
+                        <div>
+                            <LocationFilter onFilterChange={handleFilterChange} />
+                        </div>
                     </div>
 
                     <div className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow lg:w-full">
@@ -81,7 +83,8 @@ export default function Tours() {
                                             className="border rounded-lg "
                                         />
                                         <h2 className="text-2xl font-bold text-gray-900">
-                                            {tour.name}                    </h2>
+                                            {tour.name}
+                                        </h2>
 
                                         <div className="p-2">
                                             <h2 className="text-1xl font-bold text-slate-900 leading-tight">
@@ -106,9 +109,11 @@ export default function Tours() {
                                                 Save $400 Per Adult
                                             </div>
                                         </div>
-                                        <button className="w-full  bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg">
+
+                                        <button onClick={() => router.push("/checkout")} className="w-full  bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg">
                                             More information
                                         </button>
+
 
                                     </div>
 

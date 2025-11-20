@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Footer from '../components/core/Footer';
 import ProductService from '@/untils/services/ProductService'
-import { GiMagnifyingGlass, GiPhotoCamera, GiCarWheel, GiCalendar, GiSpookyHouse, GiKnifeFork, GiTicket } from 'react-icons/gi';
+import { GiMagnifyingGlass, GiPhotoCamera, GiCarWheel, GiCalendar, GiSpookyHouse, GiKnifeFork, GiTicket, GiArrowDunk } from 'react-icons/gi';
 
 // import AlbaniaMap from '../components/core/Map'
 
@@ -149,6 +149,11 @@ export default function AdminHome() {
       <div className='lg:flex md-flex-row sm:flex-row mt-10 p-2'>
 
         <div className="w-full">
+          <div className='flex justify-center mb-3'>
+            <h1 className="text-1xl md:text-2xl font-semibold mb-2">Not sure where to go? Explore the map</h1>
+            <GiArrowDunk className="text-cyan-600 ml-3" size={32} />
+          </div>
+
           {isClient ? (
             <AlbaniaMap key="map" />
           ) : (
@@ -163,6 +168,7 @@ export default function AdminHome() {
 
         <div className=" bg-gradient-to-br flex items-center justify-center w-full mt-5">
           <div className="w-full max-w-lg space-y-8">
+
             <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
               <div className="flex items-center gap-4 p-5">
                 <GiMagnifyingGlass className="w-6 h-6 text-gray-400 flex-shrink-0" strokeWidth={2} />
