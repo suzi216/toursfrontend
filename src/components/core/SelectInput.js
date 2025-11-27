@@ -8,7 +8,7 @@ const SelectInput = ({
   options = [],
   placeholder = 'Select...',
   formatOptionLabel,
-  menuPlacement="bottom",
+  menuPlacement = "bottom",
   onChange,
   maxHeight = 200,
   isClearable = true,
@@ -57,17 +57,20 @@ const SelectInput = ({
         color: '#4E4E4E',
         fontSize: '12px',
         fontWeight: '300',
-        
+
       }
     }
   }
 
   const handleChange = (selectedOption) => {
-    onSelect(selectedOption || '')
-    if (onChange) {
-      onChange()
-    }
+    onSelect({
+      name: props.name,
+      value: selectedOption?.value || '',
+    })
+
+    if (onChange) onChange()
   }
+
 
   return (
     <div id={id} {...props} >

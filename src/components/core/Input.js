@@ -3,6 +3,7 @@ const Input = ({
   id,
   label,
   value,
+  name,
   placeholder,
   onChange,
   onFocus,
@@ -32,6 +33,7 @@ const Input = ({
         <input
           id={id}
           value={value}
+          name={name}
           autoComplete="none"
           min={min}
           max={max}
@@ -40,7 +42,7 @@ const Input = ({
           className={`placeholder:font-light relative block font-light text-xs h-8 px-4 md:px-[2vh] ${width} placeholder-gray-500 text-color-gray rounded-lg focus:outline-none border focus:border-sky-400 ${
             error && 'focus:ring-red-100 border border-red-300'
           } ${backgroundColor && backgroundColor} ${border && `border ${border}`}`}
-          onChange={(e) => onChange(e.target.value)}
+          onChange={onChange}
           onClick={onFocus}
           type={type}
           placeholder={placeholder}
