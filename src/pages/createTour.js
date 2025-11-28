@@ -92,7 +92,7 @@ function CreateTour() {
 
     const addItineraryDay = () => {
         setItinerary(prev => {
-            const newItinerary = [...prev, { day:  `Day ${prev.length + 1}`, description: '' }];
+            const newItinerary = [...prev, { day: `Day ${prev.length + 1}`, description: '' }];
             setFormData(fd => ({ ...fd, itinerary: newItinerary }));
             return newItinerary;
         });
@@ -114,48 +114,71 @@ function CreateTour() {
             return newItinerary;
         });
     };
+    function validatePayload(payload) {
+        const errors = [];
 
-const handleSubmit = async (e) => {
-    e.preventDefault();
+        const requiredTextFields = [
+            { key: "title", label: "Title" },
+            { key: "description", label: "Description" },
+            { key: "city", label: "City" },
+            { key: "coverImage", label: "Cover image" },
+        ];
 
-    try {
-        setIsLoading(true);
-
-        // Simple payload from formData
-        const payload = { ...formData };
-
-        // Basic validation
-        if (!payload.title || !payload.description) {
-            alert("Title and description are required");
-            return;
-        }
-
-        // Convert to FormData for file uploads (only coverImage for simplicity)
-        const data = new FormData();
-        Object.entries(payload).forEach(([key, value]) => {
-            if (value !== undefined && value !== null) {
-                data.append(key, value);
+        requiredTextFields.forEach(({ key, label }) => {
+            if (!payload[key]?.trim()) {
+                errors.push(`${label} is required`);
             }
         });
 
-        // API call
-        if (formData.id) {
-            await TourService.editTour(formData.id, data);
-            alert("Tour updated successfully");
-        } else {
-            await TourService.createTour(data);
-            alert("Tour created successfully");
+        if (payload.duration == null || Number(payload.duration) <= 0) {
+            errors.push("Duration must be a positive number");
         }
 
-        // Optional callback
-        onSubmit?.();
-    } catch (error) {
-        console.error("Error:", error);
-        alert("Something went wrong");
-    } finally {
-        setIsLoading(false);
+        if (payload.pricePerPerson == null || Number(payload.pricePerPerson) <= 0) {
+            errors.push("Price per person must be a positive number");
+        }
+
+        return errors;
     }
-};
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            setIsLoading(true);
+
+            const payload = { ...formData };
+
+            const errors = validatePayload(payload);
+            if (errors.length) {
+                alert(errors.join("\n"));
+                return;
+            }
+            const data = new FormData();
+            Object.entries(payload).forEach(([key, value]) => {
+                if (value !== undefined && value !== null) {
+                    data.append(key, value);
+                } else {
+                    if (key === "itinerary") {
+                        data.append(key, JSON.stringify(value));
+                    }
+                }
+            });
+
+            if (formData.id) {
+                await TourService.editTour(formData.id, data);
+                alert("Tour updated successfully");
+            } else {
+                await TourService.createTour(data);
+                alert("Tour created successfully");
+            }
+
+        } catch (error) {
+            console.error("Error:", error);
+            alert("Something went wrong");
+        } finally {
+            setIsLoading(false);
+        }
+    };
 
     console.log(formData)
     return (
@@ -271,7 +294,7 @@ const handleSubmit = async (e) => {
                                             </div>
                                             {itinerary.length > 1 && (
                                                 <button type="button" onClick={() => removeItineraryDay(index)} className="p-2 text-red-500">
-                                                <GiCancel />
+                                                    <GiCancel />
                                                 </button>
                                             )}
                                         </div>
