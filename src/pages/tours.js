@@ -1,10 +1,11 @@
 import Header from '../components/core/Header';
 import Footer from '@/components/core/Footer';
-import { useRouter } from "next/router";
+import Link from "next/link";
 
 import LocationFilter from '@/components/core/LocationFilter';
 
 const tour = [{
+    id: "f2a7be8c-9ac5-4002-b496-f420ea152639",
     name: "Theth National Park",
     description:
         "Nestled in the Albanian Alps, Theth National Park is a breathtaking destination known for its dramatic mountains, crystal-clear rivers, and traditional stone houses. Perfect for hikers, photographers, and nature lovers seeking tranquility and authentic Albanian charm.",
@@ -13,15 +14,7 @@ const tour = [{
     featured: true,
 },
 {
-    name: "Theth National Park",
-    description:
-        "Nestled in the Albanian Alps, Theth National Park is a breathtaking destination known for its dramatic mountains, crystal-clear rivers, and traditional stone houses. Perfect for hikers, photographers, and nature lovers seeking tranquility and authentic Albanian charm.",
-    image_url:
-        "https://images.unsplash.com/photo-1601379329541-6e3b1a6dc00e?auto=format&fit=crop&w=800&q=80",
-    featured: true,
-
-},
-{
+    id: "f2a7be8c-9ac5-4002-b496-f420ea152639",
     name: "Theth National Park",
     description:
         "Nestled in the Albanian Alps, Theth National Park is a breathtaking destination known for its dramatic mountains, crystal-clear rivers, and traditional stone houses. Perfect for hikers, photographers, and nature lovers seeking tranquility and authentic Albanian charm.",
@@ -31,6 +24,17 @@ const tour = [{
 
 },
 {
+    id: "f2a7be8c-9ac5-4002-b496-f420ea152639",
+    name: "Theth National Park",
+    description:
+        "Nestled in the Albanian Alps, Theth National Park is a breathtaking destination known for its dramatic mountains, crystal-clear rivers, and traditional stone houses. Perfect for hikers, photographers, and nature lovers seeking tranquility and authentic Albanian charm.",
+    image_url:
+        "https://images.unsplash.com/photo-1601379329541-6e3b1a6dc00e?auto=format&fit=crop&w=800&q=80",
+    featured: true,
+
+},
+{
+    id: "f2a7be8c-9ac5-4002-b496-f420ea152639",
     name: "Theth National Park",
     description:
         "Nestled in the Albanian Alps, Theth National Park is a breathtaking destination known for its dramatic mountains, crystal-clear rivers, and traditional stone houses. Perfect for hikers, photographers, and nature lovers seeking tranquility and authentic Albanian charm.",
@@ -43,7 +47,6 @@ const tour = [{
 
 
 export default function Tours() {
-  const router = useRouter();
 
     const handleFilterChange = (selectedLocations) => {
         console.log("Selected locations:", selectedLocations);
@@ -98,7 +101,6 @@ export default function Tours() {
                                             </p>
                                         </div>
 
-
                                         <div className="mb-6">
                                             <div className="text-sm font-semibold text-slate-700 mb-2">Now</div>
                                             <div className="flex items-baseline gap-1 mb-2">
@@ -109,11 +111,17 @@ export default function Tours() {
                                                 Save $400 Per Adult
                                             </div>
                                         </div>
+                                        <div>
+                                            <button onClick={() => router.push("/checkout")} className="w-full  bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg my-1">
+                                                More information
+                                            </button>
+                                            <Link href={`/tour/${tour.id}`}>
+                                            <button 
+                                                className="w-full  bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg">
+                                                Update Package
+                                            </button></Link>
 
-                                        <button onClick={() => router.push("/checkout")} className="w-full  bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg">
-                                            More information
-                                        </button>
-
+                                        </div>
 
                                     </div>
 

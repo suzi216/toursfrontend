@@ -4,9 +4,10 @@ import Input from '@/components/core/Input';
 import SelectInput from '@/components/core/SelectInput';
 import Section from '@/components/core/Section';
 import DynamicList from '@/components/core/DynamicList';
-import { useState } from 'react';
 import { GiSave, GiCancel } from 'react-icons/gi';
 import TourService from '@/components/utils/services/TourService';
+import { useRouter } from "next/router";
+import { useState, useEffect } from 'react'
 
 function CreateTour() {
     const [formData, setFormData] = useState({
@@ -57,6 +58,8 @@ function CreateTour() {
 
     const [itinerary, setItinerary] = useState([{ day: 'Day 1', description: '' }]);
     const [isLoading, setIsLoading] = useState(false);
+    const router = useRouter();
+    const { id: tourId } = router.query;
 
     const handleInputChange = (input) => {
         if (!input?.target) {
@@ -148,11 +151,7 @@ function CreateTour() {
 
             const payload = { ...formData };
 
-            const errors = validatePayload(payload);
-            if (errors.length) {
-                alert(errors.join("\n"));
-                return;
-            }
+
             const data = new FormData();
             Object.entries(payload).forEach(([key, value]) => {
                 if (value !== undefined && value !== null) {
@@ -164,10 +163,15 @@ function CreateTour() {
                 }
             });
 
-            if (formData.id) {
-                await TourService.editTour(formData.id, data);
+            if (tourId) {
+                await TourService.editTour(tourId, data);
                 alert("Tour updated successfully");
             } else {
+                const errors = validatePayload(payload);
+                if (errors.length) {
+                    alert(errors.join("\n"));
+                    return;
+                }
                 await TourService.createTour(data);
                 alert("Tour created successfully");
             }
@@ -179,6 +183,11 @@ function CreateTour() {
             setIsLoading(false);
         }
     };
+    useEffect(() => {
+        if (!router.isReady) return;
+
+        const { id: tourId } = router.query;
+    }, [router.isReady]);
 
     console.log(formData)
     return (

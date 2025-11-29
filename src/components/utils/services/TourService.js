@@ -14,20 +14,12 @@ const TourService = {
   editTour: (id, data) => {
     return TourApi.put(`/api/tours/${id}`, data);
   },
-  deletePeriod: (id) => {
-    return TourApi.delete(`/api/periods/${id}`);
+  deleteTour: (id) => {
+    return TourApi.delete(`/api/tours/${id}`);
   },
-  allProgramNames: () => {
-    return TourApi.get('/api/programs/all-names')
-  },
+
   getAnnouncements: (qs) => {
     return TourApi.get(`/api/university-announcements${qs ? `?${qs}` : ''}`)
-  },
-  allPrograms: (qs) => {
-    return TourApi.get(`/api/programs?${qs}`)
-  },
-  deleteUniversity: (id) => {
-    return TourApi.delete(`/api/universities/${id}`)
   }
 }
 
