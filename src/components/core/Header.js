@@ -42,7 +42,7 @@ export default function Header() {
                                         </a>
                                     ))}
                                     <a
-                                        href="/createTour"
+                                        href="/tour/new"
                                         className="px-2 text-14 lg:text-2xl "
                                     >
                                         Add Tours

@@ -1,56 +1,42 @@
 import Header from '../components/core/Header';
 import Footer from '@/components/core/Footer';
 import Link from "next/link";
-
+import TourService from '@/components/utils/services/TourService';
 import LocationFilter from '@/components/core/LocationFilter';
-
-const tour = [{
-    id: "f2a7be8c-9ac5-4002-b496-f420ea152639",
-    name: "Theth National Park",
-    description:
-        "Nestled in the Albanian Alps, Theth National Park is a breathtaking destination known for its dramatic mountains, crystal-clear rivers, and traditional stone houses. Perfect for hikers, photographers, and nature lovers seeking tranquility and authentic Albanian charm.",
-    image_url:
-        "https://images.unsplash.com/photo-1601379329541-6e3b1a6dc00e?auto=format&fit=crop&w=800&q=80",
-    featured: true,
-},
-{
-    id: "f2a7be8c-9ac5-4002-b496-f420ea152639",
-    name: "Theth National Park",
-    description:
-        "Nestled in the Albanian Alps, Theth National Park is a breathtaking destination known for its dramatic mountains, crystal-clear rivers, and traditional stone houses. Perfect for hikers, photographers, and nature lovers seeking tranquility and authentic Albanian charm.",
-    image_url:
-        "https://images.unsplash.com/photo-1601379329541-6e3b1a6dc00e?auto=format&fit=crop&w=800&q=80",
-    featured: true,
-
-},
-{
-    id: "f2a7be8c-9ac5-4002-b496-f420ea152639",
-    name: "Theth National Park",
-    description:
-        "Nestled in the Albanian Alps, Theth National Park is a breathtaking destination known for its dramatic mountains, crystal-clear rivers, and traditional stone houses. Perfect for hikers, photographers, and nature lovers seeking tranquility and authentic Albanian charm.",
-    image_url:
-        "https://images.unsplash.com/photo-1601379329541-6e3b1a6dc00e?auto=format&fit=crop&w=800&q=80",
-    featured: true,
-
-},
-{
-    id: "f2a7be8c-9ac5-4002-b496-f420ea152639",
-    name: "Theth National Park",
-    description:
-        "Nestled in the Albanian Alps, Theth National Park is a breathtaking destination known for its dramatic mountains, crystal-clear rivers, and traditional stone houses. Perfect for hikers, photographers, and nature lovers seeking tranquility and authentic Albanian charm.",
-    image_url:
-        "https://images.unsplash.com/photo-1601379329541-6e3b1a6dc00e?auto=format&fit=crop&w=800&q=80",
-    featured: true,
-
-}
-];
+import { useState, useEffect } from 'react'
 
 
 export default function Tours() {
+    const [tours, setTours] = useState([]);
 
     const handleFilterChange = (selectedLocations) => {
         console.log("Selected locations:", selectedLocations);
     };
+
+    const deleteTour = async (tourId) => {
+        try {
+            await TourService.deleteTour(tourId);
+            alert("Tour deleted successfully");
+
+            getTours();
+        } catch (error) {
+            console.error("Failed to delete tour:", error);
+            alert("Failed to delete tour. Please try again.");
+        }
+    };
+    const getTours = async () => {
+        try {
+            const response = await TourService.getTours();
+            setTours(response.data.content);
+        } catch (error) {
+            console.error("Failed to fetch tours:", error);
+            alert("Failed to load tours. Please try again.");
+        }
+    };
+
+    useEffect(() => {
+        getTours();
+    }, []);
 
 
     return (
@@ -62,8 +48,6 @@ export default function Tours() {
                         Albania Touristic Package
                     </h1>
                 </div>
-
-
                 <div className='lg:flex lg:justify-between'>
 
                     <div className="lg:w-2/6">
@@ -75,7 +59,7 @@ export default function Tours() {
                     <div className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow lg:w-full">
                         <div className="lg:mt-6">
                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
-                                {tour.map((tour) => (
+                                {tours.map((tour) => (
                                     <div
                                         key={tour.id}
                                         className="p-4 flex flex-col"
@@ -86,41 +70,54 @@ export default function Tours() {
                                             className="border rounded-lg "
                                         />
                                         <h2 className="text-2xl font-bold text-gray-900">
-                                            {tour.name}
+                                            {tour.title}
                                         </h2>
 
                                         <div className="p-2">
-                                            <h2 className="text-1xl font-bold text-slate-900 leading-tight">
-                                                Queenstown Deal<br />
-                                                Luxury Long Weekend<br />
-                                                Escape
+                                            <h2 className="text-1xl text-slate-900 leading-tight">
+                                                {tour.description}<br />
+                                                {tour.city}<br />
+                                                {tour.tourType}
                                             </h2>
 
                                             <p className="text-slate-600 text-base leading-relaxed">
-                                                Includes: Luxury accommodation Rental car, daily breakfast, Massage, Wine Tour & more
+                                                {tour.startPoint}
+                                                {tour.endPoint}
+                                                {tour.pickupInfo}
+                                                {tour.transportationType}
                                             </p>
+                                           <p>{tour.availableDates}</p> 
+
                                         </div>
 
                                         <div className="mb-6">
                                             <div className="text-sm font-semibold text-slate-700 mb-2">Now</div>
                                             <div className="flex items-baseline gap-1 mb-2">
-                                                <span className="text-4xl font-bold text-teal-600">$2599</span>
+                                                <span className="text-4xl font-bold text-teal-600">{tour.pricePerPerson}</span>
                                                 <span className="text-2xl font-semibold text-teal-600">NZD</span>
                                             </div>
                                             <div className="text-sm text-slate-600">
-                                                Save $400 Per Adult
+                                                Save {tour.discount} Per Adult
                                             </div>
                                         </div>
                                         <div>
-                                            <button onClick={() => router.push("/checkout")} className="w-full  bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg my-1">
-                                                More information
-                                            </button>
+                                            <Link href={"/checkout"}>
+                                                <button className="w-full  bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg my-1">
+                                                    More information
+                                                </button>
+                                            </Link>
                                             <Link href={`/tour/${tour.id}`}>
-                                            <button 
-                                                className="w-full  bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg">
-                                                Update Package
-                                            </button></Link>
-
+                                                <button
+                                                    className="w-full  bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg">
+                                                    Update Package
+                                                </button>
+                                            </Link>
+                                            <button
+                                                className="w-full  bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg my-1"
+                                                onClick={() => deleteTour(tour.id)}
+                                            >
+                                                Delete Package
+                                            </button>
                                         </div>
 
                                     </div>
@@ -130,10 +127,10 @@ export default function Tours() {
                         </div>
                         <div className="p-5">
                             <h3 className="text-lg font-bold mb-2 uppercase tracking-tight">
-                                {tour.name}
+                                {tours.title}
                             </h3>
                             <p className="text-sm text-gray-700 leading-relaxed line-clamp-3">
-                                {tour.description}
+                                {tours.description}
                             </p>
                         </div>
                     </div>

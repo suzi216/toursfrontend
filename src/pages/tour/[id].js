@@ -3,7 +3,8 @@ import Header from '@/components/core/Header'
 import Input from '@/components/core/Input';
 import SelectInput from '@/components/core/SelectInput';
 import Section from '@/components/core/Section';
-import DynamicList from '@/components/core/DynamicList';
+import { validate as isUuid } from 'uuid';
+
 import { GiSave, GiCancel } from 'react-icons/gi';
 import TourService from '@/components/utils/services/TourService';
 import { useRouter } from "next/router";
@@ -163,7 +164,7 @@ function CreateTour() {
                 }
             });
 
-            if (tourId) {
+            if (isUuid(tourId)) {
                 await TourService.editTour(tourId, data);
                 alert("Tour updated successfully");
             } else {

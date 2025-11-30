@@ -5,8 +5,8 @@ const TourApi = API("http://localhost:8080")
 
 const TourService = {
 
-  getCities: (qs) => {
-    return TourApi.get(`/api/universities/cities${qs ? `?${qs}` : ''}`)
+  getTours: () => {
+    return TourApi.get('/api/tours')
   },
   createTour: (data) => {
     return TourApi.post('/api/tours', data);
