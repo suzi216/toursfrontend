@@ -1,6 +1,7 @@
 import API from '../API'
 
-const TourApi = API("http://localhost:8080")
+// const TourApi = API("http://localhost:8080")
+const TourApi = API("https://tours-ff09.onrender.com")
 
 
 const TourService = {
