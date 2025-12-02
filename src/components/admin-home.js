@@ -4,9 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Footer from '../components/core/Footer';
 import ProductService from '@/untils/services/ProductService'
-import { GiMagnifyingGlass, GiPhotoCamera, GiCarWheel, GiCalendar, GiSpookyHouse, GiKnifeFork, GiTicket, GiArrowDunk } from 'react-icons/gi';
-
-// import AlbaniaMap from '../components/core/Map'
+import { GiMagnifyingGlass, GiPhotoCamera, GiKnifeFork, GiTicket, GiArrowDunk } from 'react-icons/gi';
 
 import dynamic from "next/dynamic";
 
@@ -65,9 +63,6 @@ const products = [
 
 const categoried = [
   { icon: GiPhotoCamera, label: 'Attractions', color: 'bg-emerald-600', link: '/attractions' },
-  // { icon: GiCarWheel, label: 'Trips', color: 'bg-rose-600', link: '/trips'  },
-  // { icon: GiCalendar, label: 'Events', color: 'bg-emerald-600', link: '/events'  },
-  // { icon: GiSpookyHouse, label: 'Hotels', color: 'bg-red-500', link: '/hotels' },
   { icon: GiKnifeFork, label: 'Food & Drink', color: 'bg-cyan-600', link: '/gastronomy' },
   { icon: GiTicket, label: 'Experiences', color: 'bg-red-500', link: '/experiences' },
 ];
@@ -146,65 +141,82 @@ export default function AdminHome() {
 
       <Header />
 
-      <div className='lg:flex md-flex-row sm:flex-row mt-10 p-2'>
+      <div className="mt-16 px-4 lg:px-10">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
 
-        <div className="w-full">
-          <div className='flex justify-center mb-3'>
-            <h1 className="text-1xl md:text-2xl font-semibold mb-2">Not sure where to go? Explore the map</h1>
-            <GiArrowDunk className="text-cyan-600 ml-3" size={32} />
-          </div>
-
-          {isClient ? (
-            <AlbaniaMap key="map" />
-          ) : (
-            <div
-              key="placeholder"
-              className="flex items-center justify-center  text-gray-400"
-            >
-              Loading map...
-            </div>
-          )}
-        </div>
-
-        <div className=" bg-gradient-to-br flex items-center justify-center w-full mt-5">
-          <div className="w-full max-w-lg space-y-8">
-
-            <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <div className="flex items-center gap-4 p-5">
-                <GiMagnifyingGlass className="w-6 h-6 text-gray-400 flex-shrink-0" strokeWidth={2} />
-                <input
-                  type="text"
-                  placeholder="Search destinations"
-                  className="flex-1 text-lg text-gray-800 placeholder-gray-400 bg-transparent border-none outline-none"
-                />
+          {/* LEFT: MAP */}
+          <div className="w-full relative">
+            <div className="flex items-center justify-between mb-4">
+              <div>
+                <h1 className="text-2xl md:text-3xl font-bold text-gray-700">
+                  Discover Albania on the Map
+                </h1>
+                <p className="text-gray-700 text-sm mt-1">
+                  Click a region to reveal hidden gems, beaches & adventures
+                </p>
               </div>
             </div>
 
-            <div className="bg-white rounded-3xl shadow-lg p-8">
-              <div className="grid grid-cols-3 gap-8">
+            <div className="relative w-full h-[460px] rounded-3xl overflow-hidden shadow-xl bg-gray-100 ring-1 ring-gray-200">
+              {isClient ? (
+                <AlbaniaMap key="map" />
+              ) : (
+                <div className="h-full flex items-center justify-center text-gray-400 animate-pulse">
+                  Loading interactive map...
+                </div>
+              )}
+
+              {/* Soft Gradient Overlay */}
+              <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/10 via-transparent to-transparent" />
+            </div>
+          </div>
+
+          {/* RIGHT: CATEGORIES */}
+          <div className="w-full flex items-center justify-center">
+            <div className="bg-gradient-to-br from-white via-white to-cyan-50 rounded-3xl shadow-xl p-8 w-full max-w-lg">
+
+              <div className="text-center mb-8">
+                <h2 className="text-2xl font-bold text-gray-700">
+                  What would you like to explore?
+                </h2>
+                <p className="text-gray-700 text-sm mt-1">
+                  Choose a category to start your journey
+                </p>
+              </div>
+
+              <div className="grid grid-cols-3 gap-7">
                 {categoried.map((category) => (
                   <Link key={category.label} href={category.link}>
                     <button
-                      className="flex flex-col items-center gap-3 group transition-transform duration-200 hover:scale-105 active:scale-95"
+                      className="group flex flex-col items-center gap-3
+                  transition-all duration-300
+                  hover:-translate-y-1 hover:scale-105
+                  active:scale-95 focus:outline-none
+                  focus-visible:ring-4 focus-visible:ring-cyan-300
+                  rounded-2xl p-3"
                     >
                       <div
-                        className={`${category.color} w-16 h-16 rounded-full flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow duration-200`}
+                        className={`${category.color}
+                    w-16 h-16 rounded-2xl
+                    flex items-center justify-center
+                    shadow-md group-hover:shadow-xl
+                    transition-all duration-300`}
                       >
-                        <category.icon className="w-8 h-8 text-white" strokeWidth={2} />
+                        <category.icon className="w-8 h-8 text-white" />
                       </div>
 
-                      <span className="text-sm font-semibold text-gray-800">
+                      <span className="text-sm font-semibold text-gray-800 text-center group-hover:text-cyan-600 transition">
                         {category.label}
                       </span>
                     </button>
                   </Link>
                 ))}
-
               </div>
+
             </div>
           </div>
-        </div>
 
+        </div>
       </div>
 
 
@@ -228,7 +240,7 @@ export default function AdminHome() {
                     alt="Vineyard landscape"
                     className="border rounded-lg "
                   />
-                  <h2 className="text-2xl font-bold text-gray-900">
+                  <h2 className="text-2xl font-bold text-gray-700">
                     Theth Deal
                   </h2>
 
