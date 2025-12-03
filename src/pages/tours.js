@@ -1,6 +1,7 @@
 import Header from '../components/core/Header';
 import Footer from '@/components/core/Footer';
 import Link from "next/link";
+import TourCart from '@/components/core/TourCart';
 import TourService from '@/components/utils/services/TourService';
 import LocationFilter from '@/components/core/LocationFilter';
 import { useState, useEffect } from 'react'
@@ -27,7 +28,10 @@ export default function Tours() {
     const getTours = async () => {
         try {
             const response = await TourService.getTours();
-            setTours(response.data.content);
+            setTours(response.data.content && response.data.content.length > 0
+                ? response.data.content
+                : mockTours
+            );
         } catch (error) {
             console.error("Failed to fetch tours:", error);
             alert("Failed to load tours. Please try again.");
@@ -58,71 +62,12 @@ export default function Tours() {
 
                     <div className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow lg:w-full">
                         <div className="lg:mt-6">
-                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
-                                {tours.map((tour) => (
-                                    <div
-                                        key={tour.id}
-                                        className="p-4 flex flex-col"
-                                    >
-                                        <img
-                                            src="https://images.pexels.com/photos/533769/pexels-photo-533769.jpeg?auto=compress&cs=tinysrgb&w=800"
-                                            alt="Vineyard landscape"
-                                            className="border rounded-lg "
-                                        />
-                                        <h2 className="text-2xl font-bold text-gray-900">
-                                            {tour.title}
-                                        </h2>
+                            <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
+                                <TourCart
+                                    showUpdate={false}
+                                    showDelete={false}
+                                />
 
-                                        <div className="p-2">
-                                            <h2 className="text-1xl text-slate-900 leading-tight">
-                                                {tour.description}<br />
-                                                {tour.city}<br />
-                                                {tour.tourType}
-                                            </h2>
-
-                                            <p className="text-slate-600 text-base leading-relaxed">
-                                                {tour.startPoint}
-                                                {tour.endPoint}
-                                                {tour.pickupInfo}
-                                                {tour.transportationType}
-                                            </p>
-                                           <p>{tour.availableDates}</p> 
-
-                                        </div>
-
-                                        <div className="mb-6">
-                                            <div className="text-sm font-semibold text-slate-700 mb-2">Now</div>
-                                            <div className="flex items-baseline gap-1 mb-2">
-                                                <span className="text-4xl font-bold text-teal-600">{tour.pricePerPerson}</span>
-                                                <span className="text-2xl font-semibold text-teal-600">NZD</span>
-                                            </div>
-                                            <div className="text-sm text-slate-600">
-                                                Save {tour.discount} Per Adult
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <Link href={"/checkout"}>
-                                                <button className="w-full  bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg my-1">
-                                                    More information
-                                                </button>
-                                            </Link>
-                                            <Link href={`/tour/${tour.id}`}>
-                                                <button
-                                                    className="w-full  bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg">
-                                                    Update Package
-                                                </button>
-                                            </Link>
-                                            <button
-                                                className="w-full  bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg my-1"
-                                                onClick={() => deleteTour(tour.id)}
-                                            >
-                                                Delete Package
-                                            </button>
-                                        </div>
-
-                                    </div>
-
-                                ))}
                             </div>
                         </div>
                         <div className="p-5">

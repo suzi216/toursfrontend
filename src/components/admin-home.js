@@ -3,6 +3,7 @@ import Header from '../components/core/Header'
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Footer from '../components/core/Footer';
+import TourCart from './core/TourCart';
 import ProductService from '@/untils/services/ProductService'
 import { GiMagnifyingGlass, GiPhotoCamera, GiKnifeFork, GiTicket, GiArrowDunk } from 'react-icons/gi';
 
@@ -220,66 +221,28 @@ export default function AdminHome() {
       </div>
 
 
-      <div className="bg-white p-2 mt-5">
-        <div className="mx-auto px-2">
-          <div className="grid place-items-center py-5">
-            <div>
-              <h2 className="font-serif text-4xl font-bold text-gray-700">Book travel packages</h2>
-            </div>
+      <div className="bg-slate-50 py-12">
+        <div className="max-w-7xl mx-auto px-4">
+
+          {/* Section Header */}
+          <div className="text-center mb-10">
+            <h2 className="font-serif text-4xl font-bold text-gray-700">
+              Book Travel Packages
+            </h2>
+            <p className="text-gray-700 text-sm mt-2">
+              Handpicked luxury escapes & adventure deals
+            </p>
           </div>
 
-          <div className="mt-6 overflow-x-auto no-scrollbar scroll-smooth">
-            <div className="flex gap-x-6 sm:gap-x-2 lg:gap-x-8">
-              {products.map((product) => (
-                <div
-                  key={product.id}
-                  className="gap-2 border item-center rounded-lg flex-shrink-0 w-[280px] sm:w-[320px] lg:w-[350px]"
-                >
-                  <img
-                    src="https://images.pexels.com/photos/533769/pexels-photo-533769.jpeg?auto=compress&cs=tinysrgb&w=800"
-                    alt="Vineyard landscape"
-                    className="border rounded-lg "
-                  />
-                  <h2 className="text-2xl font-bold text-gray-700">
-                    Theth Deal
-                  </h2>
-
-                  <div className="p-2">
-                    <h2 className="text-1xl font-bold text-slate-900 leading-tight">
-                      Queenstown Deal<br />
-                      Luxury Long Weekend<br />
-                      Escape
-                    </h2>
-
-                    <p className="text-slate-600 text-base leading-relaxed">
-                      Includes: Luxury accommodation Rental car, daily breakfast, Massage, Wine Tour & more
-                    </p>
-                  </div>
-
-
-                  <div className="mb-6">
-                    <div className="text-sm font-semibold text-slate-700 mb-2">Now</div>
-                    <div className="flex items-baseline gap-1 mb-2">
-                      <span className="text-4xl font-bold text-teal-600">$2599</span>
-                      <span className="text-2xl font-semibold text-teal-600">NZD</span>
-                    </div>
-                    <div className="text-sm text-slate-600">
-                      Save $400 Per Adult
-                    </div>
-                  </div>
-                  <button
-                    onClick={() => router.push("/checkout")}
-                    className="w-full  bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg">
-                    More information
-                  </button>
-
-                </div>
-
-              ))}
+          {/* Horizontal Scroll */}
+          <div className="overflow-x-auto scroll-smooth no-scrollbar">
+            <div className="flex gap-6 pb-4">
+              <TourCart    />
             </div>
           </div>
         </div>
       </div>
+
 
       <Footer />
 
