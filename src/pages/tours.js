@@ -64,8 +64,8 @@ export default function Tours() {
                         <div className="lg:mt-6">
                             <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
                                 <TourCart
-                                    showUpdate={false}
-                                    showDelete={false}
+                                    showUpdate={true}
+                                    showDelete={true}
                                 />
 
                             </div>
