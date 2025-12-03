@@ -141,7 +141,7 @@ export default function AdminHome() {
 
       <Header />
 
-      <div className="mt-16 px-4 lg:px-10">
+      <div className="mt-10 px-4 lg:px-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
 
           {/* LEFT: MAP */}
