@@ -44,24 +44,9 @@ const mockTours = [
 
 ]
 
-export default function TourCart({showUpdate = false, showDelete = false}) {
-    const [tours, setTours] = useState([]);
-    const getTours = async () => {
-        try {
-            const response = await TourService.getTours();
-
-            setTours(response.data.content && response.data.content.length > 0
-                ? response.data.content
-                : mockTours
-            );
-        } catch (error) {
-            console.error("Failed to fetch tours:", error);
-            alert("Failed to load tours. Please try again.");
-        }
-    };
+export default function TourCart({ showUpdate = false, showDelete = false, tours = tours, isPopular = false }) {
 
     useEffect(() => {
-        getTours();
     }, []);
     return (
         <>
@@ -81,10 +66,9 @@ export default function TourCart({showUpdate = false, showDelete = false}) {
                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                         />
 
-                        {/* Badge */}
-                        <span className="absolute top-3 left-3 bg-teal-600 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                     { isPopular &&  <span className="absolute top-3 left-3 bg-teal-600 text-white text-xs font-semibold px-3 py-1 rounded-full">
                             Popular
-                        </span>
+                        </span>}
                     </div>
 
                     {/* Content */}
@@ -92,7 +76,7 @@ export default function TourCart({showUpdate = false, showDelete = false}) {
 
                         <div>
                             <h3 className="text-lg font-bold text-gray-800 mb-1">
-                                Theth Adventure Escape
+{tour.title}
                             </h3>
                             <p className="text-sm text-gray-600 mb-3">
                                 Luxury stay • Car rental • Daily breakfast • Guided tour

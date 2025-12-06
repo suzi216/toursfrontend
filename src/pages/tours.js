@@ -52,6 +52,7 @@ export default function Tours() {
                         Albania Touristic Package
                     </h1>
                 </div>
+                
                 <div className='lg:flex lg:justify-between'>
 
                     <div className="lg:w-2/6">
@@ -66,17 +67,10 @@ export default function Tours() {
                                 <TourCart
                                     showUpdate={true}
                                     showDelete={true}
+                                    tours={tours}
                                 />
 
                             </div>
-                        </div>
-                        <div className="p-5">
-                            <h3 className="text-lg font-bold mb-2 uppercase tracking-tight">
-                                {tours.title}
-                            </h3>
-                            <p className="text-sm text-gray-700 leading-relaxed line-clamp-3">
-                                {tours.description}
-                            </p>
                         </div>
                     </div>
                 </div>

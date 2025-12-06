@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Footer from '../components/core/Footer';
 import TourCart from './core/TourCart';
-import ProductService from '@/untils/services/ProductService'
+import TourService from '@/components/utils/services/TourService';
 import { GiMagnifyingGlass, GiPhotoCamera, GiKnifeFork, GiTicket, GiArrowDunk } from 'react-icons/gi';
 
 import dynamic from "next/dynamic";
@@ -13,53 +13,6 @@ const AlbaniaMap = dynamic(() => import("../components/core/Map"), {
   ssr: false,
 });
 
-const products = [
-  {
-    id: 1,
-    name: 'Basic Tee',
-    href: '#',
-    imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-01-related-product-01.jpg',
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: '$35',
-    color: 'Black',
-  },
-  {
-    id: 2,
-    name: 'Basic Tee',
-    href: '#',
-    imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-01-related-product-01.jpg',
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: '$35',
-    color: 'Black',
-  },
-  {
-    id: 3,
-    name: 'Basic Tee',
-    href: '#',
-    imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-01-related-product-01.jpg',
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: '$35',
-    color: 'Black',
-  },
-  {
-    id: 4,
-    name: 'Basic Tee',
-    href: '#',
-    imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-01-related-product-01.jpg',
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: '$35',
-    color: 'Black',
-  },
-  {
-    id: 5,
-    name: 'Basic Tee',
-    href: '#',
-    imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-01-related-product-01.jpg',
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: '$35',
-    color: 'Black',
-  }
-]
 
 
 const categoried = [
@@ -68,71 +21,42 @@ const categoried = [
   { icon: GiTicket, label: 'Experiences', color: 'bg-red-500', link: '/experiences' },
 ];
 
-const formatOptionLabel = ({ label }) => (label)
 
 export default function AdminHome() {
-  const [addProduct, setAddProduct] = useState(false)
-  const scrollRef = useRef(null);
+
   const router = useRouter();
-
-
-  const [name, setName] = useState('')
-  const [description, setDescription] = useState('')
-  const [categories, setCategory] = useState([])
-  const [size, setSize] = useState('')
-  const [unitPrice, setUnitPrice] = useState('')
-  const [variability, setVariability] = useState('')
-  const [characteristics, setCharacteristics] = useState('')
-  const [img, setImages] = useState('')
-
-  // const [products, setProducts] = useState([])
   const [totalPages, setTotalPages] = useState(0)
+  const [tours, setTours] = useState([]);
 
   const [isClient, setIsClient] = useState(false);
+    const getTours = async () => {
+        try {
+            const response = await TourService.getTours();
 
-  const createProduct = async (event) => {
-    event.preventDefault()
-    const payload = {
-      name,
-      description,
-      categories,
-      unitPrice,
-      variability,
-      characteristics,
-      img,
-      size
-    }
-    console.log(payload)
-    let data = new FormData()
+            setTours(response?.data?.content?.length ? response.data.content : mockTours);
 
-    Object.keys(payload).forEach((key) => {
-      if (key === 'categories') {
-        const categoryValues = payload[key].map(item => item.value); // or item.label
-        data.append(key, categoryValues); // gives ["SHOES", "ACCESSORIES"]
-        console.log(categoryValues)
-      } else {
-        data.append(key, payload[key]);
-      }
-    });
-    const res = await ProductService.createProduct(data)
-    console.log(res)
-  }
+        } catch (error) {
+            console.error("Failed to fetch tours:", error);
+            alert("Failed to load tours. Please try again.");
+        }
+    };
+        const deleteTour = async (tourId) => {
+            try {
+                await TourService.deleteTour(tourId);
+                alert("Tour deleted successfully");
+    
+                getTours();
+            } catch (error) {
+                console.error("Failed to delete tour:", error);
+                alert("Failed to delete tour. Please try again.");
+            }
+        };
 
 
   useEffect(() => {
-    setIsClient(true);
+            getTours();
 
-    // ProductService.getAllProducts().then((response) => {
-    //   console.log(response.data);
-    //   const { content, totalPages } = response.data
-    //   setProducts(content)
-    //   setTotalPages(totalPages)
-    //   // setUniversityOptions(
-    //   //   response.data.map(({ id, name, country }) => {
-    //   //     return { label: name, value: id, country }
-    //   //   })
-    //   // )
-    // })
+    setIsClient(true);
   }, [])
 
 
@@ -220,7 +144,6 @@ export default function AdminHome() {
         </div>
       </div>
 
-
       <div className="bg-slate-50 py-12">
         <div className="max-w-7xl mx-auto px-4">
 
@@ -237,12 +160,11 @@ export default function AdminHome() {
           {/* Horizontal Scroll */}
           <div className="overflow-x-auto scroll-smooth no-scrollbar">
             <div className="flex gap-6 pb-4">
-              <TourCart    />
+              <TourCart tours={tours} isPopular={tours.isPopular} />
             </div>
           </div>
         </div>
       </div>
-
 
       <Footer />
 
