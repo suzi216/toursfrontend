@@ -1,57 +1,15 @@
 
 import Link from "next/link";
 
-import TourService from '@/components/utils/services/TourService';
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 
-const mockTours = [
-    {
-        id: 1,
-        name: 'Basic Tee',
-        href: '#',
-        imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-01-related-product-01.jpg',
-        imageAlt: "Front of men's Basic Tee in black.",
-        price: '$35',
-        color: 'Black',
-    },
-    {
-        id: 2,
-        name: 'Basic Tee',
-        href: '#',
-        imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-01-related-product-01.jpg',
-        imageAlt: "Front of men's Basic Tee in black.",
-        price: '$35',
-        color: 'Black',
-    },
-    {
-        id: 3,
-        name: 'Basic Tee',
-        href: '#',
-        imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-01-related-product-01.jpg',
-        imageAlt: "Front of men's Basic Tee in black.",
-        price: '$35',
-        color: 'Black',
-    },
-    {
-        id: 4,
-        name: 'Basic Tee',
-        href: '#',
-        imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-01-related-product-01.jpg',
-        imageAlt: "Front of men's Basic Tee in black.",
-        price: '$35',
-        color: 'Black',
-    },
 
-]
-
-export default function TourCart({ showUpdate = false, showDelete = false, tours = tours, isPopular = false }) {
+export default function TourCart({ showUpdate = false, showDelete = false, tours = [], isPopular = false, deleteTour }) {
 
     useEffect(() => {
     }, []);
     return (
         <>
-
-
             {tours.map((tour) => (
                 <div
                     key={tour.id}
@@ -66,7 +24,7 @@ export default function TourCart({ showUpdate = false, showDelete = false, tours
                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                         />
 
-                     { isPopular &&  <span className="absolute top-3 left-3 bg-teal-600 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                        {isPopular && <span className="absolute top-3 left-3 bg-teal-600 text-white text-xs font-semibold px-3 py-1 rounded-full">
                             Popular
                         </span>}
                     </div>
@@ -76,7 +34,7 @@ export default function TourCart({ showUpdate = false, showDelete = false, tours
 
                         <div>
                             <h3 className="text-lg font-bold text-gray-800 mb-1">
-{tour.title}
+                                {tour.title}
                             </h3>
                             <p className="text-sm text-gray-600 mb-3">
                                 Luxury stay • Car rental • Daily breakfast • Guided tour
@@ -110,7 +68,7 @@ export default function TourCart({ showUpdate = false, showDelete = false, tours
                             {showDelete && (
                                 <button
                                     className="w-full bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg my-1"
-                                    onClick={() => onDelete && onDelete(tour.id)}
+                                    onClick={() => deleteTour(tour.id)}
                                 >
                                     Delete Package
                                 </button>

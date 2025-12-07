@@ -13,6 +13,45 @@ const AlbaniaMap = dynamic(() => import("../components/core/Map"), {
   ssr: false,
 });
 
+const mockTours = [
+    {
+        id: 1,
+        name: 'Basic Tee',
+        href: '#',
+        imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-01-related-product-01.jpg',
+        imageAlt: "Front of men's Basic Tee in black.",
+        price: '$35',
+        color: 'Black',
+    },
+    {
+        id: 2,
+        name: 'Basic Tee',
+        href: '#',
+        imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-01-related-product-01.jpg',
+        imageAlt: "Front of men's Basic Tee in black.",
+        price: '$35',
+        color: 'Black',
+    },
+    {
+        id: 3,
+        name: 'Basic Tee',
+        href: '#',
+        imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-01-related-product-01.jpg',
+        imageAlt: "Front of men's Basic Tee in black.",
+        price: '$35',
+        color: 'Black',
+    },
+    {
+        id: 4,
+        name: 'Basic Tee',
+        href: '#',
+        imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-01-related-product-01.jpg',
+        imageAlt: "Front of men's Basic Tee in black.",
+        price: '$35',
+        color: 'Black',
+    },
+
+]
 
 
 const categoried = [
@@ -29,32 +68,22 @@ export default function AdminHome() {
   const [tours, setTours] = useState([]);
 
   const [isClient, setIsClient] = useState(false);
-    const getTours = async () => {
-        try {
-            const response = await TourService.getTours();
+  const getTours = async () => {
+    try {
+      const response = await TourService.getTours();
 
-            setTours(response?.data?.content?.length ? response.data.content : mockTours);
+      const content = response?.data?.content;
 
-        } catch (error) {
-            console.error("Failed to fetch tours:", error);
-            alert("Failed to load tours. Please try again.");
-        }
-    };
-        const deleteTour = async (tourId) => {
-            try {
-                await TourService.deleteTour(tourId);
-                alert("Tour deleted successfully");
-    
-                getTours();
-            } catch (error) {
-                console.error("Failed to delete tour:", error);
-                alert("Failed to delete tour. Please try again.");
-            }
-        };
+      setTours(content?.length ? content : mockTours);
+    } catch (error) {
+      console.error("Failed to fetch tours:", error);
+      alert("Failed to load tours. Please try again.");
+    }
+  };
 
 
   useEffect(() => {
-            getTours();
+    getTours();
 
     setIsClient(true);
   }, [])

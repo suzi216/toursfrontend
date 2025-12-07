@@ -1,17 +1,57 @@
 import Header from '../components/core/Header';
 import Footer from '@/components/core/Footer';
-import Link from "next/link";
 import TourCart from '@/components/core/TourCart';
 import TourService from '@/components/utils/services/TourService';
 import LocationFilter from '@/components/core/LocationFilter';
 import { useState, useEffect } from 'react'
 
+const mockTours = [
+    {
+        id: 1,
+        name: 'Basic Tee',
+        href: '#',
+        imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-01-related-product-01.jpg',
+        imageAlt: "Front of men's Basic Tee in black.",
+        price: '$35',
+        color: 'Black',
+    },
+    {
+        id: 2,
+        name: 'Basic Tee',
+        href: '#',
+        imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-01-related-product-01.jpg',
+        imageAlt: "Front of men's Basic Tee in black.",
+        price: '$35',
+        color: 'Black',
+    },
+    {
+        id: 3,
+        name: 'Basic Tee',
+        href: '#',
+        imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-01-related-product-01.jpg',
+        imageAlt: "Front of men's Basic Tee in black.",
+        price: '$35',
+        color: 'Black',
+    },
+    {
+        id: 4,
+        name: 'Basic Tee',
+        href: '#',
+        imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-01-related-product-01.jpg',
+        imageAlt: "Front of men's Basic Tee in black.",
+        price: '$35',
+        color: 'Black',
+    },
+
+]
 
 export default function Tours() {
     const [tours, setTours] = useState([]);
 
     const handleFilterChange = (selectedLocations) => {
         console.log("Selected locations:", selectedLocations);
+// getTours({ city: 'Tirana' });
+
     };
 
     const deleteTour = async (tourId) => {
@@ -25,18 +65,17 @@ export default function Tours() {
             alert("Failed to delete tour. Please try again.");
         }
     };
-    const getTours = async () => {
-        try {
-            const response = await TourService.getTours();
-            setTours(response.data.content && response.data.content.length > 0
-                ? response.data.content
-                : mockTours
-            );
-        } catch (error) {
-            console.error("Failed to fetch tours:", error);
-            alert("Failed to load tours. Please try again.");
-        }
-    };
+    const getTours = async (params = {}) => {
+    try {
+        const response = await TourService.getTours(params);
+        const content = response?.data?.content;
+
+        setTours(content?.length ? content : mockTours);
+    } catch (error) {
+        console.error("Failed to fetch tours:", error);
+        alert("Failed to load tours. Please try again.");
+    }
+};
 
     useEffect(() => {
         getTours();
@@ -52,7 +91,7 @@ export default function Tours() {
                         Albania Touristic Package
                     </h1>
                 </div>
-                
+
                 <div className='lg:flex lg:justify-between'>
 
                     <div className="lg:w-2/6">
@@ -68,6 +107,7 @@ export default function Tours() {
                                     showUpdate={true}
                                     showDelete={true}
                                     tours={tours}
+                                    deleteTour={deleteTour}
                                 />
 
                             </div>

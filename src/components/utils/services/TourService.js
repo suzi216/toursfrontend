@@ -6,8 +6,8 @@ const TourApi = API("https://tours-ff09.onrender.com")
 
 const TourService = {
 
-  getTours: () => {
-    return TourApi.get('/api/tours')
+  getTours: (params) => {
+    return TourApi.get('/api/tours', { params });
   },
   createTour: (data) => {
     return TourApi.post('/api/tours', data);

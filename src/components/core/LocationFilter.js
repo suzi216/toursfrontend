@@ -3,19 +3,8 @@ import { useState } from "react";
 export default function LocationFilter({ onFilterChange }) {
   const [selectedLocations, setSelectedLocations] = useState([]);
 
-  const locations = [
-    "PRICES",
-    "CITY",
-    "DURATION",
-    "TRANSPORT",
-    "ALL EXLUSIVE HOTEL",
-    "TOURS",
-    "RESTAURANTS",
-    "NORTH",
-    "SOUTH",
-  ];
 
-const filters = ["PRICES", "CITY", "DURATION", "TRANSPORT"];
+const cities = ["TIRANA", "SHKODER", "BERAT", "SARANDA"];
 
 const categories = ["TOURS", "RESTAURANTS", "ALL EXCLUSIVE HOTEL"];
 
@@ -33,11 +22,11 @@ const categories = ["TOURS", "RESTAURANTS", "ALL EXCLUSIVE HOTEL"];
   return (
     <div className="">
       <div className="bg-white rounded-lg lg:p-6 lg:px-12 p-2">
-        <h2 className="text-lg font-bold tracking-wide mb-6">FILTERS</h2>
+        <h2 className="text-lg font-bold tracking-wide mb-6">CITIES</h2>
 
         <div>
           <div className="flex lg:flex-col flex-row flex-wrap lg:space-y-3">
-            {filters.map((location) => (
+            {cities.map((location) => (
               <label
                 key={location}
                 className="flex items-center cursor-pointer group"
