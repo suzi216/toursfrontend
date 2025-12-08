@@ -13,7 +13,7 @@ export default function TourCart({ showUpdate = false, showDelete = false, tours
             {tours.map((tour) => (
                 <div
                     key={tour.id}
-                    className="group relative flex-shrink-0 w-[300px] h-full bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
+                    className="group relative flex-shrink-0 w-[320px] h-full bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
                 >
 
                     {/* Image */}

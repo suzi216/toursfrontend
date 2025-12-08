@@ -50,7 +50,11 @@ export default function Tours() {
 
     const handleFilterChange = (selectedLocations) => {
         console.log("Selected locations:", selectedLocations);
-// getTours({ city: 'Tirana' });
+            const params = {
+        city: selectedLocations.city?.length ? selectedLocations.city.join(",") : undefined,
+        category: selectedLocations.category?.length ? selectedLocations.category.join(",") : undefined
+    };
+getTours( params);
 
     };
 
@@ -94,15 +98,15 @@ export default function Tours() {
 
                 <div className='lg:flex lg:justify-between'>
 
-                    <div className="lg:w-2/6">
+                    <div className="lg:w-2/6 mx-5">
                         <div>
                             <LocationFilter onFilterChange={handleFilterChange} />
                         </div>
                     </div>
 
                     <div className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow lg:w-full">
-                        <div className="lg:mt-6">
-                            <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
+                        <div className="mt-6">
+                            <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 place-items-center">
                                 <TourCart
                                     showUpdate={true}
                                     showDelete={true}

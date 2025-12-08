@@ -35,14 +35,9 @@ function CreateTour() {
     });
 
     const categoryOptions = [
-        { value: 'Adventure', label: 'Adventure' },
-        { value: 'Culture', label: 'Culture' },
-        { value: 'Beach', label: 'Beach' },
-        { value: 'Hiking', label: 'Hiking' },
-        { value: 'Food', label: 'Food' },
-        { value: 'Wildlife', label: 'Wildlife' },
-        { value: 'Historical', label: 'Historical' },
-        { value: 'Luxury', label: 'Luxury' },
+        { value: 'HOTEL', label: 'HOTEL' },
+        { value: 'TOURS', label: 'TOURS' },
+        { value: 'RESTAURANTS', label: 'RESTAURANTS' }
     ]
     const tourTypeOptions = [
         { value: 'Private', label: 'Private' },
@@ -56,6 +51,12 @@ function CreateTour() {
         { value: 'archived', label: 'Archived' },
     ]
 
+    const cities = [
+        { value: 'TIRANA', label: 'TIRANA' },
+        { value: 'SHKODER', label: 'SHKODER' },
+        { value: 'BERAT', label: 'BERAT' },
+        { value: 'SARANDA', label: 'SARANDA' }
+    ]
 
     const [itinerary, setItinerary] = useState([{ day: 'Day 1', description: '' }]);
     const [isLoading, setIsLoading] = useState(false);
@@ -251,7 +252,16 @@ function CreateTour() {
 
                             <Section title="Location Details">
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                    <Input label="City" name="city" value={formData.city} onChange={handleInputChange} />
+                                    <SelectInput
+                                        label="City"
+                                        name="city"
+                                        value={formData.city}
+                                        selected={cities.find(
+                                            opt => opt.value === formData.city
+                                        )}
+                                        onSelect={handleInputChange}
+                                        options={cities}
+                                    />
                                 </div>
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
