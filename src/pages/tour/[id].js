@@ -62,6 +62,8 @@ function CreateTour() {
     const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
     const { id: tourId } = router.query;
+    const [tours, setTours] = useState([]);
+
 
     const handleInputChange = (input) => {
         if (!input?.target) {
@@ -185,11 +187,45 @@ function CreateTour() {
             setIsLoading(false);
         }
     };
+
+    const getTour = async (tourId) => {
+        try {
+            const response = await TourService.getTour(tourId);
+
+            const data = response.data;
+            // Initialize formData directly here
+            setFormData({
+                title: data.title || '',
+                description: data.description || '',
+                category: data.category || '',
+                tourType: data.tourType || '',
+                city: data.city || '',
+                starting_point: data.starting_point || '',
+                ending_point: data.ending_point || '',
+                duration: data.duration || '',
+                pricePerPerson: data.pricePerPerson || '',
+                maxGroupSize: data.maxGroupSize || '20',
+                minGroupSize: data.minGroupSize || '1',
+                coverImage: data.coverImage || 'img',
+                pickupInfo: data.pickupInfo || '',
+                transportationType: data.transportationType || '',
+                guideName: data.guideName || '',
+                cancellationPolicy: data.cancellationPolicy || '',
+                status: data.status || 'draft',
+                gallery: data.gallery?.length ? data.gallery : [''],
+                // itinerary: data.itinerary || []
+            });
+            setTours(data);
+        } catch (error) {
+            console.error("Failed to fetch tours:", error);
+            alert("Failed to load tours. Please try again.");
+        }
+    };
     useEffect(() => {
         if (!router.isReady) return;
+        getTour(tourId);
 
-        const { id: tourId } = router.query;
-    }, [router.isReady]);
+    }, []);
 
     console.log(formData)
     return (

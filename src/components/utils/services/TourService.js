@@ -18,7 +18,9 @@ const TourService = {
   deleteTour: (id) => {
     return TourApi.delete(`/api/tours/${id}`);
   },
-
+  getTour: (id) => {
+    return TourApi.get(`/api/tours/${id}`);
+  },
   getAnnouncements: (qs) => {
     return TourApi.get(`/api/university-announcements${qs ? `?${qs}` : ''}`)
   }

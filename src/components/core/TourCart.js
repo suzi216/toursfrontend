@@ -37,25 +37,32 @@ export default function TourCart({ showUpdate = false, showDelete = false, tours
                                 {tour.title}
                             </h3>
                             <p className="text-sm text-gray-600 mb-3">
-                                Luxury stay • Car rental • Daily breakfast • Guided tour
+                                {tour.description}{" "}
                             </p>
+                            <ul className=" ">
+                                <li className="text-gray-700"><span className="font-semibold">Type:</span> {tour.tourType}</li>
+                                <li className="text-gray-700"><span className="font-semibold">Category:</span> {tour.category}</li>
+                                <li className="text-gray-700"><span className="font-semibold">Duration:</span> {tour.duration}</li>
+
+                            </ul>
+
                         </div>
 
                         {/* Price */}
                         <div className="my-4">
                             <div className="text-xs text-gray-500 mb-1">From</div>
                             <div className="flex items-end gap-1">
-                                <span className="text-3xl font-bold text-teal-600">$2599</span>
+                                <span className="text-3xl font-bold text-teal-600">{tour.pricePerPerson}</span>
                                 <span className="text-sm text-gray-500 pb-1">NZD</span>
                             </div>
                             <div className="text-xs text-emerald-600 mt-1">
-                                Save $400 per adult
+                                Save $50 per adult
                             </div>
                         </div>
                         <div>
                             <Link href={"/checkout"}>
                                 <button className="w-full  bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg my-1">
-                                    More information
+                                   Checkout
                                 </button>
                             </Link>
                             {showUpdate && (
