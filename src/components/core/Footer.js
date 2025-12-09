@@ -5,14 +5,14 @@ export default function Footer() {
 
   return (
     <>
-      <div className="bg-gradient-to-br from-gray-400 to-gray-700 p-6 md:px-10 lg:px-24 mt-10">
+      <div className="bg-gradient-to-br from-gray-500 via-teal-700 to-gray-700 p-6 md:px-10 lg:px-24 mt-10">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-center gap-3 mb-10">
             <span className="text-white text-4xl font-light">Albania</span>
           </div>
 
           <div className="space-y-6">
-            <h1 className="text-white text-4xl md:text-5xl font-light">
+            <h1 className="text-white text-3xl md:text-4xl font-light">
               Acknowledgement of Country
             </h1>
 
@@ -22,7 +22,7 @@ export default function Footer() {
               </div>
 
               <div className="flex-1 space-y-6">
-                <p className="text-white text-xl md:text-2xl leading-relaxed font-light">
+                <p className="text-white text-xl leading-relaxed font-light">
                   We acknowledge the ancient Illyrian roots of the Albanian land and honour the generations who have cared for its mountains, rivers, and coasts throughout history. We recognise the enduring spirit, traditions, and culture that continue to shape Albania today.  </p>
               </div>
             </div>

@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import Footer from '../components/core/Footer';
 import TourCart from './core/TourCart';
 import TourService from '@/components/utils/services/TourService';
-import { GiMagnifyingGlass, GiPhotoCamera, GiKnifeFork, GiTicket, GiArrowDunk } from 'react-icons/gi';
+import { GiMountainCave , GiPhotoCamera, GiKnifeFork, GiTicket, GiSeaStar, GiThunderball, GiPlainArrow } from 'react-icons/gi';
 
 import dynamic from "next/dynamic";
 
@@ -14,42 +14,42 @@ const AlbaniaMap = dynamic(() => import("../components/core/Map"), {
 });
 
 const mockTours = [
-    {
-        id: 1,
-        name: 'Basic Tee',
-        href: '#',
-        imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-01-related-product-01.jpg',
-        imageAlt: "Front of men's Basic Tee in black.",
-        price: '$35',
-        color: 'Black',
-    },
-    {
-        id: 2,
-        name: 'Basic Tee',
-        href: '#',
-        imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-01-related-product-01.jpg',
-        imageAlt: "Front of men's Basic Tee in black.",
-        price: '$35',
-        color: 'Black',
-    },
-    {
-        id: 3,
-        name: 'Basic Tee',
-        href: '#',
-        imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-01-related-product-01.jpg',
-        imageAlt: "Front of men's Basic Tee in black.",
-        price: '$35',
-        color: 'Black',
-    },
-    {
-        id: 4,
-        name: 'Basic Tee',
-        href: '#',
-        imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-01-related-product-01.jpg',
-        imageAlt: "Front of men's Basic Tee in black.",
-        price: '$35',
-        color: 'Black',
-    },
+  {
+    id: 1,
+    name: 'Basic Tee',
+    href: '#',
+    imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-01-related-product-01.jpg',
+    imageAlt: "Front of men's Basic Tee in black.",
+    price: '$35',
+    color: 'Black',
+  },
+  {
+    id: 2,
+    name: 'Basic Tee',
+    href: '#',
+    imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-01-related-product-01.jpg',
+    imageAlt: "Front of men's Basic Tee in black.",
+    price: '$35',
+    color: 'Black',
+  },
+  {
+    id: 3,
+    name: 'Basic Tee',
+    href: '#',
+    imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-01-related-product-01.jpg',
+    imageAlt: "Front of men's Basic Tee in black.",
+    price: '$35',
+    color: 'Black',
+  },
+  {
+    id: 4,
+    name: 'Basic Tee',
+    href: '#',
+    imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-01-related-product-01.jpg',
+    imageAlt: "Front of men's Basic Tee in black.",
+    price: '$35',
+    color: 'Black',
+  },
 
 ]
 
@@ -81,6 +81,12 @@ export default function AdminHome() {
     }
   };
 
+  const scrollToSection = () => {
+    const el = document.getElementById("target-section");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   useEffect(() => {
     getTours();
@@ -92,6 +98,111 @@ export default function AdminHome() {
     <>
 
       <Header />
+
+      <div className=" bg-gradient-to-br from-gray-500 via-teal-600 to-gray-600 mt-10">
+        <div className="max-w-7xl mx-auto px-6 py-8 lg:py-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8">
+              <h1 className="text-5xl lg:text-6xl font-serif text-yellow-200 leading-tight">
+                Plan your next trip
+                <br />& spirits adventure.
+              </h1>
+
+              <p className="text-white text-lg leading-relaxed max-w-xl">
+                Experience Albania like never before through Visit Albania’s top-rated tours, stays, and activities. Plan and book seamlessly, with zero added costs.
+              </p>
+
+              <div
+                className="flex flex-col items-center mt-12 cursor-pointer group"
+                onClick={scrollToSection}
+              >
+                <GiPlainArrow
+                  size={42}
+                  className="text-yellow-200 group-hover:text-yellow-300 animate-bounce mt-1 transition-colors"
+                />
+              </div>
+            </div>
+
+
+            <div className="relative">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl transform lg:translate-x-12">
+                <img
+                  src="https://images.pexels.com/photos/1407846/pexels-photo-1407846.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  alt="Wine making"
+                  className="w-full h-[500px] object-cover"
+                />
+              </div>
+              <div className="absolute -left-6 top-1/4 bg-white rounded-2xl p-3 shadow-xl hidden lg:block">
+                <img
+                  src="https://images.pexels.com/photos/774455/pexels-photo-774455.jpeg?auto=compress&cs=tinysrgb&w=300"
+                  alt="Wine tasting"
+                  className="w-32 h-40 object-cover rounded-xl"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 mt-16 pt-12 border-t border-white/20">
+            <div className="text-center space-y-3">
+              <div className="flex justify-center gap-1">
+                {[...Array(5)].map((_, i) => (
+                  <GiSeaStar key={i} className="w-5 h-5 fill-orange-400 text-orange-400" />
+                ))}
+              </div>
+              <p className="text-white font-medium">
+                Leading platform for discovering Albania’s beauty
+                <br />
+                crafted for curious travelers and adventure seekers.
+              </p>
+            </div>
+
+            <div className="text-center space-y-3">
+              <div className="flex justify-center">
+                <GiMountainCave  className="w-6 h-6 text-red-400" />
+              </div>
+              <p className="text-white font-medium">
+                500+ must-visit sites, tours & adventures
+                <br />
+                handpicked across Albania.
+              </p>
+            </div>
+
+            <div className="text-center space-y-3">
+              <div className="flex justify-center">
+                <GiThunderball className="w-6 h-6 text-yellow-400" />
+              </div>
+              <p className="text-white font-medium">
+                Easy booking with no fees and free
+                <br />
+                cancellation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div id="target-section" className="bg-slate-50 py-12">
+        <div className="max-w-7xl mx-auto px-4">
+
+          {/* Section Header */}
+          <div className="text-center mb-10">
+            <h2 className="font-serif text-4xl font-bold text-gray-700">
+              Book Travel Packages
+            </h2>
+            <p className="text-gray-700 text-sm mt-2">
+              Handpicked luxury escapes & adventure deals
+            </p>
+          </div>
+
+          {/* Horizontal Scroll */}
+          <div className="overflow-x-auto scroll-smooth no-scrollbar">
+            <div className="flex gap-6 pb-4">
+              <TourCart tours={tours} isPopular={tours.isPopular} />
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div className="mt-10 px-4 lg:px-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
@@ -171,27 +282,6 @@ export default function AdminHome() {
         </div>
       </div>
 
-      <div className="bg-slate-50 py-12">
-        <div className="max-w-7xl mx-auto px-4">
-
-          {/* Section Header */}
-          <div className="text-center mb-10">
-            <h2 className="font-serif text-4xl font-bold text-gray-700">
-              Book Travel Packages
-            </h2>
-            <p className="text-gray-700 text-sm mt-2">
-              Handpicked luxury escapes & adventure deals
-            </p>
-          </div>
-
-          {/* Horizontal Scroll */}
-          <div className="overflow-x-auto scroll-smooth no-scrollbar">
-            <div className="flex gap-6 pb-4">
-              <TourCart tours={tours} isPopular={tours.isPopular} />
-            </div>
-          </div>
-        </div>
-      </div>
 
       <Footer />
 
