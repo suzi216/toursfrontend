@@ -38,24 +38,24 @@ export default function Contact() {
     return (
         <>
             < Header />
-            <div className="min-h-screen bg-gradient-to-br from-teal-600 to-teal-700">
-                <div className="container mx-auto px-4 py-16">
+            <div className="min-h-screen bg-gradient-to-br from-gray-500 via-teal-600 to-gray-600 mt-5">
+                <div className="container mx-auto px-4 py-6">
                     <div className="max-w-6xl mx-auto">
                         <div className="text-center mb-12">
-                            <h1 className="text-5xl font-bold text-white mb-4">Get In Touch</h1>
+                            <h1 className="text-4xl font-bold text-white mb-4">Get In Touch</h1>
                             <p className="text-teal-100 text-lg">
                                 We'd love to hear from you. Send us a message and we'll respond as soon as possible.
                             </p>
                         </div>
 
-                        <div className="grid md:grid-cols-3 gap-8 mb-12">
-                            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center transform transition-all duration-300 hover:scale-105 hover:bg-white/15">
+                        <div className="grid md:grid-cols-3 gap-10 mb-10">
+                            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center transform transition-all duration-300 hover:scale-105 hover:bg-white/15">
                                 <div className="inline-flex items-center justify-center w-16 h-16 bg-white rounded-full mb-4">
                                     <GiEnvelope className="w-8 h-8 text-teal-600" />
                                 </div>
                                 <h3 className="text-xl font-semibold text-white mb-2">Email</h3>
-                                <p className="text-teal-100">contact@example.com</p>
-                                <p className="text-teal-100">support@example.com</p>
+                                <p className="text-teal-100">contact@discover-albania.com</p>
+                                {/* <p className="text-teal-100">support@example.com</p> */}
                             </div>
 
                             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center transform transition-all duration-300 hover:scale-105 hover:bg-white/15">
@@ -63,7 +63,7 @@ export default function Contact() {
                                     <GiPhone className="w-8 h-8 text-teal-600" />
                                 </div>
                                 <h3 className="text-xl font-semibold text-white mb-2">Phone</h3>
-                                <p className="text-teal-100">+1 (555) 123-4567</p>
+                                <p className="text-teal-100">+355 (555) 123-4567</p>
                                 <p className="text-teal-100">Mon-Fri 9am-6pm</p>
                             </div>
 
@@ -72,8 +72,8 @@ export default function Contact() {
                                     <GiPositionMarker className="w-8 h-8 text-teal-600" />
                                 </div>
                                 <h3 className="text-xl font-semibold text-white mb-2">Location</h3>
-                                <p className="text-teal-100">123 Business Street</p>
-                                <p className="text-teal-100">New York, NY 10001</p>
+                                <p className="text-teal-100">Sulejman Pasha Street</p>
+                                <p className="text-teal-100">Tirana, Albania</p>
                             </div>
                         </div>
 
@@ -86,7 +86,10 @@ export default function Contact() {
                                 </div>
                             )}
 
-                            <form onSubmit={handleSubmit}>
+                            <form
+                                action="https://formsubmit.co/suzana.marsela@gmail.com"
+                                method="POST"
+                            >
                                 <div className="grid md:grid-cols-2 gap-6 mb-6">
                                     <div>
                                         <label htmlFor="name" className="block text-gray-700 font-semibold mb-2">
