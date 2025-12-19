@@ -35,7 +35,8 @@ export default function LoginPage() {
           user: response.data.user, // optional: any user info
           accessToken: token,
           decoded: decoded
-        })); showSuccess('Logged in successfully!')
+        })); 
+        showSuccess('Logged in successfully!')
     router.push("/");
 
       }
