@@ -1,2 +1,2 @@
-export const SUPER_ADMIN = 'SUPER_ADMIN'
-export const USER = 'STUDENT'
+export const ADMIN = 'admin'
+export const USER = 'user'

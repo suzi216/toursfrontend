@@ -1,5 +1,13 @@
 import { useState } from "react";
 import DiscoverAlbaniaLogo from "./Logo";
+import Link from "next/link";
+import { useSelector } from 'react-redux'
+import { roleSelector } from '@/redux/slices/authSlice'
+import { useContext } from "react";
+import { AuthContext } from "@/pages/_app";
+import { useDispatch } from 'react-redux'
+import { removeAuth } from '@/redux/slices/authSlice'
+
 
 const navigation = {
   pages: [
@@ -11,6 +19,8 @@ const navigation = {
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const role = useSelector(roleSelector)
+  const dispatch = useDispatch()
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b">
@@ -23,20 +33,37 @@ export default function Header() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navigation.pages.map((page) => (
-              <a
+              <Link
                 key={page.name}
                 href={page.href}
                 className="sm:text-2xl font-medium text-gray-700 hover:text-black transition"
               >
                 {page.name}
-              </a>
+              </Link>
             ))}
-            <a
-              href="/tour/new"
-              className="rounded-md border px-4 py-2 text-2xl font-medium hover:bg-gray-50 transition"
+
+            <Link
+              href="/login"
+              className="sm:text-2xl font-medium text-gray-700 hover:text-black transition"
             >
-              Add Tours
-            </a>
+              Log in
+            </Link>
+            {role === "ADMIN" && (
+              <div
+                onClick={() => dispatch(removeAuth())}
+                className="sm:text-2xl font-medium text-gray-700 hover:text-black transition">
+                Log out
+              </div>
+            )}
+            {role === "ADMIN" && (
+              <Link
+                href="/tour/new"
+                className="rounded-md border px-4 py-2 text-2xl font-medium hover:bg-gray-50 transition"
+              >
+                Add Tours
+              </Link>
+            )}
+
           </div>
 
           {/* Mobile Toggle */}
@@ -55,9 +82,8 @@ export default function Header() {
 
         {/* Mobile Menu */}
         <div
-          className={`md:hidden overflow-hidden transition-all duration-300 ${
-            open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-          }`}
+          className={`md:hidden overflow-hidden transition-all duration-300 ${open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+            }`}
         >
           <div className="flex flex-col space-y-3 py-4">
             {navigation.pages.map((page) => (
@@ -70,13 +96,33 @@ export default function Header() {
                 {page.name}
               </a>
             ))}
-            <a
-              href="/tour/new"
-              className="rounded-lg border px-3 py-2 text-base font-medium"
+
+            <Link
+              href="/login"
+              className="sm:text-2xl font-medium text-gray-700 hover:text-black transition"
               onClick={() => setOpen(false)}
             >
-              Add Tours
-            </a>
+              Log in
+            </Link>
+            {role === "ADMIN" && (
+              <div
+                onClick={() => {
+                  dispatch(removeAuth());
+                  setOpen(false);
+                }}
+                className="sm:text-2xl font-medium text-gray-700 hover:text-black transition">
+                Log out
+              </div>
+            )}
+            {role === "ADMIN" && (
+              <Link
+                href="/tour/new"
+                className="rounded-md border px-4 py-2 text-2xl font-medium hover:bg-gray-50 transition"
+                onClick={() => setOpen(false)}
+              >
+                Add Tours
+              </Link>
+            )}
           </div>
         </div>
       </nav>

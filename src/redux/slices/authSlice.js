@@ -30,39 +30,11 @@ export const authSlice = createSlice({
           ...action.payload
         }
       }
-    },
-    updateUserPermissions: (state, action) => {
-      return {
-        ...state,
-        user: {
-          ...state.user,
-          permissions: {
-            ...action.payload
-          }
-        }
-      }
-    },
-    updateWorkerDetails: (state, action) => {
-      return {
-        ...state,
-        user: {
-          ...state.user,
-          assignedCountries: action.payload.assignedCountries,
-          workerRole: action.payload.workerRole
-        }
-      }
     }
   }
 })
 
-export const { addAuth, removeAuth, addToken, updateUser, updateUserPermissions, updateWorkerDetails } = authSlice.actions
-
-export const tokenSelector = (state) => lodashGet(state, 'auth.user.accessToken', '')
-export const userSelector = (state) => lodashGet(state, 'auth.user', '')
-export const rememberMeSelector = (state) => lodashGet(state, 'auth.rememberMe', '')
-export const roleSelector = (state) => lodashGet(state, 'auth.user.role', '')
-export const workerRoleSelector = (state) => lodashGet(state, 'auth.user.workerRole', '')
-export const workerAssignedCountriesSelector = (state) => lodashGet(state, 'auth.user.assignedCountries', '')
-export const permissionsSelector = (state) => lodashGet(state, 'auth.user.permissions', '')
+export const { addAuth, removeAuth, addToken  } = authSlice.actions
+export const roleSelector = (state) => lodashGet(state, 'auth.decoded.role', '')
 
 export default authSlice.reducer

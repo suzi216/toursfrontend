@@ -3,7 +3,7 @@ import Header from '../components/core/Header'
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Footer from '../components/core/Footer';
-import TourCart from './core/TourCart';
+import TourCart from '../components/core/TourCart';
 import TourService from '@/components/utils/services/TourService';
 import { GiMountainCave , GiPhotoCamera, GiKnifeFork, GiTicket, GiSeaStar, GiThunderball, GiPlainArrow } from 'react-icons/gi';
 
@@ -209,7 +209,7 @@ export default function AdminHome() {
 
           {/* LEFT: MAP */}
           <div className="w-full relative">
-            <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center justify-between mb-8">
               <div>
                 <h1 className="text-2xl md:text-3xl font-bold text-gray-700">
                   Discover Albania on the Map

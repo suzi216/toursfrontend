@@ -1,10 +1,14 @@
 
 import Link from "next/link";
-
+import { useContext } from "react";
+import { AuthContext } from "@/pages/_app";
+import { useSelector } from 'react-redux'
+import { roleSelector } from '@/redux/slices/authSlice'
 import { useEffect } from 'react'
 
 
-export default function TourCart({ showUpdate = false, showDelete = false, tours = [], isPopular = false, deleteTour }) {
+export default function TourCart({ tours = [], isPopular = false, deleteTour }) {
+  const role = useSelector(roleSelector)
 
     useEffect(() => {
     }, []);
@@ -13,7 +17,7 @@ export default function TourCart({ showUpdate = false, showDelete = false, tours
             {tours.map((tour) => (
                 <div
                     key={tour.id}
-                    className="group relative flex-shrink-0 w-[320px] h-full bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
+                    className="group relative flex-shrink-0 w-[300px] h-full bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
                 >
 
                     {/* Image */}
@@ -59,27 +63,30 @@ export default function TourCart({ showUpdate = false, showDelete = false, tours
                                 Save $50 per adult
                             </div>
                         </div>
-                        <div>
+                        <div className="flex flex-col">
                             <Link href={"/checkout"}>
-                                <button className="w-full  bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg my-1">
-                                   Checkout
+                                <button className="w-full text-sm bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg my-1">
+                                    Buy Now
                                 </button>
                             </Link>
-                            {showUpdate && (
+                            {role === "ADMIN" ? (
                                 <Link href={`/tour/${tour.id}`}>
-                                    <button className="w-full bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg">
+                                    <button className="w-full text-sm bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg">
                                         Update Package
                                     </button>
                                 </Link>
-                            )}
-                            {showDelete && (
+                            ) : null}
+
+                            {role === "ADMIN" ? (
                                 <button
-                                    className="w-full bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg my-1"
+                                    type="button"
+                                    className="w-full text-sm bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg my-1"
                                     onClick={() => deleteTour(tour.id)}
                                 >
                                     Delete Package
                                 </button>
-                            )}
+                            ) : null}
+
                         </div>
 
                     </div>

@@ -4,6 +4,7 @@ import TourCart from '@/components/core/TourCart';
 import TourService from '@/components/utils/services/TourService';
 import LocationFilter from '@/components/core/LocationFilter';
 import { useState, useEffect } from 'react'
+import { useRouter } from "next/router";
 
 const mockTours = [
     {
@@ -46,15 +47,17 @@ const mockTours = [
 ]
 
 export default function Tours() {
+    const router = useRouter()
+
     const [tours, setTours] = useState([]);
 
     const handleFilterChange = (selectedLocations) => {
         console.log("Selected locations:", selectedLocations);
-            const params = {
-        city: selectedLocations.city?.length ? selectedLocations.city.join(",") : undefined,
-        category: selectedLocations.category?.length ? selectedLocations.category.join(",") : undefined
-    };
-getTours( params);
+        const params = {
+            city: selectedLocations.city?.length ? selectedLocations.city.join(",") : undefined,
+            category: selectedLocations.category?.length ? selectedLocations.category.join(",") : undefined
+        };
+        getTours(params);
 
     };
 
@@ -70,21 +73,20 @@ getTours( params);
         }
     };
     const getTours = async (params = {}) => {
-    try {
-        const response = await TourService.getTours(params);
-        const content = response?.data?.content;
+        try {
+            const response = await TourService.getTours(params);
+            const content = response?.data?.content;
 
-        setTours(content?.length ? content : mockTours);
-    } catch (error) {
-        console.error("Failed to fetch tours:", error);
-        alert("Failed to load tours. Please try again.");
-    }
-};
+            setTours(content?.length ? content : mockTours);
+        } catch (error) {
+            console.error("Failed to fetch tours:", error);
+            alert("Failed to load tours. Please try again.");
+        }
+    };
 
     useEffect(() => {
         getTours();
     }, []);
-
 
     return (
         <>
@@ -105,11 +107,9 @@ getTours( params);
                     </div>
 
                     <div className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow lg:w-full">
-                        <div className="mt-6">
-                            <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 place-items-center">
+                        <div className="mt-6 ">
+                            <div className="grid gap-4 place-items-center sm:grid-cols-2 md:grid-cols-3">
                                 <TourCart
-                                    showUpdate={true}
-                                    showDelete={true}
                                     tours={tours}
                                     deleteTour={deleteTour}
                                 />

@@ -1,13 +1,13 @@
 import API from '../API'
 
-// const TourApi = API("http://localhost:8080")
-const TourApi = API("https://tours-ff09.onrender.com")
+const TourApi = API("http://localhost:8080")
+// const TourApi = API("https://tours-ff09.onrender.com")
 
 
 const TourService = {
 
   getTours: (params) => {
-    return TourApi.get('/api/tours', { params });
+    return TourApi.get('/api/tours/public', { params });
   },
   createTour: (data) => {
     return TourApi.post('/api/tours', data);

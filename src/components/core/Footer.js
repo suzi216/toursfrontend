@@ -5,32 +5,33 @@ export default function Footer() {
 
   return (
     <>
-      <div className="bg-gradient-to-br from-gray-500 via-teal-700 to-gray-700 p-6 md:px-10 lg:px-24 mt-10">
+      <div className="bg-gradient-to-br from-gray-500 via-teal-700 to-gray-700 py-6 md:px-6 lg:px-20 mt-16">
         <div className="max-w-7xl mx-auto">
-          <div className="flex items-center justify-center gap-3 mb-10">
+          <div className="flex items-center justify-center mb-4">
             <span className="text-white text-4xl font-light">Albania</span>
           </div>
 
           <div className="space-y-6">
-            <h1 className="text-white text-3xl md:text-4xl font-light">
+            <h1 className="text-white text-3xl  font-light">
               Acknowledgement of Country
             </h1>
 
             <div className="flex items-start gap-8">
               <div className="flex items-center gap-2 text-red-700">
-                <GiEagleEmblem size={32} />
+                <GiEagleEmblem size={30} />
               </div>
 
               <div className="flex-1 space-y-6">
-                <p className="text-white text-xl leading-relaxed font-light">
+                <p className="text-white text-lg leading-relaxed font-light">
                   We acknowledge the ancient Illyrian roots of the Albanian land and honour the generations who have cared for its mountains, rivers, and coasts throughout history. We recognise the enduring spirit, traditions, and culture that continue to shape Albania today.  </p>
               </div>
             </div>
           </div>
+          
         </div>
-        <hr className="border-gray-400 my-8" />
+        <hr className="border-gray-400 my-6" />
 
-        <footer className="text-white py-8 px-8">
+        <footer className="text-white py-4 px-8">
           <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             <div>
               <h3 className="text-lg font-light mb-6">Change Language</h3>
@@ -42,7 +43,7 @@ export default function Footer() {
               </div>
             </div>
             <div>
-              <h3 className="text-lg font-light mb-6">Find us on</h3>
+              <h3 className="text-lg font-light mb-2">Find us on</h3>
               <div className="space-y-4">
                 <a href="#" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
                   <FaFacebook className="w-5 h-5" />
@@ -61,7 +62,7 @@ export default function Footer() {
             </div>
 
             <div>
-              <h3 className="text-lg font-light mb-6">About this site</h3>
+              <h3 className="text-lg font-light mb-2">About this site</h3>
               <ul className="space-y-3">
                 <li>
                   <a href="#" className="font-light hover:opacity-80 transition-opacity">
@@ -78,16 +79,11 @@ export default function Footer() {
                     Accessibility Statement
                   </a>
                 </li>
-                <li>
-                  <a href="#" className="font-light hover:opacity-80 transition-opacity">
-                    Sitemap
-                  </a>
-                </li>
               </ul>
             </div>
 
             <div>
-              <h3 className="text-lg font-light mb-6">Other sites</h3>
+              <h3 className="text-lg font-light mb-2">Other sites</h3>
               <ul className="space-y-3">
                 <li>
                   <a href="#" className="font-light hover:opacity-80 transition-opacity">
