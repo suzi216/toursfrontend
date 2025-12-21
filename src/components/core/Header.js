@@ -23,8 +23,8 @@ export default function Header() {
   const dispatch = useDispatch()
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b">
-      <nav className="mx-auto max-w-8xl p-3 sm:px-6">
+    <header className="sticky top-0 z-50 bg-white ">
+      <nav className="mx-auto max-w-8xl xl:p-2 sm:px-4">
         <div className="flex h-16 items-center justify-between">
 
           {/* Logo */}
@@ -36,7 +36,7 @@ export default function Header() {
               <Link
                 key={page.name}
                 href={page.href}
-                className="sm:text-2xl font-medium text-gray-700 hover:text-black transition"
+                className="sm:text-2xl lg:text-xl xl:text-2xl font-medium text-gray-700 hover:text-black transition"
               >
                 {page.name}
               </Link>
@@ -44,21 +44,21 @@ export default function Header() {
 
             <Link
               href="/login"
-              className="sm:text-2xl font-medium text-gray-700 hover:text-black transition"
+              className="sm:text-2xl lg:text-xl xl:text-2xl font-medium text-gray-700 hover:text-black transition"
             >
               Log in
             </Link>
             {role === "ADMIN" && (
               <div
                 onClick={() => dispatch(removeAuth())}
-                className="sm:text-2xl font-medium text-gray-700 hover:text-black transition">
+                className="sm:text-2xl lg:text-xl xl:text-2xl font-medium text-gray-700 hover:text-black transition">
                 Log out
               </div>
             )}
             {role === "ADMIN" && (
               <Link
                 href="/tour/new"
-                className="rounded-md border px-4 py-2 text-2xl font-medium hover:bg-gray-50 transition"
+                className="rounded-md border px-4 py-2 sm:text-2xl lg:text-xl xl:text-2xl font-medium hover:bg-gray-50 transition"
               >
                 Add Tours
               </Link>
@@ -99,7 +99,7 @@ export default function Header() {
 
             <Link
               href="/login"
-              className="sm:text-2xl font-medium text-gray-700 hover:text-black transition"
+                className={`sm:text-2xl lg:text-xl xl:text-2xl font-medium text-gray-700 hover:text-black transition ${open ? "rounded-lg px-3 py-2 text-base hover:bg-gray-100" : ""}`} 
               onClick={() => setOpen(false)}
             >
               Log in
@@ -110,14 +110,15 @@ export default function Header() {
                   dispatch(removeAuth());
                   setOpen(false);
                 }}
-                className="sm:text-2xl font-medium text-gray-700 hover:text-black transition">
+                className={`sm:text-2xl lg:text-xl xl:text-2xl font-medium text-gray-700 hover:text-black transition ${open ? "rounded-lg px-3 py-2 text-base hover:bg-gray-100" : ""}`} >
                 Log out
               </div>
             )}
             {role === "ADMIN" && (
               <Link
                 href="/tour/new"
-                className="rounded-md border px-4 py-2 text-2xl font-medium hover:bg-gray-50 transition"
+                className={`rounded-md border px-4 py-2 text-2xl font-medium hover:bg-gray-50 transition ${open ? " border-0 rounded-lg px-2 py-2 text-base hover:bg-gray-100" : ""}`} 
+
                 onClick={() => setOpen(false)}
               >
                 Add Tours

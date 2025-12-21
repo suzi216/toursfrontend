@@ -99,50 +99,50 @@ export default function AdminHome() {
 
       <Header />
 
-      <div className=" bg-gradient-to-br from-gray-500 via-teal-600 to-gray-600 mt-10">
-        <div className="max-w-7xl mx-auto px-6 py-8 lg:py-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+       <div className=" bg-gradient-to-br from-gray-500 via-teal-600 to-gray-600 lg:mt-4 xl:mt-8">
+        <div className="max-w-7xl mx-auto px-6 py-6 xl:py-10">
+           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
-              <h1 className="text-5xl lg:text-6xl font-serif text-yellow-200 leading-tight">
+              <h1 className="text-3xl lg:text-5xl xl:text-6xl font-serif text-yellow-200 leading-tight">
                 Plan your next trip
                 <br />& spirits adventure.
               </h1>
 
-              <p className="text-white text-lg leading-relaxed max-w-xl">
+              <p className="text-white lg:text-16 xl:text-lg leading-relaxed max-w-xl">
                 Experience Albania like never before through Visit Albania’s top-rated tours, stays, and activities. Plan and book seamlessly, with zero added costs.
               </p>
 
               <div
-                className="flex flex-col items-center mt-12 cursor-pointer group"
+                className="flex flex-col items-center mt-14 cursor-pointer group"
                 onClick={scrollToSection}
               >
                 <GiPlainArrow
                   size={42}
-                  className="text-yellow-200 group-hover:text-yellow-300 animate-bounce mt-1 transition-colors"
+                  className="text-yellow-200 group-hover:text-yellow-300 animate-bounce mt-3 transition-colors"
                 />
               </div>
             </div>
 
 
             <div className="relative">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl transform lg:translate-x-12">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl transform lg:translate-x-10">
                 <img
                   src="https://images.pexels.com/photos/1407846/pexels-photo-1407846.jpeg?auto=compress&cs=tinysrgb&w=800"
                   alt="Wine making"
-                  className="w-full h-[500px] object-cover"
+                  className="w-full lg:h-[360px] xl:h-[500px] object-cover"
                 />
               </div>
               <div className="absolute -left-6 top-1/4 bg-white rounded-2xl p-3 shadow-xl hidden lg:block">
                 <img
                   src="https://images.pexels.com/photos/774455/pexels-photo-774455.jpeg?auto=compress&cs=tinysrgb&w=300"
                   alt="Wine tasting"
-                  className="w-32 h-40 object-cover rounded-xl"
+                  className="xl:w-32 xl:h-40 lg:w-24 lg:h-30 object-cover rounded-xl"
                 />
               </div>
             </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mt-16 pt-12 border-t border-white/20">
+          <div className="grid md:grid-cols-3 gap-8 lg:mt-8 xl:mt-16 pt-10 border-t border-white/20">
             <div className="text-center space-y-3">
               <div className="flex justify-center gap-1">
                 {[...Array(5)].map((_, i) => (
@@ -150,9 +150,9 @@ export default function AdminHome() {
                 ))}
               </div>
               <p className="text-white font-medium">
-                Leading platform for discovering Albania’s beauty
+                Leading platform for discovering Albania’s 
                 <br />
-                crafted for curious travelers and adventure seekers.
+               beauty crafted for curious travelers and adventure seekers.
               </p>
             </div>
 
@@ -182,15 +182,15 @@ export default function AdminHome() {
       </div>
 
 
-      <div id="target-section" className="bg-slate-50 py-12">
+      <div id="target-section" className="bg-slate-50 lg:py-8 xl:py-12">
         <div className="max-w-7xl mx-auto px-4">
 
           {/* Section Header */}
-          <div className="text-center mb-10">
-            <h2 className="font-serif text-4xl font-bold text-gray-700">
+          <div className="text-center mb-2 lg:mb-6 xl:mb-10">
+            <h2 className="font-serif lg:text-3xl xl:text-4xl font-bold text-gray-700">
               Book Travel Packages
             </h2>
-            <p className="text-gray-700 text-sm mt-2">
+            <p className="text-gray-700 text-sm mt-1">
               Handpicked luxury escapes & adventure deals
             </p>
           </div>
