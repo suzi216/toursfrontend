@@ -23,7 +23,7 @@ export default function Header() {
   const dispatch = useDispatch()
 
   return (
-    <header className="sticky top-0 z-50 bg-white ">
+    <header className="sticky top-0 z-50 bg-white mb-2">
       <nav className="mx-auto max-w-8xl xl:p-2 sm:px-4">
         <div className="flex h-16 items-center justify-between">
 

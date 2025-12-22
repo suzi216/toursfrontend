@@ -92,8 +92,8 @@ export default function Tours() {
         <>
             < Header />
             <div>
-                <div className="flex items-center justify-center mt-2 h-[15vh] bg-gradient-to-br from-teal-50 ">
-                    <h1 className="lg:text-5xl text-3xl font-semibold text-gray-900 drop-shadow-lg">
+                <div className="flex items-center justify-center mt-2 h-[10vh] from-teal-50 ">
+                    <h1 className="xl:text-5xl text-2xl font-semibold text-gray-800 drop-shadow-lg">
                         Albania Touristic Package
                     </h1>
                 </div>
@@ -107,8 +107,8 @@ export default function Tours() {
                     </div>
 
                     <div className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow lg:w-full">
-                        <div className="mt-6 ">
-                            <div className="grid gap-4 place-items-center sm:grid-cols-2 md:grid-cols-3">
+                        <div className="mt-4">
+                            <div className="grid gap-10 place-items-center sm:grid-cols-2 md:grid-cols-4">
                                 <TourCart
                                     tours={tours}
                                     deleteTour={deleteTour}

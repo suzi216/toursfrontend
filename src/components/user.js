@@ -192,23 +192,23 @@ export default function UserHome() {
         </div>
       </div>
 
-      <div className="mt-10 px-4 lg:px-10">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+      <div className="mt-6 px-10">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-2 ">
 
           {/* LEFT: MAP */}
           <div className="w-full relative">
-            <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center justify-between mb-6">
               <div>
-                <h1 className="text-2xl md:text-3xl font-bold text-gray-700">
+                <h1 className="text-xl xl:text-3xl font-bold text-gray-700">
                   Discover Albania on the Map
                 </h1>
-                <p className="text-gray-700 text-sm mt-1">
+                <p className="text-gray-700 text-16 mt-1">
                   Click a region to reveal hidden gems, beaches & adventures
                 </p>
               </div>
             </div>
 
-            <div className="relative w-full h-[460px] rounded-3xl overflow-hidden shadow-xl bg-gray-100 ring-1 ring-gray-200">
+            <div className="relative w-5/6 h-[380px] rounded-3xl overflow-hidden shadow-xl bg-gray-100 ring-1 ring-gray-200">
               {isClient ? (
                 <AlbaniaMap key="map" />
               ) : (
@@ -227,15 +227,15 @@ export default function UserHome() {
             <div className="bg-gradient-to-br from-white via-white to-cyan-50 rounded-3xl shadow-xl p-8 w-full max-w-lg">
 
               <div className="text-center mb-8">
-                <h2 className="text-2xl font-bold text-gray-700">
+                <h2 className="text-xl xl:text-2xl font-bold text-gray-700">
                   What would you like to explore?
                 </h2>
-                <p className="text-gray-700 text-sm mt-1">
+                <p className="text-gray-700 text-14 mt-1">
                   Choose a category to start your journey
                 </p>
               </div>
 
-              <div className="grid grid-cols-3 gap-7">
+              <div className="grid grid-cols-3 gap-2">
                 {categoried.map((category) => (
                   <Link key={category.label} href={category.link}>
                     <button
@@ -244,7 +244,7 @@ export default function UserHome() {
                   hover:-translate-y-1 hover:scale-105
                   active:scale-95 focus:outline-none
                   focus-visible:ring-4 focus-visible:ring-cyan-300
-                  rounded-2xl p-3"
+                  rounded-2xl p-2 ml-6"
                     >
                       <div
                         className={`${category.color}
@@ -253,7 +253,7 @@ export default function UserHome() {
                     shadow-md group-hover:shadow-xl
                     transition-all duration-300`}
                       >
-                        <category.icon className="w-8 h-8 text-white" />
+                        <category.icon className="w-6 h-6 text-white" />
                       </div>
 
                       <span className="text-sm font-semibold text-gray-800 text-center group-hover:text-cyan-600 transition">

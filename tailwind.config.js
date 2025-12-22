@@ -79,11 +79,11 @@ module.exports = {
       },
     },
     screens: {
-      xsm: '380px',
+      xs: '380px',
       sm: '640px',
-      md: '768px',
+      md: '800px',
       lg: '1024px',
-      xl: '1280px',
+      xl: '1300px',
       xxl: '1580px',
       xxxl: '2080px'
     },
