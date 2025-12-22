@@ -4,13 +4,16 @@ import Input from '@/components/core/Input';
 import SelectInput from '@/components/core/SelectInput';
 import Section from '@/components/core/Section';
 import { validate as isUuid } from 'uuid';
-
+import {tokenSelector} from '@/redux/slices/authSlice'
 import { GiSave, GiCancel } from 'react-icons/gi';
 import TourService from '@/components/utils/services/TourService';
 import { useRouter } from "next/router";
 import { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
+
 
 function CreateTour() {
+    const token = useSelector(tokenSelector);
     const [formData, setFormData] = useState({
         title: '',
         description: '',
@@ -228,6 +231,8 @@ function CreateTour() {
     }, []);
 
     console.log(formData)
+    
+
     return (
         <>
             <Header />

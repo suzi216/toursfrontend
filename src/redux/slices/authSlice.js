@@ -36,5 +36,6 @@ export const authSlice = createSlice({
 
 export const { addAuth, removeAuth, addToken  } = authSlice.actions
 export const roleSelector = (state) => lodashGet(state, 'auth.decoded.role', '')
+export const tokenSelector = (state) => lodashGet(state, 'auth.accessToken', '')
 
 export default authSlice.reducer
