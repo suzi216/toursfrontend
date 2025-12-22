@@ -5,7 +5,7 @@ import Link from "next/link";
 const DiscoverAlbaniaLogo = () => {
   return (
     <Link href="/" passHref>
-      <div className="flex items-between gap-3 mt-2">
+      <div className="flex items-between gap-3 my-2">
 
 
         <div className="relative w-12 h-12  lg:w-12 lg:h-12 xl:w-16 xl:h-16 mt-2">

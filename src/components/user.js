@@ -87,7 +87,7 @@ export default function UserHome() {
 
       <Header  />
 
-      <div className=" bg-gradient-to-br from-gray-500 via-teal-600 to-gray-600 lg:mt-4 xl:mt-8">
+      <div className=" bg-gradient-to-br from-gray-500 via-teal-600 to-gray-600 ">
         <div className="max-w-7xl mx-auto px-6 py-6 xl:py-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
@@ -113,7 +113,7 @@ export default function UserHome() {
 
 
             <div className="relative">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl transform lg:translate-x-10">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl transform lg:translate-x-6">
                 <img
                   src="https://images.pexels.com/photos/1407846/pexels-photo-1407846.jpeg?auto=compress&cs=tinysrgb&w=800"
                   alt="Wine making"
@@ -174,7 +174,7 @@ export default function UserHome() {
         <div className="max-w-7xl mx-auto px-4">
 
           {/* Section Header */}
-          <div className="text-center mb-2  xl:mb-8">
+          <div className="text-center mb-4  xl:mb-8">
             <h2 className="font-serif lg:text-3xl xl:text-4xl font-bold text-gray-700">
               Book Travel Packages
             </h2>

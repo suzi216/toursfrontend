@@ -34,6 +34,6 @@ export default function Home() {
     }
   }, [role]);
 
-  if (role === "ADMIN") return <AdminHome />;
+  // if (role === "ADMIN") return <AdminHome />;
   return <UserHome />;
 }
