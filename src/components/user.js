@@ -174,7 +174,7 @@ export default function UserHome() {
         <div className="max-w-7xl mx-auto px-4">
 
           {/* Section Header */}
-          <div className="text-center mb-2 lg:mb-6 xl:mb-10">
+          <div className="text-center mb-2  xl:mb-8">
             <h2 className="font-serif lg:text-3xl xl:text-4xl font-bold text-gray-700">
               Book Travel Packages
             </h2>
