@@ -38,9 +38,9 @@ function CreateTour() {
     });
 
     const categoryOptions = [
-        { value: 'HOTEL', label: 'HOTEL' },
-        { value: 'TOURS', label: 'TOURS' },
-        { value: 'RESTAURANTS', label: 'RESTAURANTS' }
+        { value: 'Hotel', label: 'Hotel' },
+        { value: 'Tours', label: 'Tours' },
+        { value: 'Restaurants', label: 'Restaurants' }
     ]
     const tourTypeOptions = [
         { value: 'Private', label: 'Private' },
@@ -55,10 +55,10 @@ function CreateTour() {
     ]
 
     const cities = [
-        { value: 'TIRANA', label: 'TIRANA' },
-        { value: 'SHKODER', label: 'SHKODER' },
-        { value: 'BERAT', label: 'BERAT' },
-        { value: 'SARANDA', label: 'SARANDA' }
+        { value: 'Tirana', label: 'Tirana' },
+        { value: 'Shkoder', label: 'Shkoder' },
+        { value: 'Berat', label: 'Berat' },
+        { value: 'Saranda', label: 'Saranda' }
     ]
 
     const [itinerary, setItinerary] = useState([{ day: 'Day 1', description: '' }]);
@@ -158,7 +158,6 @@ function CreateTour() {
 
             const payload = { ...formData };
 
-
             const data = new FormData();
             Object.entries(payload).forEach(([key, value]) => {
                 if (value !== undefined && value !== null) {
@@ -193,8 +192,10 @@ function CreateTour() {
 
     const getTour = async (tourId) => {
         try {
-            const response = await TourService.getTour(tourId);
+                        if (isUuid(tourId)) {
 
+            const response = await TourService.getTour(tourId);
+                        
             const data = response.data;
             // Initialize formData directly here
             setFormData({
@@ -219,6 +220,7 @@ function CreateTour() {
                 // itinerary: data.itinerary || []
             });
             setTours(data);
+            }
         } catch (error) {
             console.error("Failed to fetch tours:", error);
             alert("Failed to load tours. Please try again.");
@@ -236,25 +238,24 @@ function CreateTour() {
     return (
         <>
             <Header />
-            <div className="min-h-screen bg-gradient-to-br from-teal-50 to-gray-100 py-12 px-4 sm:px-6 lg:px-8">
-                <div className="max-w-5xl mx-auto">
+            <div className="min-h-screen bg-gradient-to-br py-4">
+                <div className="max-w-3xl xl:max-w-4xl mx-auto">
                     <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-                        <div className="bg-gradient-to-r from-teal-600 to-teal-700 px-8 py-6">
-                            <h1 className="text-3xl font-bold text-white">Create New Tour</h1>
-                            <p className="text-teal-100 mt-2">Fill in the details to list your amazing tour experience</p>
+                        <div className="bg-gradient-to-r from-teal-600 to-teal-700 xl:p-6 p-3">
+                            <h1 className="text-16 xl:text-2xl font-bold text-white">Create New Package</h1>
                         </div>
 
-                        <form onSubmit={handleSubmit} className="p-8 space-y-8">
+                        <form onSubmit={handleSubmit} className="py-4 px-10 space-y-4">
 
                             <Section title="Basic Information">
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <Input
                                         label="Tour Name"
                                         name="title"
                                         value={formData.title}
                                         onChange={handleInputChange}
                                         required
-                                        placeholder="Amazing Mountain Adventure"
+                                        placeholder="Some Title"
                                     />
                                 </div>
 
@@ -338,7 +339,7 @@ function CreateTour() {
                             <Section title="Itinerary">
                                 <div className="space-y-4">
                                     {itinerary.map((item, index) => (
-                                        <div key={index} className="flex gap-4 items-start p-4 bg-gray-50 rounded-lg border border-gray-200">
+                                        <div key={index} className="flex gap-4 items-start rounded-lg ">
                                             <div className="flex-1 space-y-3">
                                                 <input
                                                     type="text"
@@ -351,6 +352,7 @@ function CreateTour() {
                                                     onChange={(e) => updateItinerary(index, 'description', e.target.value)}
                                                     className="w-full px-3 py-2 border border-gray-300 rounded-lg"
                                                     rows={2}
+                                                    placeholder='Description...'
                                                 />
                                             </div>
                                             {itinerary.length > 1 && (
@@ -422,14 +424,14 @@ function CreateTour() {
 function TextArea({ label, name, value, onChange, placeholder, rows = 3 }) {
     return (
         <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">{label}</label>
+            <label className="block xl:text-sm text-14 text-gray-700 mb-2">{label}</label>
             <textarea
                 name={name}
                 value={value}
                 onChange={onChange}
                 placeholder={placeholder}
                 rows={rows}
-                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg"
+                className="w-full px-4 py-2.5 border border-gray-300 text-12 rounded-lg"
             />
         </div>
     );

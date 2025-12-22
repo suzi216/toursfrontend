@@ -49,15 +49,15 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-teal-50 via-white to-teal-50 flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
+      <div className="w-full max-w-sm xl:max-w-lg">
         <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-          <div className="bg-gradient-to-r from-teal-600 to-teal-500 p-8 text-white">
-            <div className="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center mb-4 backdrop-blur-sm">
-              <div className="w-12 h-12 bg-white/30 rounded-lg flex items-center justify-center">
-                <div className="w-8 h-8 bg-teal-600 rounded-md"></div>
+          <div className="bg-gradient-to-r from-teal-600 to-teal-500 p-4 xl:p-8 text-white">
+            <div className="w-14 h-14 xl:w-16 xl:h-16 bg-white/20 rounded-xl flex items-center justify-center mb-4 xl:mb-8 backdrop-blur-sm">
+              <div className="w-10 h-10 xl:w-12 xl:h-12 bg-white/30 rounded-lg flex items-center justify-center">
+                <div className="w-7 h-7 xl:w-8 xl:h-8 bg-teal-600 rounded-md"></div>
               </div>
             </div>
-            <h1 className="text-3xl font-bold mb-2">
+            <h1 className="text-2xl xl:text-4xl font-bold mb-2">
               {isSignUp ? 'Create Account' : 'Welcome Back'}
             </h1>
             <p className="text-teal-100">
@@ -67,7 +67,7 @@ export default function LoginPage() {
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="p-8 space-y-6">
+          <form onSubmit={handleSubmit} className="p-6 xl:p-10 space-y-5">
             {error && (
               <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg text-sm">
                 {error}
@@ -91,7 +91,7 @@ export default function LoginPage() {
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   required
-                  className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all outline-none"
+                  className="block w-full pl-10 pr-3 py-2 xl:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all outline-none"
                   placeholder="userexample"
                 />
               </div>
@@ -114,7 +114,7 @@ export default function LoginPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  className="block w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all outline-none"
+                  className="block w-full pl-10 pr-10 py-2 xl:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all outline-none"
                   placeholder="••••••••"
                 />
                 <button
@@ -147,7 +147,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-gradient-to-r from-teal-600 to-teal-500 text-white py-3 rounded-lg font-semibold hover:from-teal-700 hover:to-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 transition-all transform hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none shadow-lg shadow-teal-500/30"
+              className="w-full bg-gradient-to-r from-teal-600 to-teal-500 text-white py-2 xl:py-3 rounded-lg font-semibold hover:from-teal-700 hover:to-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 transition-all transform hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none shadow-lg shadow-teal-500/30"
             >
               {isLoading
                 ? 'Loading...'
@@ -159,7 +159,7 @@ export default function LoginPage() {
           </form>
         </div>
 
-        <p className="text-center mt-8 text-sm text-gray-600">
+        <p className="text-center mt-3 text-sm text-gray-600">
           Protected by industry-standard encryption
         </p>
       </div>

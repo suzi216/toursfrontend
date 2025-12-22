@@ -17,15 +17,15 @@ export default function TourCart({ tours = [], isPopular = false, deleteTour }) 
             {tours.map((tour) => (
                 <div
                     key={tour.id}
-                    className="group relative flex-shrink-0 xs:w-[300px] lg:w-[220px] xl:w-[270px] bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
+                    className="group relative flex-shrink-0 xs:w-[230px] lg:w-[220px] xl:w-[270px] bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
                 >
 
                     {/* Image */}
-                    <div className="relative xs:h-[180px] lg:h-[140px]  xl:h-[160px] overflow-hidden">
+                    <div className="relative xs:h-[150px] lg:h-[140px] xl:h-[160px] overflow-hidden">
                         <img
                             src="https://images.pexels.com/photos/533769/pexels-photo-533769.jpeg?auto=compress&cs=tinysrgb&w=800"
                             alt={tour.title}
-                            className="w-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                         />
 
                         {isPopular && <span className="absolute top-3 left-3 bg-teal-600 text-white text-xs font-semibold px-3 py-1 rounded-full">
@@ -53,8 +53,8 @@ export default function TourCart({ tours = [], isPopular = false, deleteTour }) 
                         </div>
 
                         {/* Price */}
-                        <div className="my-4">
-                            <div className="text-xs text-gray-500 mb-1">From</div>
+                        <div className="my-3">
+                            <div className="text-xs text-gray-500">From</div>
                             <div className="flex items-end gap-1">
                                 <span className="text-16 font-bold text-teal-600">{tour.pricePerPerson}</span>
                                 <span className="text-8 xl:text-sm text-gray-500 pb-1">NZD</span>
@@ -65,13 +65,13 @@ export default function TourCart({ tours = [], isPopular = false, deleteTour }) 
                         </div>
                         <div className="flex flex-col">
                             <Link href={"/checkout"}>
-                                <button className="w-full text-12 bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-2 px-5 xl:py-4 xl:px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg my-1">
+                                <button className="w-full text-11 bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-2 px-3 xl:py-4 xl:px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg my-1">
                                     Buy Now
                                 </button>
                             </Link>
                             {role === "ADMIN" ? (
                                 <Link href={`/tour/${tour.id}`}>
-                                    <button className="w-full text-12 bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-2 px-5 xl:py-4 xl:px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg">
+                                    <button className="w-full text-11 bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-2 px-5 xl:py-4 xl:px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg">
                                         Update Package
                                     </button>
                                 </Link>
@@ -80,7 +80,7 @@ export default function TourCart({ tours = [], isPopular = false, deleteTour }) 
                             {role === "ADMIN" ? (
                                 <button
                                     type="button"
-                                    className="w-full text-12 bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-2 px-5 xl:py-4 xl:px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg my-1"
+                                    className="w-full text-11 bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-2 px-5 xl:py-4 xl:px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg my-1"
                                     onClick={() => deleteTour(tour.id)}
                                 >
                                     Delete Package

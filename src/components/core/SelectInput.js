@@ -27,13 +27,12 @@ const SelectInput = ({
   const styles = {
     control: (base) => ({
       ...base,
-      lineHeight: '20px',
+      lineHeight: '18px',
       borderRadius: '7px',
       borderColor: error ? '#F87171' : '#E5E7EB',
       maxWidth: width || undefined,
       padding,
-      backgroundColor: backgroundColor || '#F0FBFF',
-      border: border ? 'border' : 'none',
+      border: border ? 'border' : 'border',
       '&:hover': {
         borderColor: '#38bdf8',
         boxShadow: '0px 0px 2px #E5E7EB'
@@ -55,7 +54,7 @@ const SelectInput = ({
         ...styles,
         backgroundColor,
         color: '#4E4E4E',
-        fontSize: '12px',
+        fontSize: '10px',
         fontWeight: '300',
 
       }
@@ -77,7 +76,7 @@ const SelectInput = ({
       <div className="text-color-light-gray focus-within:text-sky-400 font-light">
         {label && (
           <div
-            className={('w-full mb-2 xxl:text-sm text-xs', labelClassName)}
+            className="w-full mb-2 xl:text-sm text-14"
             htmlFor={id}>
             {label}
           </div>
@@ -94,12 +93,12 @@ const SelectInput = ({
           isDisabled={isDisabled}
           isLoading={isLoading}
           classNamePrefix="react_select"
-          className={('capitalize', width, selectClassName, isDisabled && 'react_select_disabled')}
+          className="text-12"
           menuPlacement={menuPlacement}
           noOptionsMessage={noOptionsMessage}
         />
       </div>
-      {error && <label className="xxl:text-xs text-base text-red-500">{error}</label>}
+      {error && <label className="xl:text-xs text-10 text-red-500">{error}</label>}
     </div>
   )
 }

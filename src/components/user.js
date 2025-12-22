@@ -170,22 +170,20 @@ export default function UserHome() {
       </div>
 
 
-      <div id="target-section" className="bg-slate-50 lg:py-8 xl:py-12">
+      <div id="target-section" className="bg-slate-50 lg:py-6 xl:py-10">
         <div className="max-w-7xl mx-auto px-4">
 
           {/* Section Header */}
-          <div className="text-center mb-4  xl:mb-8">
-            <h2 className="font-serif lg:text-3xl xl:text-4xl font-bold text-gray-700">
+          <div className="text-center my-4  xl:mb-6">
+            <h2 className="font-serif text-lg lg:text-3xl xl:text-4xl font-bold text-gray-700">
               Book Travel Packages
             </h2>
-            <p className="text-gray-700 text-sm mt-1">
-              Handpicked luxury escapes & adventure deals
-            </p>
+
           </div>
 
           {/* Horizontal Scroll */}
           <div className="overflow-x-auto scroll-smooth no-scrollbar">
-            <div className="flex gap-6 pb-4">
+            <div className="flex gap-6 pb-3">
               <TourCart tours={tours} isPopular={tours.isPopular} />
             </div>
           </div>
@@ -208,7 +206,7 @@ export default function UserHome() {
               </div>
             </div>
 
-            <div className="relative w-5/6 h-[380px] rounded-3xl overflow-hidden shadow-xl bg-gray-100 ring-1 ring-gray-200">
+            ll<div className="relative w-fu; lg:w-5/6 h-[380px] rounded-3xl overflow-hidden shadow-xl bg-gray-100 ring-1 ring-gray-200">
               {isClient ? (
                 <AlbaniaMap key="map" />
               ) : (
@@ -244,7 +242,7 @@ export default function UserHome() {
                   hover:-translate-y-1 hover:scale-105
                   active:scale-95 focus:outline-none
                   focus-visible:ring-4 focus-visible:ring-cyan-300
-                  rounded-2xl p-2 ml-6"
+                  rounded-2xl p-2 lg:ml-6"
                     >
                       <div
                         className={`${category.color}
