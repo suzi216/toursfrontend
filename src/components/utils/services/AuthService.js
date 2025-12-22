@@ -1,7 +1,7 @@
 import API from '../API'
 
-const AuthAPI = API("http://localhost:8080")
-// const AuthAPI = API("https://tours-ff09.onrender.com")
+// const AuthAPI = API("http://localhost:8080")
+const AuthAPI = API("https://tours-ff09.onrender.com")
 
 
 const AuthService = {
