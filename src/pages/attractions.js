@@ -121,7 +121,7 @@ export default function Attractions() {
                                 className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300`}
                             >
                                 <div className="lg:w-1/3">
-                                    <div className="h-full min-h-[200px] lg:min-h-[250px] relative overflow-hidden">
+                                    <div className="h-[250px] xl:h-[300px] relative overflow-hidden">
                                         <img
                                             src={attraction.imageUrl}
                                             alt={attraction.title}
@@ -134,22 +134,22 @@ export default function Attractions() {
                                     </div>
                                 </div>
 
-                                <div className="lg:w-2/3 p-6 lg:p-8 flex flex-col justify-center">
-                                    <h2 className="text-3xl font-bold text-gray-900 mb-2">
+                                <div className="w-2/3 p-3 xl:p-4 flex flex-col justify-center">
+                                    <h2 className="xl:text-3xl text-base font-bold text-gray-900 mb-1">
                                         {attraction.title}
                                     </h2>
-                                    <p className="text-teal-600 text-lg font-medium mb-4 italic">
+                                    <p className="text-teal-600 xl:text-lg text-base font-medium mb-1 italic">
                                         {attraction.subtitle}
                                     </p>
-                                    <p className="text-gray-700 text-lg mb-6 leading-relaxed">
+                                    <p className="text-gray-700 xl:text-lg text-base mb-2 leading-relaxed">
                                         {attraction.description}
                                     </p>
 
                                     <div className="space-y-3">
-                                        <h3 className="text-xl font-semibold text-gray-900 mb-3">Highlights:</h3>
-                                        <ul className="space-y-3">
+                                        <h3 className="xl:text-lg text-base font-semibold text-gray-900 mb-1">Highlights:</h3>
+                                        <ul className="space-y-">
                                             {attraction.highlights.map((highlight, idx) => (
-                                                <li key={idx} className="flex items-start gap-3 text-gray-700">
+                                                <li key={idx} className="flex items-start gap-3 text-gray-700 xl:text-lg text-13">
                                                     <div className="w-2 h-2 rounded-full bg-teal-600 mt-2 flex-shrink-0"></div>
                                                     <span className="leading-relaxed">{highlight}</span>
                                                 </li>
@@ -162,22 +162,22 @@ export default function Attractions() {
                     </div>
 
                     <div className="mt-16 bg-gradient-to-r from-teal-600 to-teal-700 rounded-2xl p-10 text-white shadow-xl">
-                        <h2 className="text-3xl font-bold mb-6">Why These Are Special</h2>
+                        <h2 className="text-xl xl:text-3xl font-bold mb-6">Why These Are Special</h2>
                         <div className="grid md:grid-cols-2 gap-6 text-teal-50">
                             <div>
-                                <h3 className="font-semibold text-xl mb-2 text-white">Diverse Experiences</h3>
+                                <h3 className="font-semibold text-base xl:text-xl mb-2 text-white">Diverse Experiences</h3>
                                 <p className="leading-relaxed">These destinations range from medieval castles to natural wonders.</p>
                             </div>
                             <div>
-                                <h3 className="font-semibold text-xl mb-2 text-white">Cultural Richness</h3>
+                                <h3 className="font-semibold text-base xl:text-xl mb-2 text-white">Cultural Richness</h3>
                                 <p className="leading-relaxed">Berat and Gjirokastër reflect Albania's historical depth.</p>
                             </div>
                             <div>
-                                <h3 className="font-semibold text-xl mb-2 text-white">Natural Beauty</h3>
+                                <h3 className="font-semibold text-base xl:text-xl mb-2 text-white">Natural Beauty</h3>
                                 <p className="leading-relaxed">The Blue Eye and Butrint offer breathtaking natural landscapes.</p>
                             </div>
                             <div>
-                                <h3 className="font-semibold text-xl mb-2 text-white">Accessibility</h3>
+                                <h3 className="font-semibold text-base xl:text-xl mb-2 text-white">Accessibility</h3>
                                 <p className="leading-relaxed">Many attractions are easily reachable from major cities.</p>
                             </div>
                         </div>

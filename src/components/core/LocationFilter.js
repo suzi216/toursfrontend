@@ -42,7 +42,7 @@ export default function LocationFilter({ onFilterChange }) {
   return (
     <div className="">
       <div className="bg-white rounded-lg lg:p-6 lg:px-12 p-2">
-        <h2 className="text-16 font-bold tracking-wide mb-6">CITIES</h2>
+        <h2 className="xl:text-16 text-15 font-bold tracking-wide mb-6">CITIES</h2>
 
         <div>
           <div className="flex lg:flex-col flex-row flex-wrap lg:space-y-3">
@@ -55,9 +55,9 @@ export default function LocationFilter({ onFilterChange }) {
                   type="checkbox"
                   checked={selectedCities.includes(location)}
                   onChange={() => handleCityChange (location)}
-                  className="lg:w-4 lg:h-4 rounded border-gray-300 text-blue-600 cursor-pointer"
+                  className="w-3 h-3 xl:w-4 xl:h-4rounded border-gray-300 text-blue-600 cursor-pointer"
                 />
-                <span className="lg:ml-3 mx-2 text-12 font-medium text-gray-700 group-hover:text-gray-900">
+                <span className="lg:ml-3 mx-2 text-11 font-medium text-gray-700 group-hover:text-gray-900">
                   {location}
                 </span>
               </label>
@@ -65,7 +65,7 @@ export default function LocationFilter({ onFilterChange }) {
           </div>
         </div>
 
-        <h2 className="text-16 font-bold tracking-wide my-6">CATEGORIES</h2>
+        <h2 className="xl:text-16 text-15 font-bold tracking-wide my-6">CATEGORIES</h2>
         <div>
 
           <div className="flex lg:flex-col flex-row flex-wrap lg:space-y-3">
@@ -78,9 +78,9 @@ export default function LocationFilter({ onFilterChange }) {
                   type="checkbox"
                   checked={selectedCategories.includes(location)}
                   onChange={() => handleCategoryChange(location)}
-                  className="lg:w-4 lg:h-4 rounded border-gray-300 text-blue-600 cursor-pointer"
+                  className="w-3 h-3 xl:w-4 xl:h-4 rounded border-gray-300 text-blue-600 cursor-pointer"
                 />
-                <span className="lg:ml-3 mx-2 text-12 font-medium text-gray-700 group-hover:text-gray-900">
+                <span className="lg:ml-3 mx-2 text-11 font-medium text-gray-700 group-hover:text-gray-900">
                   {location}
                 </span>
               </label>
