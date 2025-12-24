@@ -80,87 +80,78 @@ const highlights = [
 export default function Gastronomy() {
   return (
     <>
-    <Header />
-    <div className="min-h-screen bg-gradient-to-br from-teal-50 to-white">
-      <div className="bg-gradient-to-r from-teal-600 to-teal-700 text-white py-8 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex items-center justify-center mb-6">
-            <GiKnifeFork className="w-12 h-16" />
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-center mb-6">
-            Albanian Gastronomy
-          </h1>
-          <p className="text-xl md:text-2xl text-center text-teal-50 max-w-3xl mx-auto">
-            Traditional & Delicious Albanian Food You'll Find in Restaurants
-          </p>
-        </div>
-      </div>
-
-      <div className="max-w-6xl mx-auto px-6 py-16">
-        <div className="grid gap-12 md:gap-16">
-          {dishes.map((dish, index) => (
-            <div
-              key={index}
-              className={`flex flex-col ${
-                index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-              } gap-8 items-center bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300`}
-            >
-              <div className="w-full md:w-1/2 h-80 overflow-hidden">
-                <img
-                  src={dish.imageUrl}
-                  alt={dish.name}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-              <div className="w-full md:w-1/2 p-8">
-                <div className="inline-block bg-gradient-to-r from-teal-600 to-teal-700 text-white px-4 py-1 rounded-full text-sm font-semibold mb-4">
-                  {index + 1}
-                </div>
-                <h2 className="text-3xl font-bold text-gray-800 mb-2">
-                  {dish.name}
-                </h2>
-                <h3 className="text-lg text-teal-600 font-medium mb-4">
-                  {dish.subtitle}
-                </h3>
-                <p className="text-gray-700 leading-relaxed">
-                  {dish.description}
-                </p>
-              </div>
+      <Header />
+      <div className="min-h-screen bg-gradient-to-br from-teal-50 to-white">
+        <div className="bg-gradient-to-r from-teal-600 to-teal-700 text-white xl:py-4 px-6">
+          <div className="max-w-6xl mx-auto">
+            <div className="flex items-center justify-center xl:mb-6">
+              <GiKnifeFork className="xl:w-12 xl:h-16 w-7 h-11" />
             </div>
-          ))}
+            <h1 className="text-2xl xl:text-5xl font-bold text-center mb-2 xl:mb-6">
+              Albanian Gastronomy
+            </h1>
+            <p className="text-13 xl:text-2xl text-center text-teal-50 max-w-3xl mx-auto pb-1">
+              Traditional & Delicious Albanian Food You'll Find in Restaurants
+            </p>
+          </div>
         </div>
 
-        <div className="mt-20 bg-gradient-to-r from-teal-600 to-teal-700 rounded-2xl p-10 text-white">
-          <h2 className="text-4xl font-bold text-center mb-6">
-            Why Albanian Food Stands Out
-          </h2>
-          <p className="text-xl text-center text-teal-50 mb-10 max-w-3xl mx-auto">
-            Albanian cuisine combines Balkan flavors with Mediterranean freshness.
-            Restaurants often use:
-          </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            {highlights.map((highlight, index) => (
+        <div className="max-w-7xl mx-auto px-28 py-8 xl:px-6 py-10">
+          <div className="grid gap-6 xl:gap-16">
+            {dishes.map((dish, index) => (
               <div
                 key={index}
-                className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center hover:bg-white/20 transition-colors duration-300"
+                className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300`}
+
               >
-                <p className="text-lg font-medium">{highlight}</p>
+                <div className="w-1/3 xl:w-1/2 h-60 xl:h-70 border rounded-lg overflow-hidden">
+                  <img
+                    src={dish.imageUrl}
+                    alt={dish.name}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="w-2/3 xl:w-1/2 p-4">
+                  <div className="inline-block bg-gradient-to-r from-teal-600 to-teal-700 text-white px-4 py-1 rounded-full text-11 xl:text-sm  font-semibold mb-1 xl:mb-4">
+                    {index + 1}
+                  </div>
+                  <h2 className="text-2xl xl:text-3xl font-bold text-gray-800 mb-1 xl:mb-2">
+                    {dish.name}
+                  </h2>
+                  <h3 className="text-14 xl:text-lg text-teal-600 font-medium mb-2 xl:mb-4">
+                    {dish.subtitle}
+                  </h3>
+                  <p className="text-gray-700 text-14 xl:text-16 leading-relaxed">
+                    {dish.description}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
-        </div>
 
-        <div className="mt-16 text-center max-w-3xl mx-auto">
-          <p className="text-lg text-gray-700 leading-relaxed">
-            Whether you're exploring Tirana, the Albanian Riviera, or the mountain
-            towns of the north, you'll always find restaurants offering authentic
-            dishes full of warmth, flavor, and tradition.
-          </p>
+          <div className="mt-10 bg-gradient-to-r from-teal-600 to-teal-700 rounded-2xl p-8 text-white">
+            <h2 className="text-2xl xl:text-4xl font-bold text-center mb-2 xl:mb-4">
+              Why Albanian Food Stands Out
+            </h2>
+            <p className="text-lg xl:text-xl text-center text-teal-50 mb-8 xl:mb-10 max-w-3xl mx-auto">
+              Albanian cuisine combines Balkan flavors with Mediterranean freshness.
+              Restaurants often use:
+            </p>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto">
+              {highlights.map((highlight, index) => (
+                <div
+                  key={index}
+                  className="bg-white/10 backdrop-blur-sm rounded-xl p-5 text-center hover:bg-white/20 transition-colors duration-300"
+                >
+                  <p className="text-base xl:text-lg font-medium">{highlight}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
-    </div>
 
-        <Footer />
+      <Footer />
 
     </>
   );

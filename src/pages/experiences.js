@@ -35,27 +35,27 @@ function Experience() {
             backgroundPosition: 'center'
           }}></div>
         </div>
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 xl:py-20">
           <div className="text-center">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">The Albania Experience</h1>
-            <p className="text-xl md:text-2xl text-teal-100 max-w-3xl mx-auto">
+            <h1 className="text-3xl xl:text-6xl font-bold mb-2 xl:mb-6">The Albania Experience</h1>
+            <p className="text-xl xl:text-2xl text-teal-100  mx-auto">
               What Travelers Say About Europe's Hidden Gem
             </p>
           </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid md:grid-cols-2 gap-8 mb-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 xl:py-16">
+        <div className="grid md:grid-cols-2 gap-8 mb-10 xl:mb-16">
           {sections.map((section, index) => (
             <div key={index} className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow">
               <div className="flex items-start space-x-4">
                 <div className="bg-gradient-to-br from-teal-600 to-teal-700 p-3 rounded-lg">
-                  <section.icon className="w-6 h-6 text-white" />
+                  <section.icon className="w-5 h-5 xl:w-6 xl:h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-700 mb-3">{section.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{section.content}</p>
+                  <h3 className="text-lg xl:text-2xl font-bold text-gray-700 mb-3">{section.title}</h3>
+                  <p className="text-gray-600 text-13 xl:text-16 leading-relaxed">{section.content}</p>
                 </div>
               </div>
             </div>
@@ -64,13 +64,13 @@ function Experience() {
 
 
 
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
-          <div className="bg-white rounded-xl shadow-lg p-8">
+        <div className="grid md:grid-cols-3 gap-8 mb-10">
+          <div className="bg-white rounded-xl shadow-lg p-4">
             <div className="bg-gradient-to-br from-teal-600 to-teal-700 p-3 rounded-lg w-fit mb-4">
-              <GiHighGrass className="w-6 h-6 text-white" />
+              <GiHighGrass className="w-5 h-5 xl:w-6 xl:h-6 text-white" />
             </div>
-            <h3 className="text-2xl font-bold text-gray-700 mb-3">Nature & Outdoor</h3>
-            <p className="text-gray-600 mb-4">
+            <h3 className="text-lg xl:text-2xl font-bold text-gray-700 mb-3">Nature & Outdoor</h3>
+            <p className="text-gray-600 text-13 xl:text-16 mb-4">
               The Albanian Riviera offers crystal-clear waters and dramatic cliffs. The Accursed Mountains provide Europe's most dramatic unknown range for hiking enthusiasts.
             </p>
             <div className="mt-6">
@@ -82,12 +82,12 @@ function Experience() {
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-lg p-8">
+          <div className="bg-white rounded-xl shadow-lg p-4">
             <div className="bg-gradient-to-br from-teal-600 to-teal-700 p-3 rounded-lg w-fit mb-4">
-              <GiKnifeFork className="w-6 h-6 text-white" />
+              <GiKnifeFork className="w-5 h-5 xl:w-6 xl:h-6 text-white" />
             </div>
-            <h3 className="text-2xl font-bold text-gray-700 mb-3">Food & Drink</h3>
-            <p className="text-gray-600 mb-4">
+            <h3 className="text-lg xl:text-2xl font-bold text-gray-700 mb-3">Food & Drink</h3>
+            <p className="text-gray-600 text-13 xl:text-16 mb-4">
               Fresh seafood on the coast, mountain cuisine in the north with hearty stews and grilled meats. Traditional dishes like byrek, tavë kosi, and fërgesë at very affordable prices.
             </p>
             <div className="mt-6">
@@ -99,20 +99,20 @@ function Experience() {
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-lg p-8">
+          <div className="bg-white rounded-xl shadow-lg p-4">
             <div className="bg-gradient-to-br from-teal-600 to-teal-700 p-3 rounded-lg w-fit mb-4">
-              <GiShield className="w-6 h-6 text-white" />
+              <GiShield className="w-5 h-5 xl:w-6 xl:h-6 text-white" />
             </div>
-            <h3 className="text-2xl font-bold text-gray-700 mb-3">Safety & Value</h3>
-            <p className="text-gray-600 mb-4">
+            <h3 className="text-lg xl:text-2xl font-bold text-gray-700 mb-3">Safety & Value</h3>
+            <p className="text-gray-600 text-13 xl:text-16 mb-4">
               Travelers report feeling very safe, even walking at night. Petty crime is low, and locals are protective of tourists. Albania offers excellent value with affordable hotels and meals.
             </p>
             <div className="mt-6 space-y-2">
-              <div className="flex items-center justify-between bg-teal-50 p-3 rounded-lg">
+              <div className="flex items-center text-14 xl:text-16 justify-between bg-teal-50 p-3 rounded-lg">
                 <span className="text-gray-700 font-medium">Hotels</span>
                 <span className="text-teal-700 font-bold">Affordable</span>
               </div>
-              <div className="flex items-center justify-between bg-teal-50 p-3 rounded-lg">
+              <div className="flex items-center text-14 xl:text-16 justify-between bg-teal-50 p-3 rounded-lg">
                 <span className="text-gray-700 font-medium">Meals</span>
                 <span className="text-teal-700 font-bold">Inexpensive</span>
               </div>
@@ -120,14 +120,14 @@ function Experience() {
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-lg p-8 mb-16">
+        <div className="bg-white rounded-xl shadow-lg p-4 mb-10 ">
           <div className="flex items-start space-x-4 mb-6">
             <div className="bg-gradient-to-br from-teal-600 to-teal-700 p-3 rounded-lg">
-              <GiSteeringWheel className="w-6 h-6 text-white" />
+              <GiSteeringWheel className="w-5 h-5 xl:w-6 xl:h-6 text-white" />
             </div>
             <div className="flex-1">
-              <h3 className="text-2xl font-bold text-gray-700 mb-3">Cultural & Historical Impressions</h3>
-              <p className="text-gray-600 leading-relaxed mb-4">
+              <h3 className="text-lg xl:text-2xl font-bold text-gray-700 mb-3">Cultural & Historical Impressions</h3>
+              <p className="text-gray-600 text-14 xl:text-16 leading-relaxed mb-4">
                 Travelers note Albania's fascinating mix of Ottoman, Roman, Greek, and Communist-era history. Sites like Berat, Gjirokastër, and Butrint are considered must-see cultural gems. Visitors are often fascinated by the legacy of bunkers and the story of isolation under communism.
               </p>
               <div className="grid md:grid-cols-3 gap-4 mt-6">
@@ -151,35 +151,35 @@ function Experience() {
           </div>
         </div>
 
-        <div className="bg-gradient-to-r from-teal-600 to-teal-700 rounded-xl shadow-lg p-12 text-white">
-          <div className="text-center mb-8">
-            <GiConversation className="w-12 h-12 mx-auto mb-4 opacity-50" />
-            <h2 className="text-3xl font-bold mb-2">What Travelers Say</h2>
+        <div className="bg-gradient-to-r from-teal-600 to-teal-700 rounded-xl shadow-lg p-6 text-white">
+          <div className="text-center mb-6">
+            <GiConversation className="w-12 h-12 mx-auto mb-2 opacity-50" />
+            <h2 className="text-2xl xl:text-3xl font-bold mb-2">What Travelers Say</h2>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {quotes.map((quote, index) => (
               <div key={index} className="bg-white/10 backdrop-blur-sm rounded-lg p-6 hover:bg-white/20 transition-colors">
-                <p className="text-lg italic text-center">&ldquo;{quote}&rdquo;</p>
+                <p className="text-base xl:text-lg italic text-center">&ldquo;{quote}&rdquo;</p>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="mt-16 bg-white rounded-xl shadow-lg p-8">
-          <h3 className="text-2xl font-bold text-gray-700 mb-6 text-center">Transportation & Getting Around</h3>
+        <div className="mt-10 bg-white rounded-xl shadow-lg p-6 xl:p-8">
+          <h3 className="text-xl xl:text-2xl font-bold text-gray-700 mb-4 text-center">Transportation & Getting Around</h3>
           <div className="grid md:grid-cols-3 gap-6 text-center">
             <div className="p-4">
-              <div className="text-4xl mb-3">🚌</div>
+              <div className="text-3xl xl:text-4xl mb-3">🚌</div>
               <h4 className="font-bold text-gray-700 mb-2">Buses</h4>
               <p className="text-gray-600 text-sm">Cheap but not always frequent</p>
             </div>
             <div className="p-4">
-              <div className="text-4xl mb-3">🚗</div>
+              <div className="text-3xl xl:text-4xl mb-3">🚗</div>
               <h4 className="font-bold text-gray-700 mb-2">Car Rental</h4>
               <p className="text-gray-600 text-sm">Popular for exploring freely</p>
             </div>
             <div className="p-4">
-              <div className="text-4xl mb-3">🛣️</div>
+              <div className="text-3xl xl:text-4xl mb-3">🛣️</div>
               <h4 className="font-bold text-gray-700 mb-2">Coastal Roads</h4>
               <p className="text-gray-600 text-sm">Narrow but incredibly scenic</p>
             </div>

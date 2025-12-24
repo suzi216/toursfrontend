@@ -5,7 +5,7 @@ export default function Footer() {
 
   return (
     <>
-      <div className="bg-gradient-to-br from-gray-500 via-teal-700 to-gray-700 py-6 md:px-6 lg:px-20 mt-16">
+      <div className="bg-gradient-to-br from-gray-500 via-teal-700 to-gray-700 py-6 md:px-6 lg:px-20 mt-10">
         <div className="flex items-start items-center justify-center gap-8 mb-4">
           <div className="flex items-center gap-2 text-red-700">
             <GiEagleEmblem size={25} />
