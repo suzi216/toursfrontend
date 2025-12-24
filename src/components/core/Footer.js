@@ -37,10 +37,10 @@ export default function Footer() {
         </div>
         <hr className="border-gray-400 my-6" /> */}
 
-          <footer className="text-white py-4 px-8">
+          <footer className="text-white py-3 px-8">
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
               <div>
-                <h3 className="text-14 font-light mb-6">Change Language</h3>
+                <h3 className="text-14 font-light mb-5">Change Language</h3>
                 <div className="relative">
                   <button className="w-full flex items-center justify-between border border-white/30 px-4 py-3 hover:bg-white/10 transition-colors">
                     <span className="font-light text-12">International (English)</span>

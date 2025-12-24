@@ -4,7 +4,7 @@ import Input from '@/components/core/Input';
 import SelectInput from '@/components/core/SelectInput';
 import Section from '@/components/core/Section';
 import { validate as isUuid } from 'uuid';
-import {tokenSelector} from '@/redux/slices/authSlice'
+import { tokenSelector } from '@/redux/slices/authSlice'
 import { GiSave, GiCancel } from 'react-icons/gi';
 import TourService from '@/components/utils/services/TourService';
 import { useRouter } from "next/router";
@@ -38,9 +38,9 @@ function CreateTour() {
     });
 
     const categoryOptions = [
-        { value: 'Hotel', label: 'Hotel' },
-        { value: 'Tours', label: 'Tours' },
-        { value: 'Restaurants', label: 'Restaurants' }
+        { value: 'HOTEL', label: 'HOTEL' },
+        { value: 'TOURS', label: 'TOURS' },
+        { value: 'RESTAURANTS', label: 'RESTAURANTS' }
     ]
     const tourTypeOptions = [
         { value: 'Private', label: 'Private' },
@@ -55,10 +55,10 @@ function CreateTour() {
     ]
 
     const cities = [
-        { value: 'Tirana', label: 'Tirana' },
-        { value: 'Shkoder', label: 'Shkoder' },
-        { value: 'Berat', label: 'Berat' },
-        { value: 'Saranda', label: 'Saranda' }
+        { value: 'TIRANA', label: 'TIRANA' },
+        { value: 'SHKODER', label: 'SHKODER' },
+        { value: 'BERAT', label: 'BERAT' },
+        { value: 'SARANDA', label: 'SARANDA' }
     ]
 
     const [itinerary, setItinerary] = useState([{ day: 'Day 1', description: '' }]);
@@ -192,34 +192,34 @@ function CreateTour() {
 
     const getTour = async (tourId) => {
         try {
-                        if (isUuid(tourId)) {
+            if (isUuid(tourId)) {
 
-            const response = await TourService.getTour(tourId);
-                        
-            const data = response.data;
-            // Initialize formData directly here
-            setFormData({
-                title: data.title || '',
-                description: data.description || '',
-                category: data.category || '',
-                tourType: data.tourType || '',
-                city: data.city || '',
-                starting_point: data.starting_point || '',
-                ending_point: data.ending_point || '',
-                duration: data.duration || '',
-                pricePerPerson: data.pricePerPerson || '',
-                maxGroupSize: data.maxGroupSize || '20',
-                minGroupSize: data.minGroupSize || '1',
-                coverImage: data.coverImage || 'img',
-                pickupInfo: data.pickupInfo || '',
-                transportationType: data.transportationType || '',
-                guideName: data.guideName || '',
-                cancellationPolicy: data.cancellationPolicy || '',
-                status: data.status || 'draft',
-                gallery: data.gallery?.length ? data.gallery : [''],
-                // itinerary: data.itinerary || []
-            });
-            setTours(data);
+                const response = await TourService.getTour(tourId);
+
+                const data = response.data;
+                // Initialize formData directly here
+                setFormData({
+                    title: data.title || '',
+                    description: data.description || '',
+                    category: data.category || '',
+                    tourType: data.tourType || '',
+                    city: data.city || '',
+                    starting_point: data.starting_point || '',
+                    ending_point: data.ending_point || '',
+                    duration: data.duration || '',
+                    pricePerPerson: data.pricePerPerson || '',
+                    maxGroupSize: data.maxGroupSize || '20',
+                    minGroupSize: data.minGroupSize || '1',
+                    coverImage: data.coverImage || 'img',
+                    pickupInfo: data.pickupInfo || '',
+                    transportationType: data.transportationType || '',
+                    guideName: data.guideName || '',
+                    cancellationPolicy: data.cancellationPolicy || '',
+                    status: data.status || 'draft',
+                    gallery: data.gallery?.length ? data.gallery : [''],
+                    // itinerary: data.itinerary || []
+                });
+                setTours(data);
             }
         } catch (error) {
             console.error("Failed to fetch tours:", error);
@@ -233,8 +233,6 @@ function CreateTour() {
     }, []);
 
     console.log(formData)
-    
-
     return (
         <>
             <Header />

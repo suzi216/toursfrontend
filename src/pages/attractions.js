@@ -6,7 +6,8 @@ import {
     GiRoad,
     GiMountains,
     GiHidden,
-    GiWorld
+    GiWorld,
+    GiMountainCave  
 } from "react-icons/gi";
 
 export default function Attractions() {
@@ -108,13 +109,26 @@ export default function Attractions() {
     ];
 
     return (
-
         <>
             <Header />
             <div className="min-h-screen bg-gradient-to-br from-teal-50 via-white to-teal-50">
-
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-                    <div className="grid gap-12">
+                <div className="relative bg-gradient-to-r from-teal-600 to-teal-700 text-white overflow-hidden">
+                    <div className="absolute inset-0 opacity-10">
+                        <div className="absolute inset-0" style={{
+                            backgroundImage: 'url(https://images.pexels.com/photos/12974928/pexels-photo-12974928.jpeg?auto=compress&cs=tinysrgb&w=1600)',
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center'
+                        }}></div>
+                    </div>
+                    <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 xl:py-20">
+                        <div className="flex flex-col items-center text-center">
+                            <GiMountainCave className="w-6 h-6" />
+                            <h1 className="text-2xl xl:text-6xl font-bold mb-2 xl:mb-6">The Albania Attractions</h1>
+                        </div>
+                    </div>
+                </div>
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+                    <div className="grid gap-8">
                         {attractions.map((attraction, index) => (
                             <div
                                 key={attraction.id}

@@ -96,12 +96,12 @@ export default function UserHome() {
                 <br />& spirits adventure.
               </h1>
 
-              <p className="text-white lg:text-16 xl:text-lg leading-relaxed max-w-xl">
+              <p className="text-white text-18 xl:text-lg leading-relaxed max-w-xl">
                 Experience Albania like never before through Visit Albania’s top-rated tours, stays, and activities. Plan and book seamlessly, with zero added costs.
               </p>
 
               <div
-                className="flex flex-col items-center mt-14 cursor-pointer group"
+                className="flex flex-col items-center mt-16 cursor-pointer group"
                 onClick={scrollToSection}
               >
                 <GiPlainArrow
@@ -170,12 +170,12 @@ export default function UserHome() {
       </div>
 
 
-      <div id="target-section" className="bg-slate-50 lg:py-6 xl:py-10">
+      <div id="target-section" className="bg-slate-50 py-4 xl:py-10">
         <div className="max-w-7xl mx-auto px-4">
 
           {/* Section Header */}
           <div className="text-center my-4  xl:mb-6">
-            <h2 className="font-serif text-lg lg:text-3xl xl:text-4xl font-bold text-gray-700">
+            <h2 className="font-serif text-2xl  xl:text-4xl font-bold text-gray-700">
               Book Travel Packages
             </h2>
 
@@ -195,18 +195,18 @@ export default function UserHome() {
 
           {/* LEFT: MAP */}
           <div className="w-full relative">
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center justify-between mb-5">
               <div>
                 <h1 className="text-xl xl:text-3xl font-bold text-gray-700">
                   Discover Albania on the Map
                 </h1>
-                <p className="text-gray-700 text-16 mt-1">
+                <p className="text-gray-700 text-14 mt-1">
                   Click a region to reveal hidden gems, beaches & adventures
                 </p>
               </div>
             </div>
 
-            ll<div className="relative w-fu; lg:w-5/6 h-[380px] rounded-3xl overflow-hidden shadow-xl bg-gray-100 ring-1 ring-gray-200">
+            <div className="relative w-fu; lg:w-5/6 h-[380px] rounded-3xl overflow-hidden shadow-xl bg-gray-100 ring-1 ring-gray-200">
               {isClient ? (
                 <AlbaniaMap key="map" />
               ) : (
@@ -267,8 +267,6 @@ export default function UserHome() {
 
         </div>
       </div>
-
-
       <Footer />
 
     </>

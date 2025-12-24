@@ -100,15 +100,15 @@ export default function Tours() {
 
                 <div className='lg:flex lg:justify-between'>
 
-                    <div className="lg:w-2/6 mx-5">
+                    <div className="lg:w-2/6 ">
                         <div>
                             <LocationFilter onFilterChange={handleFilterChange} />
                         </div>
                     </div>
 
                     <div className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow lg:w-full">
-                        <div className="mt-4">
-                            <div className="grid gap-10 place-items-center sm:grid-cols-2 md:grid-cols-4">
+                        <div className="mt-3">
+                            <div className="grid gap-4 place-items-center sm:grid-cols-2 md:grid-cols-4">
                                 <TourCart
                                     tours={tours}
                                     deleteTour={deleteTour}

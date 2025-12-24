@@ -17,7 +17,7 @@ export default function TourCart({ tours = [], isPopular = false, deleteTour }) 
             {tours.map((tour) => (
                 <div
                     key={tour.id}
-                    className="group relative flex-shrink-0 xs:w-[230px] lg:w-[220px] xl:w-[270px] bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
+                    className="group relative flex-shrink-0 xs:w-[300px] lg:w-[220px] xl:w-[270px] bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
                 >
 
                     {/* Image */}
@@ -44,6 +44,8 @@ export default function TourCart({ tours = [], isPopular = false, deleteTour }) 
                                 {tour.description}{" "}
                             </p>
                             <ul className="text-10 xl:text-16 ">
+                                <li className="text-gray-700"><span className="font-semibold">City:</span> {tour.city}</li>
+
                                 <li className="text-gray-700"><span className="font-semibold">Type:</span> {tour.tourType}</li>
                                 <li className="text-gray-700"><span className="font-semibold">Category:</span> {tour.category}</li>
                                 <li className="text-gray-700"><span className="font-semibold">Duration:</span> {tour.duration}</li>
@@ -53,13 +55,13 @@ export default function TourCart({ tours = [], isPopular = false, deleteTour }) 
                         </div>
 
                         {/* Price */}
-                        <div className="my-3">
+                        <div className="mt-3 mb-1">
                             <div className="text-xs text-gray-500">From</div>
                             <div className="flex items-end gap-1">
                                 <span className="text-16 font-bold text-teal-600">{tour.pricePerPerson}</span>
                                 <span className="text-8 xl:text-sm text-gray-500 pb-1">NZD</span>
                             </div>
-                            <div className="text-10 text-emerald-600 mt-1">
+                            <div className="text-10 text-emerald-600 ">
                                 Save $50 per adult
                             </div>
                         </div>

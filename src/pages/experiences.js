@@ -35,10 +35,10 @@ function Experience() {
             backgroundPosition: 'center'
           }}></div>
         </div>
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 xl:py-20">
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 xl:py-20">
           <div className="text-center">
-            <h1 className="text-3xl xl:text-6xl font-bold mb-2 xl:mb-6">The Albania Experience</h1>
-            <p className="text-xl xl:text-2xl text-teal-100  mx-auto">
+            <h1 className="text-2xl xl:text-6xl font-bold mb-1 xl:mb-6">The Albania Experience</h1>
+            <p className="text-lg xl:text-2xl text-teal-100 mx-auto">
               What Travelers Say About Europe's Hidden Gem
             </p>
           </div>

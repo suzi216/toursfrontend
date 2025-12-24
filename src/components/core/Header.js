@@ -41,13 +41,14 @@ export default function Header() {
                 {page.name}
               </Link>
             ))}
-
-            <Link
-              href="/login"
-              className="sm:text-2xl lg:text-xl xl:text-2xl font-medium text-gray-700 hover:text-black transition"
-            >
-              Log in
-            </Link>
+            {role !== "ADMIN" && (
+              <Link
+                href="/login"
+                className="sm:text-2xl lg:text-xl xl:text-2xl font-medium text-gray-700 hover:text-black transition"
+              >
+                Log in
+              </Link>
+              )}
             {role === "ADMIN" && (
               <div
                 onClick={() => dispatch(removeAuth())}
@@ -99,7 +100,7 @@ export default function Header() {
 
             <Link
               href="/login"
-                className={`sm:text-2xl lg:text-xl xl:text-2xl font-medium text-gray-700 hover:text-black transition ${open ? "rounded-lg px-3 py-2 text-base hover:bg-gray-100" : ""}`} 
+              className={`sm:text-2xl lg:text-xl xl:text-2xl font-medium text-gray-700 hover:text-black transition ${open ? "rounded-lg px-3 py-2 text-base hover:bg-gray-100" : ""}`}
               onClick={() => setOpen(false)}
             >
               Log in
@@ -117,7 +118,7 @@ export default function Header() {
             {role === "ADMIN" && (
               <Link
                 href="/tour/new"
-                className={`rounded-md border px-4 py-2 text-2xl font-medium hover:bg-gray-50 transition ${open ? " border-0 rounded-lg px-2 py-2 text-base hover:bg-gray-100" : ""}`} 
+                className={`rounded-md border px-4 py-2 text-2xl font-medium hover:bg-gray-50 transition ${open ? " border-0 rounded-lg px-2 py-2 text-base hover:bg-gray-100" : ""}`}
 
                 onClick={() => setOpen(false)}
               >
