@@ -148,7 +148,7 @@ export default function Attractions() {
                                     </div>
                                 </div>
 
-                                <div className="w-2/3 p-3 xl:p-4 flex flex-col justify-center">
+                                <div className="xs:w-full w-2/3 p-3 xl:p-4 flex flex-col justify-center">
                                     <h2 className="xl:text-3xl text-base font-bold text-gray-900 mb-1">
                                         {attraction.title}
                                     </h2>

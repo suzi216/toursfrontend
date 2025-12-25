@@ -96,15 +96,15 @@ export default function Gastronomy() {
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-28 py-8 xl:px-6 py-10">
-          <div className="grid gap-6 xl:gap-16">
+        <div className="max-w-7xl mx-auto xs:px-10 px-28 py-8 xl:px-6 py-10">
+          <div className="grid gap-6  xl:gap-16">
             {dishes.map((dish, index) => (
               <div
                 key={index}
-                className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300`}
+                className={`flex flex-col  ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300`}
 
               >
-                <div className="w-1/3 xl:w-1/2 h-60 xl:h-70 border rounded-lg overflow-hidden">
+                <div className="xs:w-full w-1/3 xl:w-1/2 h-60 xl:h-70 border rounded-lg overflow-hidden">
                   <img
                     src={dish.imageUrl}
                     alt={dish.name}

@@ -38,7 +38,7 @@ export default function Footer() {
         <hr className="border-gray-400 my-6" /> */}
 
           <footer className="text-white py-3 px-8">
-            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+            <div className="max-w-7xl mx-auto grid xs:grid-cols-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
               <div>
                 <h3 className="text-14 font-light mb-5">Change Language</h3>
                 <div className="relative">

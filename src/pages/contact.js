@@ -48,7 +48,7 @@ export default function Contact() {
                             </p>
                         </div>
 
-                        <div className="grid md:grid-cols-3 gap-16 xl:gap-10 mb-5 mx-24 xl:mx-2">
+                        <div className="grid md:grid-cols-3 gap-16 xs:gap-5 xl:gap-10 mb-5 xs:mx-10 mx-24 xl:mx-2">
                             <div className="bg-white/10 backdrop-blur-sm rounded-2xl py-2 xl:p-8 text-center transform transition-all duration-300 hover:scale-105 hover:bg-white/15">
                                 <div className="inline-flex items-center justify-center w-8 h-8 xl:w-16 xl:h-16 bg-white rounded-full mb-4">
                                     <GiEnvelope className="w-4 h-4 xl:w-8 xl:h-8 text-teal-600" />
@@ -77,7 +77,7 @@ export default function Contact() {
                             </div>
                         </div>
 
-                        <div className="bg-white rounded-3xl shadow-2xl p-6 xl:p-12 xl:mx-0 mx-10 ">
+                        <div className="bg-white rounded-3xl shadow-2xl p-6  xl:p-12 xl:mx-0 mx-10 xs:mx-3 ">
                             <h2 className="text-lg xl:text-3xl font-bold text-gray-700 mb-2 xl:mb-8">Send us a Message</h2>
 
                             {submitSuccess && (
