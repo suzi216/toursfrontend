@@ -2,6 +2,7 @@ import Header from '../components/core/Header';
 import Footer from '@/components/core/Footer';
 import { GiEnvelope, GiPhone, GiPositionMarker, GiPaperPlane } from "react-icons/gi";
 import { useState } from 'react';
+import ContactService from '@/components/utils/services/ContactService';
 
 export default function Contact() {
 
@@ -15,18 +16,32 @@ export default function Contact() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitSuccess, setSubmitSuccess] = useState(false);
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setIsSubmitting(true);
+const handleSubmit = async (e) => {
+    e.preventDefault();
 
-        await new Promise(resolve => setTimeout(resolve, 1500));
+    setIsSubmitting(true);
 
-        setIsSubmitting(false);
+    try {
+        const response = await ContactService.createEmail(formData);
+
         setSubmitSuccess(true);
-        setFormData({ name: '', email: '', subject: '', message: '' });
+        setFormData({
+            name: '',
+            email: '',
+            subject: '',
+            message: ''
+        });
 
         setTimeout(() => setSubmitSuccess(false), 3000);
-    };
+
+    } catch (error) {
+        console.error("Failed to create Email Contact:", error);
+        alert("Please try again.");
+    } finally {
+        setIsSubmitting(false);
+    }
+};
+
 
     const handleChange = (e) => {
         setFormData({
@@ -86,10 +101,7 @@ export default function Contact() {
                                 </div>
                             )}
 
-                            <form
-                                action="https://formsubmit.co/suzana.marsela@gmail.com"
-                                method="POST"
-                            >
+<form onSubmit={handleSubmit}>
                                 <div className="grid md:grid-cols-2 gap-6 mb-6">
                                     <div>
                                         <label htmlFor="name" className="block text-gray-700 text-14 xl:text-base font-semibold mb-1 xl:mb-2">
