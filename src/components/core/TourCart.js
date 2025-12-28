@@ -8,7 +8,7 @@ import { useEffect } from 'react'
 
 
 export default function TourCart({ tours = [], isPopular = false, deleteTour }) {
-  const role = useSelector(roleSelector)
+    const role = useSelector(roleSelector)
 
     useEffect(() => {
     }, []);
@@ -65,12 +65,16 @@ export default function TourCart({ tours = [], isPopular = false, deleteTour }) 
                                 Save $50 per adult
                             </div>
                         </div>
+
                         <div className="flex flex-col">
-                            <Link href={"/checkout"}>
-                                <button className="w-full text-11 bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-2 px-3 xl:py-4 xl:px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg my-1">
-                                    Buy Now
-                                </button>
-                            </Link>
+                            {role !== "ADMIN" ? (
+                                <Link href={"/checkout"}>
+                                    <button className="w-full text-11 bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-2 px-3 xl:py-4 xl:px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg my-1">
+                                        Buy Now
+                                    </button>
+                                </Link>
+                            ) : null}
+
                             {role === "ADMIN" ? (
                                 <Link href={`/tour/${tour.id}`}>
                                     <button className="w-full text-11 bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-2 px-5 xl:py-4 xl:px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg">
