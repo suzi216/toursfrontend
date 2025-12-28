@@ -51,29 +51,29 @@ function Checkout() {
       <div className="min-h-screen bg-gradient-to-br from-teal-50 to-teal-100 py-0 xl:py-2 xl:py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto ">
           <div className="text-center mb-3 xl:mb-8">
-            <h1 className="text-2xl xl:text-4xl font-bold text-gray-800 mb-1">Complete Your Booking</h1>
+            <h1 className=" text-2xl xl:text-4xl font-bold text-gray-800 mb-1">Complete Your Booking</h1>
             <p className="text-gray-600 text-12 xl:text-16">Just a few more steps to confirm your adventure</p>
           </div>
 
           <div className="grid lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2 space-y-4">
               {/* Customer Information */}
-              <div className="bg-white rounded-2xl shadow-lg p-2 xl:p-4 border border-teal-100">
-                <h2 className="text-lg xl:text-2xl font-bold text-gray-800 xl:mb-6 mb-2 flex items-center">
-                  <span className="bg-gradient-to-r from-teal-500 to-teal-600 text-white w-6 h-6 xl:w-8 xl:h-8 rounded-full flex items-center justify-center mr-3 text-12 xl:text-sm">1</span>
+              <div className="bg-white rounded-2xl shadow-lg xs:p-4 p-2 xl:p-4 border border-teal-100">
+                <h2 className=" text-lg xl:text-2xl font-bold text-gray-800 xl:mb-6 mb-2 flex items-center">
+                  <span className="bg-gradient-to-r from-teal-500 to-teal-600 text-white xs:w-8 xs:h-8 w-6 h-6 xl:w-8 xl:h-8 rounded-full flex items-center justify-center mr-3 text-12 xl:text-sm">1</span>
                   Customer Information
                 </h2>
 
                 <div className="grid md:grid-cols-2 gap-1">
                   {/* Full Name */}
                   <div>
-                    <label className="block text-12 xl:text-sm font-semibold text-gray-700 mb-2">Full Name *</label>
+                    <label className="block xs:text-sm text-12 xl:text-sm font-semibold text-gray-700 mb-2">Full Name *</label>
                     <input
                       type="text"
                       name="fullName"
                       value={formData.fullName}
                       onChange={handleInputChange}
-                      className="w-5/6 xl:w-full px-1 pb-1 xl:px-4 xl:py-3 placeholder:text-11 xl:placeholder:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition text-gray-700"
+                      className="w-5/6 xs:w-full xl:w-full px-1 pb-1 xs:px-4 xs:py-3  xl:px-4 xl:py-3 placeholder:text-11 xl:placeholder:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition text-gray-700"
                       placeholder="John Doe"
                       required
                     />
@@ -87,7 +87,7 @@ function Checkout() {
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      className="w-5/6 xl:w-full px-1 pb-1 xl:px-4 xl:py-3 placeholder:text-11 xl:placeholder:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition text-gray-700"
+                      className="w-5/6 xs:w-full xl:w-full px-1 pb-1 xs:px-4 xs:py-3  xl:px-4 xl:py-3 placeholder:text-11 xl:placeholder:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition text-gray-700"
                       placeholder="john@example.com"
                       required
                     />
@@ -101,7 +101,7 @@ function Checkout() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="w-5/6 xl:w-full px-1 pb-1 xl:px-4 xl:py-3 placeholder:text-11 xl:placeholder:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition text-gray-700"
+                      className="w-5/6 xs:w-full xl:w-full px-1 pb-1 xs:px-4 xs:py-3  xl:px-4 xl:py-3 placeholder:text-11 xl:placeholder:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition text-gray-700"
                       placeholder="+1 (555) 123-4567"
                       required
                     />
@@ -115,7 +115,7 @@ function Checkout() {
                       name="address"
                       value={formData.address}
                       onChange={handleInputChange}
-                      className="w-5/6 xl:w-full px-1 pb-1 xl:px-4 xl:py-3 placeholder:text-11 xl:placeholder:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition text-gray-700"
+                      className="w-5/6 xs:w-full xl:w-full px-1 pb-1 xs:px-4 xs:py-3  xl:px-4 xl:py-3 placeholder:text-11 xl:placeholder:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition text-gray-700"
                       placeholder="123 Main St, City, State"
                     />
                   </div>
@@ -128,7 +128,7 @@ function Checkout() {
                       value={formData.specialRequests}
                       onChange={handleInputChange}
                       rows={3}
-                      className="w-5/6 xl:w-full  xl:px-4 xl:py-3 placeholder:text-11 xl:placeholder:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition resize-none text-gray-700"
+                      className="w-5/6 xs:w-full xl:w-full px-1 pb-1 xs:px-4 xs:py-3  xl:px-4 xl:py-3 placeholder:text-11 xl:placeholder:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition text-gray-700"
                       placeholder="Any dietary restrictions, accessibility needs, or special requests..."
                     />
                   </div>
@@ -178,7 +178,7 @@ function Checkout() {
                           name="cardNumber"
                           value={formData.cardNumber}
                           onChange={handleInputChange}
-                          className="w-5/6 xl:w-full px-1 pb-1 xl:px-4 xl:py-3 placeholder:text-11 xl:placeholder:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition text-gray-700"
+                          className="w-5/6 xs:w-full xl:w-full px-1 pb-1 xs:px-4 xs:py-3 xl:px-4 xl:py-3 placeholder:text-11 xl:placeholder:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition text-gray-700"
                           placeholder="1234 5678 9012 3456"
                           maxLength={19}
                           required
@@ -191,13 +191,12 @@ function Checkout() {
                           name="cardExpiry"
                           value={formData.cardExpiry}
                           onChange={handleInputChange}
-                          className="w-5/6 xl:w-full px-1 pb-1 xl:px-4 xl:py-3 placeholder:text-11 xl:placeholder:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition text-gray-700"
+                          className="w-5/6 xs:w-full xl:w-full px-1 pb-1 xs:px-4 xs:py-3 xl:px-4 xl:py-3 placeholder:text-11 xl:placeholder:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition text-gray-700"
                           placeholder="MM/YY"
                           maxLength={5}
                           required
                         />
                       </div>
-                      <div className="grid grid-cols-2 gap-4">
                         <div>
                           <label className="block text-12 xl:text-sm font-semibold text-gray-700 mb-2">Cardholder Name *</label>
                           <input
@@ -205,7 +204,7 @@ function Checkout() {
                             name="cardName"
                             value={formData.cardName}
                             onChange={handleInputChange}
-                            className="w-5/6 xl:w-full px-1 pb-1 xl:px-4 xl:py-3 placeholder:text-11 xl:placeholder:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition text-gray-700"
+                          className="w-5/6 xs:w-full xl:w-full px-1 pb-1 xs:px-4 xs:py-3 xl:px-4 xl:py-3 placeholder:text-11 xl:placeholder:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition text-gray-700"
                             placeholder="John Doe"
                             required
                           />
@@ -217,13 +216,13 @@ function Checkout() {
                             name="cardCvc"
                             value={formData.cardCvc}
                             onChange={handleInputChange}
-                            className="w-5/6 xl:w-full px-1 pb-1 xl:px-4 xl:py-3 placeholder:text-11 xl:placeholder:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition text-gray-700"
+                          className="w-5/6 xs:w-full xl:w-full px-1 pb-1 xs:px-4 xs:py-3 xl:px-4 xl:py-3 placeholder:text-11 xl:placeholder:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition text-gray-700"
                             placeholder="123"
                             maxLength={3}
                             required
                           />
                         </div>
-                      </div>
+                      
                     </div>
                   </div>
                 )}
