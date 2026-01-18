@@ -93,7 +93,7 @@ export default function Tours() {
             < Header />
             <div>
                 <div className="flex items-center justify-center mt-2 h-[10vh] from-teal-50 ">
-                    <h1 className="xl:text-5xl text-2xl font-semibold text-gray-800 drop-shadow-lg">
+                    <h1 className="xl:text-4xl text-2xl font-semibold text-gray-800 drop-shadow-lg">
                         Albania Touristic Package
                     </h1>
                 </div>

@@ -37,9 +37,9 @@ export default function Footer() {
         </div>
         <hr className="border-gray-400 my-6" /> */}
 
-          <footer className="text-white py-3 px-8">
-            <div className="max-w-7xl mx-auto grid xs:grid-cols-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-              <div>
+          <footer className="text-white py-3 px-4">
+            <div className="max-w-7xl mx-auto grid xs:grid-cols-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+              <div className='pr-5'>
                 <h3 className="text-14 font-light mb-5">Change Language</h3>
                 <div className="relative">
                   <button className="w-full flex items-center justify-between border border-white/30 px-4 py-3 hover:bg-white/10 transition-colors">
@@ -50,7 +50,7 @@ export default function Footer() {
               </div>
               <div>
                 <h3 className="text-14 font-light mb-2">Find us on</h3>
-                <div className="space-y-4">
+                <div className="space-y-1">
                   <a href="#" className="flex items-center text-12 gap-3 hover:opacity-80 transition-opacity">
                     <FaFacebook className="w-4 h-4" />
                     <span className="font-light">Facebook</span>
@@ -69,7 +69,7 @@ export default function Footer() {
 
               <div>
                 <h3 className="text-14 font-light mb-2">About this site</h3>
-                <ul className="space-y-3">
+                <ul className="space-y-1">
                   <li>
                     <a href="#" className="font-light text-12 hover:opacity-80 transition-opacity">
                       Privacy Policy
@@ -90,7 +90,7 @@ export default function Footer() {
 
               <div>
                 <h3 className="text-14 font-light mb-2">Other sites</h3>
-                <ul className="space-y-3">
+                <ul className="space-y-1">
                   <li>
                     <a href="#" className="font-light text-12 hover:opacity-80 transition-opacity">
                       Media & Industry

@@ -12,7 +12,7 @@ import { removeAuth } from '@/redux/slices/authSlice'
 const navigation = {
   pages: [
     { name: "Home", href: "/" },
-    { name: "Find tours", href: "/tours" },
+    { name: "Find Packages", href: "/tours" },
     { name: "Contact", href: "/contact" },
   ],
 };
@@ -48,14 +48,8 @@ export default function Header() {
               >
                 Log in
               </Link>
-              )}
-            {role === "ADMIN" && (
-              <div
-                onClick={() => dispatch(removeAuth())}
-                className="sm:text-2xl lg:text-xl xl:text-2xl font-medium text-gray-700 hover:text-black transition">
-                Log out
-              </div>
             )}
+
             {role === "ADMIN" && (
               <Link
                 href="/tour/new"
@@ -64,7 +58,13 @@ export default function Header() {
                 Add Tours
               </Link>
             )}
-
+            {role === "ADMIN" && (
+              <div
+                onClick={() => dispatch(removeAuth())}
+                className="sm:text-2xl lg:text-xl xl:text-2xl font-medium text-gray-700 hover:text-black transition">
+                Log out
+              </div>
+            )}
           </div>
 
           {/* Mobile Toggle */}
@@ -105,16 +105,7 @@ export default function Header() {
             >
               Log in
             </Link>
-            {role === "ADMIN" && (
-              <div
-                onClick={() => {
-                  dispatch(removeAuth());
-                  setOpen(false);
-                }}
-                className={`sm:text-2xl lg:text-xl xl:text-2xl font-medium text-gray-700 hover:text-black transition ${open ? "rounded-lg px-3 py-2 text-base hover:bg-gray-100" : ""}`} >
-                Log out
-              </div>
-            )}
+
             {role === "ADMIN" && (
               <Link
                 href="/tour/new"
@@ -124,6 +115,16 @@ export default function Header() {
               >
                 Add Tours
               </Link>
+            )}
+            {role === "ADMIN" && (
+              <div
+                onClick={() => {
+                  dispatch(removeAuth());
+                  setOpen(false);
+                }}
+                className={`sm:text-2xl lg:text-xl xl:text-2xl font-medium text-gray-700 hover:text-black transition ${open ? "rounded-lg px-3 py-2 text-base hover:bg-gray-100" : ""}`} >
+                Log out
+              </div>
             )}
           </div>
         </div>
