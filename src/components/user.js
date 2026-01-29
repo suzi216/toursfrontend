@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import Footer from './core/Footer';
 import TourCart from './core/TourCart';
 import TourService from '@/components/utils/services/TourService';
-import { GiMountainCave , GiPhotoCamera, GiKnifeFork, GiTicket, GiSeaStar, GiThunderball, GiPlainArrow } from 'react-icons/gi';
+import { GiMountainCave, GiPhotoCamera, GiKnifeFork, GiTicket, GiSeaStar, GiThunderball, GiPlainArrow } from 'react-icons/gi';
 
 import dynamic from "next/dynamic";
 
@@ -51,7 +51,7 @@ const categoried = [
   { icon: GiTicket, label: 'Experiences', color: 'bg-red-500', link: '/experiences' },
 ];
 export default function UserHome() {
- 
+
   const router = useRouter();
   const [totalPages, setTotalPages] = useState(0)
   const [tours, setTours] = useState([]);
@@ -70,8 +70,8 @@ export default function UserHome() {
     }
   };
 
-  const scrollToSection = () => {
-    const el = document.getElementById("target-section");
+  const scrollToSection = (e) => {
+    const el = document.getElementById(e);
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
     }
@@ -85,31 +85,45 @@ export default function UserHome() {
   return (
     <>
 
-      <Header  />
+      <Header />
 
       <div className=" bg-gradient-to-br from-gray-500 via-teal-600 to-gray-600 ">
         <div className="max-w-7xl mx-auto px-6 py-6 xl:py-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <h1 className="text-3xl lg:text-5xl xl:text-6xl font-serif text-yellow-200 leading-tight">
-                Plan your next trip
-                <br />& spirits adventure.
+
+            <div className="space-y-6 text-center max-w-3xl mx-auto">
+              <h1 className="text-3xl md:text-4xl xl:text-6xl font-serif font-bold leading-tight text-white">
+                Travel{" "}
+                <span className="bg-gradient-to-r from-yellow-200 to-yellow-400 bg-clip-text text-transparent">
+                  Albania
+                </span>
+                , Your Way
               </h1>
 
-              <p className="text-white text-18 xl:text-lg leading-relaxed max-w-xl">
-                Experience Albania like never before through Visit Albania’s top-rated tours, stays, and activities. Plan and book seamlessly, with zero added costs.
+              <p className="text-gray-200 text-sm md:text-base leading-relaxed max-w-2xl mx-auto">
+                Discover Albania like never before with handpicked tours, authentic stays,
+                and unforgettable local experiences.
               </p>
 
-              <div
-                className="flex flex-col items-center mt-16 cursor-pointer group"
-                onClick={scrollToSection}
-              >
-                <GiPlainArrow
-                  size={42}
-                  className="text-yellow-200 group-hover:text-yellow-300 animate-bounce mt-3 transition-colors"
-                />
+              <div className="flex flex-col sm:flex-row justify-center gap-6 mt-12">
+                <button
+                  onClick={() => scrollToSection("tours")}
+                  className="px-10 py-4 rounded-full bg-yellow-300 text-gray-900 font-semibold text-sm
+      hover:bg-yellow-400 hover:scale-105 transition-all duration-300 shadow-lg shadow-yellow-300/30"
+                >
+                  Explore Tours
+                </button>
+
+                <button
+                  onClick={() => scrollToSection("customize")}
+                  className="px-10 py-4 rounded-full border-2 border-yellow-300 text-yellow-300 font-semibold text-sm
+      hover:bg-yellow-300 hover:text-gray-900 hover:scale-105 transition-all duration-300"
+                >
+                  Customize Your Trip
+                </button>
               </div>
             </div>
+
 
 
             <div className="relative">
@@ -130,23 +144,23 @@ export default function UserHome() {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 lg:mt-8 xl:mt-16 pt-10 border-t border-white/20">
-            <div className="text-center space-y-3">
+          <div className="grid md:grid-cols-3 gap-8 lg:mt-7 xl:mt-12 pt-6 border-t border-white/20">
+            <div className="text-center space-y-2">
               <div className="flex justify-center gap-1">
                 {[...Array(5)].map((_, i) => (
                   <GiSeaStar key={i} className="w-5 h-5 fill-orange-400 text-orange-400" />
                 ))}
               </div>
               <p className="text-white font-medium">
-                Leading platform for discovering Albania’s 
+                Leading platform for discovering Albania’s
                 <br />
-               beauty crafted for curious travelers and adventure seekers.
+                beauty crafted for curious travelers and adventure seekers.
               </p>
             </div>
 
             <div className="text-center space-y-3">
               <div className="flex justify-center">
-                <GiMountainCave  className="w-6 h-6 text-red-400" />
+                <GiMountainCave className="w-6 h-6 text-red-400" />
               </div>
               <p className="text-white font-medium">
                 500+ must-visit sites, tours & adventures
@@ -170,12 +184,12 @@ export default function UserHome() {
       </div>
 
 
-      <div id="target-section" className="bg-slate-50 py-4 xl:py-10">
+      <div id="tours" className="bg-slate-50 py-4 xl:py-10">
         <div className="max-w-7xl mx-auto px-4">
 
           {/* Section Header */}
-          <div className="text-center my-4  xl:mb-6">
-            <h2 className="font-serif text-2xl  xl:text-4xl font-bold text-gray-700">
+          <div className="text-center my-2 xl:mb-6">
+            <h2 className="font-serif text-2xl xl:text-4xl font-bold text-gray-700">
               Book Travel Packages
             </h2>
 
@@ -183,40 +197,162 @@ export default function UserHome() {
 
           {/* Horizontal Scroll */}
           <div className="overflow-x-auto scroll-smooth no-scrollbar">
-            <div className="flex gap-6 pb-3">
+            <div className="flex gap-6 ">
               <TourCart tours={tours} isPopular={tours.isPopular} />
             </div>
           </div>
         </div>
       </div>
 
+      <div id="customize" className="bg-slate-50 py-4 ">
+        <div className="max-w-7xl mx-auto px-4">
+
+          {/* Section Header */}
+          <div className="text-center  xl:mb-6">
+            <h2 className="font-serif text-2xl xl:text-4xl font-bold text-gray-700">
+              Customize Your Tour
+            </h2>
+          </div>
+
+          {/* Horizontal Scroll */}
+          <div >
+            <div className="max-w-4xl mx-auto px-4">
+              <p className="text-center mb-4 text-sm">
+                Share your plan — we’ll craft the perfect experience in 2–3 days
+              </p>
+
+              <form className="grid grid-cols-1 sm:grid-cols-3 gap-4 backdrop-blur rounded-xl">
+                {/* Destination */}
+                <div>
+                  <label className="block text-xs mb-1">
+                    Destination
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Tirana, Saranda"
+                    className="w-full rounded-md  px-3 py-2 text-xs
+          border border-gray-700 focus:border-yellow-300 focus:ring-1 focus:ring-yellow-300 outline-none"
+                  />
+                </div>
+
+                {/* Days */}
+                <div>
+                  <label className="block text-xs  mb-1">
+                    Days
+                  </label>
+                  <input
+                    type="number"
+                    min="1"
+                    placeholder="5"
+                    className="w-full rounded-md  px-3 py-2 text-xs
+          border border-gray-700 focus:border-yellow-300 focus:ring-1 focus:ring-yellow-300 outline-none"
+                  />
+                </div>
+
+                {/* People */}
+                <div>
+                  <label className="block text-xs mb-1">
+                    People
+                  </label>
+                  <input
+                    type="number"
+                    min="1"
+                    placeholder="2"
+                    className="w-full rounded-md  px-3 py-2 text-xs
+          border border-gray-700 focus:border-yellow-300 focus:ring-1 focus:ring-yellow-300 outline-none"
+                  />
+                </div>
+
+                {/* Budget */}
+                <div>
+                  <label className="block text-xs mb-1">
+                    Budget €
+                  </label>
+                  <input
+                    type="number"
+                    placeholder="1000"
+                    className="w-full rounded-md px-3 py-2 text-xs
+          border border-gray-700 focus:border-yellow-300 focus:ring-1 focus:ring-yellow-300 outline-none"
+                  />
+                </div>
+
+                {/* Email */}
+                <div>
+                  <label className="block text-xs mb-1">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    placeholder="you@example.com"
+                    className="w-full rounded-md px-3 py-2 text-xs
+          border border-gray-700 focus:border-yellow-300 focus:ring-1 focus:ring-yellow-300 outline-none"
+                  />
+                </div>
+
+                {/* Phone */}
+                <div>
+                  <label className="block text-xs  mb-1">
+                    Phone
+                  </label>
+                  <input
+                    type="tel"
+                    placeholder="+355 69 000 0000"
+                    className="w-full rounded-md  px-3 py-2 text-xs
+          border border-gray-700 focus:border-yellow-300 focus:ring-1 focus:ring-yellow-300 outline-none"
+                  />
+                </div>
+
+                {/* Submit */}
+                <div className="sm:col-span-3 flex justify-center mt-2">
+                  <button
+                    type="submit"
+                    className="px-10 py-2.5 rounded-full bg-yellow-300 text-gray-900 text-sm font-semibold
+          hover:bg-yellow-400 transition-all duration-300 shadow-md shadow-yellow-300/20"
+                  >
+                    Send Request
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+
+
+        </div>
+
+      </div>
+
+
+
       <div className="mt-6 px-10">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-2 ">
 
           {/* LEFT: MAP */}
-          <div className="w-full relative">
-            <div className="flex items-center justify-between mb-5">
-              <div>
-                <h1 className="text-xl xl:text-3xl font-bold text-gray-700">
-                  Discover Albania on the Map
-                </h1>
-                <p className="text-gray-700 text-14 mt-1">
-                  Click a region to reveal hidden gems, beaches & adventures
-                </p>
-              </div>
-            </div>
+          <div className='flex flex-col '>
 
-            <div className="relative w-fu; lg:w-5/6 h-[380px] rounded-3xl overflow-hidden shadow-xl bg-gray-100 ring-1 ring-gray-200">
-              {isClient ? (
-                <AlbaniaMap key="map" />
-              ) : (
-                <div className="h-full flex items-center justify-center text-gray-400 animate-pulse">
-                  Loading interactive map...
+            <div className="w-full relative ">
+              <div className="flex items-center justify-between mb-2">
+                <div>
+
+                  <h1 className="text-lg xl:text-2xl font-bold text-gray-700 my-2 pl-10">
+                    Click a region to explore hidden gems !
+                  </h1>
+
                 </div>
-              )}
+              </div>
 
-              {/* Soft Gradient Overlay */}
-              <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/10 via-transparent to-transparent" />
+              <div className="relative w-fu; lg:w-5/6 h-[380px] rounded-3xl overflow-hidden shadow-xl bg-gray-100 ring-1 ring-gray-200">
+                {isClient ? (
+                  <AlbaniaMap key="map" />
+                ) : (
+                  <div className="h-full flex items-center justify-center text-gray-400 animate-pulse">
+                    Loading interactive map...
+                  </div>
+                )}
+
+                {/* Soft Gradient Overlay */}
+                <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/10 via-transparent to-transparent" />
+              </div>
             </div>
           </div>
 
@@ -264,7 +400,6 @@ export default function UserHome() {
 
             </div>
           </div>
-
         </div>
       </div>
       <Footer />

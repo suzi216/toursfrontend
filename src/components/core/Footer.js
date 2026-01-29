@@ -5,8 +5,8 @@ export default function Footer() {
 
   return (
     <>
-      <div className="bg-gradient-to-br from-gray-500 via-teal-700 to-gray-700 py-6 md:px-6 lg:px-20 mt-10">
-        <div className="flex items-start items-center justify-center gap-8 mb-4">
+      <div className="bg-gradient-to-br from-gray-500 via-teal-700 to-gray-700 py-2 md:px-6 lg:px-20 mt-10">
+        <div className="flex items-start items-center justify-center gap-8 mb-2">
           <div className="flex items-center gap-2 text-red-700">
             <GiEagleEmblem size={25} />
           </div>
@@ -40,9 +40,9 @@ export default function Footer() {
           <footer className="text-white py-3 px-4">
             <div className="max-w-7xl mx-auto grid xs:grid-cols-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
               <div className='pr-5'>
-                <h3 className="text-14 font-light mb-5">Change Language</h3>
+                <h3 className="text-14 font-light mb-3">Change Language</h3>
                 <div className="relative">
-                  <button className="w-full flex items-center justify-between border border-white/30 px-4 py-3 hover:bg-white/10 transition-colors">
+                  <button className="w-full flex items-center justify-between border border-white/20 px-4 py-3 hover:bg-white/10 transition-colors">
                     <span className="font-light text-12">International (English)</span>
                     <FaChevronDown className="w-4 h-4" />
                   </button>
