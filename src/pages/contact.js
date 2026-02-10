@@ -16,31 +16,31 @@ export default function Contact() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitSuccess, setSubmitSuccess] = useState(false);
 
-const handleSubmit = async (e) => {
-    e.preventDefault();
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
-    setIsSubmitting(true);
+        setIsSubmitting(true);
 
-    try {
-        const response = await ContactService.createEmail(formData);
+        try {
+            const response = await ContactService.createEmail(formData);
 
-        setSubmitSuccess(true);
-        setFormData({
-            name: '',
-            email: '',
-            subject: '',
-            message: ''
-        });
+            setSubmitSuccess(true);
+            setFormData({
+                name: '',
+                email: '',
+                subject: '',
+                message: ''
+            });
 
-        setTimeout(() => setSubmitSuccess(false), 3000);
+            setTimeout(() => setSubmitSuccess(false), 3000);
 
-    } catch (error) {
-        console.error("Failed to create Email Contact:", error);
-        alert("Please try again.");
-    } finally {
-        setIsSubmitting(false);
-    }
-};
+        } catch (error) {
+            console.error("Failed to create Email Contact:", error);
+            alert("Please try again.");
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
 
 
     const handleChange = (e) => {
@@ -101,7 +101,7 @@ const handleSubmit = async (e) => {
                                 </div>
                             )}
 
-<form onSubmit={handleSubmit}>
+                            <form onSubmit={handleSubmit}>
                                 <div className="grid md:grid-cols-2 gap-6 mb-6">
                                     <div>
                                         <label htmlFor="name" className="block text-gray-700 text-14 xl:text-base font-semibold mb-1 xl:mb-2">

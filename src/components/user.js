@@ -6,6 +6,7 @@ import Footer from './core/Footer';
 import TourCart from './core/TourCart';
 import TourService from '@/components/utils/services/TourService';
 import { GiMountainCave, GiPhotoCamera, GiKnifeFork, GiTicket, GiSeaStar, GiThunderball, GiPlainArrow } from 'react-icons/gi';
+import ContactService from '@/components/utils/services/ContactService';
 
 import dynamic from "next/dynamic";
 
@@ -57,6 +58,54 @@ export default function UserHome() {
   const [tours, setTours] = useState([]);
 
   const [isClient, setIsClient] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+
+
+  const [formData, setFormData] = useState({
+    destination: '',
+    days: '',
+    people: '',
+    budget: '',
+    email: '',
+    phone: ''
+  });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await ContactService.CreateCustomTourRequest(formData);
+
+      setSubmitSuccess(true);
+      setFormData({
+        destination: '',
+        days: '',
+        people: '',
+        budget: '',
+        email: '',
+        phone: ''
+      });
+
+      setTimeout(() => setSubmitSuccess(false), 3000);
+
+    } catch (error) {
+      console.error("Failed to create Email Contact:", error);
+      alert("Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
   const getTours = async () => {
     try {
       const response = await TourService.getTours();
@@ -218,10 +267,10 @@ export default function UserHome() {
           <div >
             <div className="max-w-4xl mx-auto px-4">
               <p className="text-center mb-4 text-sm">
-                Share your plan — we’ll craft the perfect experience in 2–3 days
+                Tell us your plans — we’ll design the perfect experience and respond within 24 hours.
               </p>
 
-              <form className="grid grid-cols-1 sm:grid-cols-3 gap-4 backdrop-blur rounded-xl">
+              <form className="grid grid-cols-1 sm:grid-cols-3 gap-4 backdrop-blur rounded-xl" onSubmit={handleSubmit}>
                 {/* Destination */}
                 <div>
                   <label className="block text-xs mb-1">
@@ -229,6 +278,11 @@ export default function UserHome() {
                   </label>
                   <input
                     type="text"
+                    id="destination"
+                    name="destination"
+                    value={formData.destination}
+                    onChange={handleChange}
+                    required
                     placeholder="Tirana, Saranda"
                     className="w-full rounded-md  px-3 py-2 text-xs
           border border-gray-700 focus:border-yellow-300 focus:ring-1 focus:ring-yellow-300 outline-none"
@@ -242,6 +296,11 @@ export default function UserHome() {
                   </label>
                   <input
                     type="number"
+                    id="days"
+                    name="days"
+                    value={formData.days}
+                    onChange={handleChange}
+                    required
                     min="1"
                     placeholder="5"
                     className="w-full rounded-md  px-3 py-2 text-xs
@@ -257,6 +316,11 @@ export default function UserHome() {
                   <input
                     type="number"
                     min="1"
+                    id="people"
+                    name="people"
+                    value={formData.people}
+                    onChange={handleChange}
+                    required
                     placeholder="2"
                     className="w-full rounded-md  px-3 py-2 text-xs
           border border-gray-700 focus:border-yellow-300 focus:ring-1 focus:ring-yellow-300 outline-none"
@@ -270,6 +334,11 @@ export default function UserHome() {
                   </label>
                   <input
                     type="number"
+                    id="budget"
+                    name="budget"
+                    value={formData.budget}
+                    onChange={handleChange}
+                    required
                     placeholder="1000"
                     className="w-full rounded-md px-3 py-2 text-xs
           border border-gray-700 focus:border-yellow-300 focus:ring-1 focus:ring-yellow-300 outline-none"
@@ -283,6 +352,11 @@ export default function UserHome() {
                   </label>
                   <input
                     type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
                     placeholder="you@example.com"
                     className="w-full rounded-md px-3 py-2 text-xs
           border border-gray-700 focus:border-yellow-300 focus:ring-1 focus:ring-yellow-300 outline-none"
@@ -296,6 +370,11 @@ export default function UserHome() {
                   </label>
                   <input
                     type="tel"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    required
                     placeholder="+355 69 000 0000"
                     className="w-full rounded-md  px-3 py-2 text-xs
           border border-gray-700 focus:border-yellow-300 focus:ring-1 focus:ring-yellow-300 outline-none"
