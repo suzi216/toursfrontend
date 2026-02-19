@@ -34,35 +34,56 @@ export default function TourCart({ tours = [], isPopular = false, deleteTour }) 
                     </div>
 
                     {/* Content */}
-                    <div className="p-2 flex flex-col justify-between ">
+                    <div className="flex flex-col justify-between ">
 
-                        <div>
-                            <h3 className="text-14 font-bold text-gray-800 mb-1">
-                                {tour.title}
-                            </h3>
-                            <p className="text-12 text-gray-600 mb:2 xl:mb-3">
-                                {tour.description}{" "}
-                            </p>
-                            <ul className="text-10 xl:text-16 ">
-                                <li className="text-gray-700"><span className="font-semibold">City:</span> {tour.city}</li>
+                        <div className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 p-2 border border-gray-100 flex flex-col justify-between">
+                            {/* Top Content */}
+                            <div>
+                                <h3 className="text-base font-semibold text-gray-900 mb-1">
+                                    {tour.title}
+                                </h3>
 
-                                <li className="text-gray-700"><span className="font-semibold">Type:</span> {tour.tourType}</li>
-                                <li className="text-gray-700"><span className="font-semibold">Category:</span> {tour.category}</li>
-                                <li className="text-gray-700"><span className="font-semibold">Duration:</span> {tour.duration}</li>
+                                <p className="text-xs text-gray-600 mb-1 leading-relaxed">
+                                    {tour.description}
+                                </p>
 
-                            </ul>
+                                <div className="grid grid-cols-2 gap-y-1 gap-x-3 text-xs mb-4">
+                                    <div>
+                                        <span className="text-gray-400 block text-[10px]">City</span>
+                                        <span className="font-medium text-gray-800">{tour.city}</span>
+                                    </div>
 
-                        </div>
+                                    <div>
+                                        <span className="text-gray-400 block text-[10px]">Type</span>
+                                        <span className="font-medium text-gray-800">{tour.tourType}</span>
+                                    </div>
 
-                        {/* Price */}
-                        <div className="mt-3 mb-1">
-                            <div className="text-xs text-gray-500">From</div>
-                            <div className="flex items-end gap-1">
-                                <span className="text-16 font-bold text-teal-600">{tour.pricePerPerson}</span>
-                                <span className="text-8 xl:text-sm text-gray-500 pb-1">NZD</span>
+                                    <div>
+                                        <span className="text-gray-400 block text-[10px]">Category</span>
+                                        <span className="font-medium text-gray-800">{tour.category}</span>
+                                    </div>
+
+                                    <div>
+                                        <span className="text-gray-400 block text-[10px]">Duration</span>
+                                        <span className="font-medium text-gray-800">{tour.duration}</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="text-10 text-emerald-600 ">
-                                Save $50 per adult
+
+                            {/* Price Section */}
+                            <div className="border-t border-gray-100 pt-1">
+                                <div className="text-[10px] text-gray-500">From</div>
+
+                                <div className="flex items-end gap-1">
+                                    <span className="text-lg font-bold text-teal-600">
+                                        {tour.pricePerPerson}
+                                    </span>
+                                    <span className="text-xs text-gray-500 pb-1">/Person</span>
+                                </div>
+
+                                <div className="text-[10px] text-emerald-600 font-medium">
+                                    €15 off for groups of 5+
+                                </div>
                             </div>
                         </div>
 

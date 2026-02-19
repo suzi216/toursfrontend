@@ -330,7 +330,7 @@ export default function UserHome() {
                 {/* Budget */}
                 <div>
                   <label className="block text-xs mb-1">
-                    Budget €
+                    Total Budget €
                   </label>
                   <input
                     type="number"
