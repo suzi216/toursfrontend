@@ -36,7 +36,7 @@ export default function TourCart({ tours = [], isPopular = false, deleteTour }) 
                     {/* Content */}
                     <div className="flex flex-col justify-between ">
 
-                        <div className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 p-2 border border-gray-100 flex flex-col justify-between">
+                        <div className="bg-white  shadow-sm hover:shadow-xl transition-all duration-300 p-2 flex flex-col justify-between">
                             {/* Top Content */}
                             <div>
                                 <h3 className="text-base font-semibold text-gray-900 mb-1">
@@ -85,7 +85,6 @@ export default function TourCart({ tours = [], isPopular = false, deleteTour }) 
                                     €15 off for groups of 5+
                                 </div>
                             </div>
-                        </div>
 
                         <div className="flex flex-col">
                             {role !== "ADMIN" ? (
@@ -114,6 +113,7 @@ export default function TourCart({ tours = [], isPopular = false, deleteTour }) 
                                 </button>
                             ) : null}
 
+                        </div>
                         </div>
 
                     </div>

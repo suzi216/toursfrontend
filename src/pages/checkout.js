@@ -64,7 +64,7 @@ function Checkout() {
                   Customer Information
                 </h2>
 
-                <div className="grid md:grid-cols-2 gap-1">
+                <div className="grid md:grid-cols-2 gap-8">
                   {/* Full Name */}
                   <div>
                     <label className="block xs:text-sm text-12 xl:text-sm font-semibold text-gray-700 mb-2">Full Name *</label>
@@ -73,7 +73,7 @@ function Checkout() {
                       name="fullName"
                       value={formData.fullName}
                       onChange={handleInputChange}
-                      className="w-5/6 xs:w-full xl:w-full px-1 pb-1 xs:px-4 xs:py-3  xl:px-4 xl:py-3 placeholder:text-11 xl:placeholder:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition text-gray-700"
+                      className="w-5/6 xs:w-full xl:w-full px-1 pb-1 xs:px-4  xl:px-4 xl:py-3 placeholder:text-11 xl:placeholder:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition text-gray-700"
                       placeholder="John Doe"
                       required
                     />
@@ -87,7 +87,7 @@ function Checkout() {
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      className="w-5/6 xs:w-full xl:w-full px-1 pb-1 xs:px-4 xs:py-3  xl:px-4 xl:py-3 placeholder:text-11 xl:placeholder:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition text-gray-700"
+                      className="w-5/6 xs:w-full xl:w-full px-1 pb-1 xs:px-4   xl:px-4 xl:py-3 placeholder:text-11 xl:placeholder:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition text-gray-700"
                       placeholder="john@example.com"
                       required
                     />
@@ -101,7 +101,7 @@ function Checkout() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="w-5/6 xs:w-full xl:w-full px-1 pb-1 xs:px-4 xs:py-3  xl:px-4 xl:py-3 placeholder:text-11 xl:placeholder:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition text-gray-700"
+                      className="w-5/6 xs:w-full xl:w-full px-1 pb-1 xs:px-4 xl:px-4 xl:py-3 placeholder:text-11 xl:placeholder:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition text-gray-700"
                       placeholder="+1 (555) 123-4567"
                       required
                     />
@@ -115,21 +115,8 @@ function Checkout() {
                       name="address"
                       value={formData.address}
                       onChange={handleInputChange}
-                      className="w-5/6 xs:w-full xl:w-full px-1 pb-1 xs:px-4 xs:py-3  xl:px-4 xl:py-3 placeholder:text-11 xl:placeholder:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition text-gray-700"
+                      className="w-5/6 xs:w-full xl:w-full px-1 pb-1 xs:px-4 xl:px-4 xl:py-3 placeholder:text-11 xl:placeholder:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition text-gray-700"
                       placeholder="123 Main St, City, State"
-                    />
-                  </div>
-
-                  {/* Special Requests */}
-                  <div className="md:col-span-2">
-                    <label className="block text-12 xl:text-sm font-semibold text-gray-700 mb-2">Special Requests or Notes</label>
-                    <textarea
-                      name="specialRequests"
-                      value={formData.specialRequests}
-                      onChange={handleInputChange}
-                      rows={3}
-                      className="w-5/6 xs:w-full xl:w-full px-1 pb-1 xs:px-4 xs:py-3  xl:px-4 xl:py-3 placeholder:text-11 xl:placeholder:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition text-gray-700"
-                      placeholder="Any dietary restrictions, accessibility needs, or special requests..."
                     />
                   </div>
                 </div>
@@ -146,24 +133,24 @@ function Checkout() {
                   <div className="grid grid-cols-2 place-items-center">
                     <button
                       type="button"
+                      onClick={() => setPaymentMethod('cash')}
+                      className={`xl:p-4 h-10 w-5/6 border-2 rounded-lg flex items-center justify-center transition text-11 xl:text-14 ${paymentMethod === 'cash'
+                        ? 'border-teal-600 bg-teal-50 text-teal-700'
+                        : 'border-gray-300 text-gray-700 hover:border-teal-300'
+                        }`}
+                    >
+                      <GiPayMoney className="w-5 h-5 mr-2" />
+                      Cash
+                    </button>
+                    <button
+                      type="button"
                       onClick={() => setPaymentMethod('card')}
                       className={`xl:p-4 h-10 w-5/6 border-2 rounded-lg flex items-center justify-center transition text-11 xl:text-14 ${paymentMethod === 'card'
                         ? 'border-teal-600 bg-teal-50 text-teal-700'
                         : 'border-gray-300 text-gray-700 hover:border-teal-300'
                         }`}
                     >
-                      <GiPayMoney className="w-5 h-5 mr-2" />
                       Credit Card
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setPaymentMethod('paypal')}
-                      className={`xl:p-4 h-10 w-5/6 border-2 rounded-lg flex items-center justify-center transition text-11 xl:text-14 ${paymentMethod === 'paypal'
-                        ? 'border-teal-600 bg-teal-50 text-teal-700'
-                        : 'border-gray-300 text-gray-700 hover:border-teal-300'
-                        }`}
-                    >
-                      PayPal
                     </button>
                   </div>
                 </div>
@@ -178,7 +165,7 @@ function Checkout() {
                           name="cardNumber"
                           value={formData.cardNumber}
                           onChange={handleInputChange}
-                          className="w-5/6 xs:w-full xl:w-full px-1 pb-1 xs:px-4 xs:py-3 xl:px-4 xl:py-3 placeholder:text-11 xl:placeholder:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition text-gray-700"
+                          className="w-5/6 xs:w-full xl:w-full px-1 pb-1 xs:px-4 xl:px-4 xl:py-3 placeholder:text-11 xl:placeholder:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition text-gray-700"
                           placeholder="1234 5678 9012 3456"
                           maxLength={19}
                           required
@@ -191,7 +178,7 @@ function Checkout() {
                           name="cardExpiry"
                           value={formData.cardExpiry}
                           onChange={handleInputChange}
-                          className="w-5/6 xs:w-full xl:w-full px-1 pb-1 xs:px-4 xs:py-3 xl:px-4 xl:py-3 placeholder:text-11 xl:placeholder:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition text-gray-700"
+                          className="w-5/6 xs:w-full xl:w-full px-1 pb-1 xs:px-4 xl:px-4 xl:py-3 placeholder:text-11 xl:placeholder:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition text-gray-700"
                           placeholder="MM/YY"
                           maxLength={5}
                           required
@@ -204,7 +191,7 @@ function Checkout() {
                             name="cardName"
                             value={formData.cardName}
                             onChange={handleInputChange}
-                          className="w-5/6 xs:w-full xl:w-full px-1 pb-1 xs:px-4 xs:py-3 xl:px-4 xl:py-3 placeholder:text-11 xl:placeholder:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition text-gray-700"
+                          className="w-5/6 xs:w-full xl:w-full px-1 pb-1 xs:px-4 xl:px-4 xl:py-3 placeholder:text-11 xl:placeholder:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition text-gray-700"
                             placeholder="John Doe"
                             required
                           />
@@ -216,7 +203,7 @@ function Checkout() {
                             name="cardCvc"
                             value={formData.cardCvc}
                             onChange={handleInputChange}
-                          className="w-5/6 xs:w-full xl:w-full px-1 pb-1 xs:px-4 xs:py-3 xl:px-4 xl:py-3 placeholder:text-11 xl:placeholder:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition text-gray-700"
+                          className="w-5/6 xs:w-full xl:w-full px-1 pb-1 xs:px-4 xl:px-4 xl:py-3 placeholder:text-11 xl:placeholder:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition text-gray-700"
                             placeholder="123"
                             maxLength={3}
                             required
@@ -227,10 +214,9 @@ function Checkout() {
                   </div>
                 )}
 
-                {paymentMethod === 'paypal' && (
+                {paymentMethod === 'cash' && (
                   <div className="bg-teal-50 border border-teal-200 rounded-lg p-6 text-center">
-                    <p className="text-gray-700 mb-4">You will be redirected to PayPal to complete your payment securely.</p>
-                    <div className="text-4xl font-bold text-blue-600">PayPal</div>
+                    <p className="text-gray-700 mb-4">You can pay in cash before the tour begins. Please present your receipt to the tour guide prior to departure.</p>
                   </div>
                 )}
 
