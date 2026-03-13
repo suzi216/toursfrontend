@@ -1,14 +1,24 @@
 import { GiMountainRoad } from "react-icons/gi";
 import Link from "next/link";
+import Image from "next/image";
+import logo from "./logo1.png";
 
 
 const DiscoverAlbaniaLogo = () => {
   return (
-    <Link href="/" passHref>
-      <div className="flex items-between gap-3 my-2">
+    <Link href="/" >
+      <div className="flex items-between my-2">
 
+        <Image
+          className="pt-5"
+          src={logo}
+          alt="Discover Albania"
+          width={170}
+          height={170}
+          priority
+        />
 
-        <div className="relative w-12 h-12  lg:w-12 lg:h-12 xl:w-16 xl:h-16 mt-2">
+        {/* <div className="relative w-12 h-12  lg:w-12 lg:h-12 xl:w-16 xl:h-16 mt-2">
           <div className="absolute inset-0 bg-gradient-to-br from-teal-600 to-teal-700 rounded-lg flex items-center justify-center shadow-lg">
             <GiMountainRoad className="text-white" size={25} strokeWidth={2.5} />
           </div>
@@ -23,7 +33,7 @@ const DiscoverAlbaniaLogo = () => {
           <span className="font-bold bg-gradient-to-r from-teal-600 to-teal-700 bg-clip-text text-transparent leading-tight tracking-tight">
             ALBANIA
           </span>
-        </div>
+        </div> */}
       </div>
     </Link>
 
