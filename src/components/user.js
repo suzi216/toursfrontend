@@ -64,7 +64,8 @@ export default function UserHome() {
 
   const [formData, setFormData] = useState({
     destination: '',
-    days: '',
+    startDate: '',
+    endDate: '',
     people: '',
     budget: '',
     email: '',
@@ -82,7 +83,8 @@ export default function UserHome() {
       setSubmitSuccess(true);
       setFormData({
         destination: '',
-        days: '',
+        startDate: '',
+        endDate: '',
         people: '',
         budget: '',
         email: '',
@@ -288,23 +290,37 @@ export default function UserHome() {
           border border-gray-700 focus:border-yellow-300 focus:ring-1 focus:ring-yellow-300 outline-none"
                   />
                 </div>
-
-                {/* Days */}
+                {/* Start Date */}
                 <div>
-                  <label className="block text-xs  mb-1">
-                    Days
+                  <label className="block text-xs mb-1">
+                    Start Date
                   </label>
                   <input
-                    type="number"
-                    id="days"
-                    name="days"
-                    value={formData.days}
+                    type="date"
+                    id="startDate"
+                    name="startDate"
+                    value={formData.startDate}
                     onChange={handleChange}
                     required
-                    min="1"
-                    placeholder="5"
-                    className="w-full rounded-md  px-3 py-2 text-xs
-          border border-gray-700 focus:border-yellow-300 focus:ring-1 focus:ring-yellow-300 outline-none"
+                    className="w-full rounded-md px-3 py-2 text-xs
+    border border-gray-700 focus:border-yellow-300 focus:ring-1 focus:ring-yellow-300 outline-none"
+                  />
+                </div>
+
+                {/* End Date */}
+                <div>
+                  <label className="block text-xs mb-1">
+                    End Date
+                  </label>
+                  <input
+                    type="date"
+                    id="endDate"
+                    name="endDate"
+                    value={formData.endDate}
+                    onChange={handleChange}
+                    required
+                    className="w-full rounded-md px-3 py-2 text-xs
+    border border-gray-700 focus:border-yellow-300 focus:ring-1 focus:ring-yellow-300 outline-none"
                   />
                 </div>
 
