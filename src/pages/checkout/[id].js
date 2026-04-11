@@ -1,4 +1,3 @@
-
 import Header from '../../components/core/Header'
 import { GiPadlock, GiShield, GiCheckMark, GiPayMoney } from 'react-icons/gi';
 import { useRouter } from 'next/router';
@@ -7,7 +6,7 @@ import { useState, useEffect } from 'react'
 import TourService from '@/components/utils/services/TourService';
 import { validate as isUuid } from 'uuid';
 
-function Checkout({ params }) {
+function Checkout() {
   const router = useRouter();
   const { id: tourId } = router.query;
 
@@ -26,52 +25,65 @@ function Checkout({ params }) {
     cardCvc: '',
     cardName: '',
     promoCode: '',
-    agreeTerms: false
+    agreeTerms: false,
+    tourId: '',
   });
 
   const [paymentMethod, setPaymentMethod] = useState('card');
 
+  const people = Number(formData.people || 0);
+  const pricePerPerson = Number(tours?.pricePerPerson || 0);
 
-const people = Number(formData.people || 0);
-const pricePerPerson = Number(tours?.pricePerPerson || 0);
-
-const baseTotal = pricePerPerson * people;
-const discount = people >= 5 ? baseTotal * 0.1 : 0;
-
-const totalAmount = baseTotal - discount;
+  const baseTotal = pricePerPerson * people;
+  const discount = people >= 5 ? baseTotal * 0.1 : 0;
+  const totalAmount = baseTotal - discount;
 
   const handleInputChange = (e) => {
-    const { name, value, type } = e.target;
+    const { name, value, type, checked } = e.target;
+
     setFormData((prev) => ({
       ...prev,
-      [name]: type === 'checkbox' ? e.target.checked : value
+      [name]: type === 'checkbox' ? checked : value
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Booking submitted:', formData);
+
+    const finalData = {
+      ...formData,
+      baseTotal,
+      discount,
+      totalAmount
+    };
+
+    console.log('Booking submitted:', finalData);
   };
 
   const getTour = async (tourId) => {
     try {
-      if (isUuid(tourId)) {
+      if (!tourId || !isUuid(tourId)) return;
 
-        const response = await TourService.getTour(tourId);
-        console.log(response)
-        setTour(response.data);
-      }
+      const response = await TourService.getTour(tourId);
+
+      setTour(response.data);
+
+      setFormData((prev) => ({
+        ...prev,
+        tourId: response.data.id
+      }));
+
     } catch (error) {
       console.error("Failed to fetch tour:", error);
     } finally {
       setLoading(false);
     }
   }
+
   useEffect(() => {
     if (!router.isReady) return;
     getTour(tourId);
-
-  }, []);
+  }, [router.isReady, tourId]);
 
   if (loading) return <div>Loading...</div>;
 
@@ -339,7 +351,7 @@ const totalAmount = baseTotal - discount;
 
                   <div className="flex text-13 xl:text-16 items-center justify-between py-1 xl:py-3 border-t border-gray-200">
                     <span className="text-gray-700">Guests</span>
-                    <span className="font-semibold text-gray-800"> {formData.people} people</span>
+                    <span className="font-semibold text-gray-800"> {formData.people} </span>
                   </div>
                 </div>
 

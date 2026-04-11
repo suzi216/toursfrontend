@@ -58,15 +58,17 @@ export default function TourCart({ tours = [], isPopular = false, deleteTour }) 
                                         <span className="font-medium text-gray-800">{tour.tourType}</span>
                                     </div> */}
 
-                                    <div>
+                                    {/* <div>
                                         <span className="text-gray-400 block text-[10px]">Category</span>
                                         <span className="font-medium text-gray-800">{tour.category}</span>
-                                    </div>
+                                    </div> */}
 
                                     <div>
                                         <span className="text-gray-400 block text-[10px]">Duration</span>
-                                        <span className="font-medium text-gray-800">{tour.availableDates} / {tour.duration}</span>
-                                    </div>
+                                        <span className="font-medium text-gray-800">
+                                            {tour.availableDates} Dates flexible · {tour.duration}
+                                        </span>                                  
+                                          </div>
                                 </div>
                             </div>
 
@@ -90,16 +92,16 @@ export default function TourCart({ tours = [], isPopular = false, deleteTour }) 
                                 {role !== "ADMIN" ? (
                                     <Link
                                         href={`/checkout/${tour.id}`}
-                                        className="w-full text-11 bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-2 px-3 xl:py-4 xl:px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg my-1 text-center block"
+                                        className="w-full text-11 bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-2 px-3 xl:py-3 xl:px-5 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg my-1 text-center block"
                                     >
-                                        Buy Now
+                                        Order Now
                                     </Link>
                                 ) : null}
 
 
                                 {role === "ADMIN" ? (
                                     <Link href={`/tour/${tour.id}`}>
-                                        <button className="w-full text-11 bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-2 px-5 xl:py-4 xl:px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg">
+                                        <button className="w-full text-11 bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-2 px-5 xl:py-3 xl:px-5 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg">
                                             Update Package
                                         </button>
                                     </Link>
@@ -108,7 +110,7 @@ export default function TourCart({ tours = [], isPopular = false, deleteTour }) 
                                 {role === "ADMIN" ? (
                                     <button
                                         type="button"
-                                        className="w-full text-11 bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-2 px-5 xl:py-4 xl:px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg my-1"
+                                        className="w-full text-11 bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-2 px-5 xl:py-3 xl:px-5 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg my-1"
                                         onClick={() => deleteTour(tour.id)}
                                     >
                                         Delete Package

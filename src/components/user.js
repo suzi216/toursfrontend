@@ -175,8 +175,6 @@ export default function UserHome() {
               </div>
             </div>
 
-
-
             <div className="relative">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl transform lg:translate-x-6">
                 <img
@@ -239,8 +237,8 @@ export default function UserHome() {
         <div className="max-w-7xl mx-auto px-4">
 
           {/* Section Header */}
-          <div className="text-center my-2 xl:mb-6">
-            <h2 className="font-serif text-2xl xl:text-4xl font-bold text-gray-700">
+          <div className="text-center my-2 xl:mb-5">
+            <h2 className="font-serif text-2xl xl:text-3xl font-bold text-gray-700">
               Book Travel Packages
             </h2>
 
@@ -255,12 +253,12 @@ export default function UserHome() {
         </div>
       </div>
 
-      <div id="customize" className="bg-slate-50 py-4 ">
+      <div id="customize" className="bg-slate-50 py-3 ">
         <div className="max-w-7xl mx-auto px-4">
 
           {/* Section Header */}
-          <div className="text-center  xl:mb-6">
-            <h2 className="font-serif text-2xl xl:text-4xl font-bold text-gray-700">
+          <div className="text-center  xl:mb-5">
+            <h2 className="font-serif text-2xl xl:text-3xl font-bold text-gray-700">
               Customize Your Tour
             </h2>
           </div>
@@ -272,7 +270,7 @@ export default function UserHome() {
                 Tell us your plans — we’ll design the perfect experience and respond within 24 hours.
               </p>
 
-              <form className="grid grid-cols-1 sm:grid-cols-3 gap-4 backdrop-blur rounded-xl" onSubmit={handleSubmit}>
+              <form className="grid grid-cols-1 sm:grid-cols-4 gap-4 backdrop-blur rounded-xl" onSubmit={handleSubmit}>
                 {/* Destination */}
                 <div>
                   <label className="block text-xs mb-1">
@@ -398,19 +396,19 @@ export default function UserHome() {
                 </div>
 
                 {/* Submit */}
-                <div className="sm:col-span-3 flex justify-center mt-2">
-                  <button
-                    type="submit"
-                    className="px-10 py-2.5 rounded-full bg-yellow-300 text-gray-900 text-sm font-semibold
-          hover:bg-yellow-400 transition-all duration-300 shadow-md shadow-yellow-300/20"
-                  >
-                    Send Request
-                  </button>
-                </div>
+
               </form>
+              <div className="sm:col-span-3 flex justify-center mt-3">
+                <button
+                  type="submit"
+                  className="px-10 py-2.5 rounded-full bg-yellow-300 text-gray-900 text-sm font-semibold
+          hover:bg-yellow-400 transition-all duration-300 shadow-md shadow-yellow-300/20"
+                >
+                  Send Request
+                </button>
+              </div>
             </div>
           </div>
-
 
 
         </div>
