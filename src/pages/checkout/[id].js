@@ -1,15 +1,25 @@
 
-import Header from '../components/core/Header'
-import { useState } from 'react';
+import Header from '../../components/core/Header'
 import { GiPadlock, GiShield, GiCheckMark, GiPayMoney } from 'react-icons/gi';
-import Footer from '../components/core/Footer';
+import { useRouter } from 'next/router';
+import Footer from '../../components/core/Footer';
+import { useState, useEffect } from 'react'
+import TourService from '@/components/utils/services/TourService';
+import { validate as isUuid } from 'uuid';
 
-function Checkout() {
+function Checkout({ params }) {
+  const router = useRouter();
+  const { id: tourId } = router.query;
+
+  const [tours, setTour] = useState(null);
+  const [loading, setLoading] = useState(true);
+
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
     phone: '',
     address: '',
+    people: '',
     specialRequests: '',
     cardNumber: '',
     cardExpiry: '',
@@ -21,16 +31,14 @@ function Checkout() {
 
   const [paymentMethod, setPaymentMethod] = useState('card');
 
-  const bookingDetails = {
-    tourName: 'Mountain Adventure Trek',
-    dates: 'May 15-20, 2025',
-    guests: 2,
-    basePrice: 899.0,
-    taxes: 89.9,
-    discount: 0
-  };
 
-  const totalAmount = bookingDetails.basePrice + bookingDetails.taxes - bookingDetails.discount;
+const people = Number(formData.people || 0);
+const pricePerPerson = Number(tours?.pricePerPerson || 0);
+
+const baseTotal = pricePerPerson * people;
+const discount = people >= 5 ? baseTotal * 0.1 : 0;
+
+const totalAmount = baseTotal - discount;
 
   const handleInputChange = (e) => {
     const { name, value, type } = e.target;
@@ -45,13 +53,35 @@ function Checkout() {
     console.log('Booking submitted:', formData);
   };
 
+  const getTour = async (tourId) => {
+    try {
+      if (isUuid(tourId)) {
+
+        const response = await TourService.getTour(tourId);
+        console.log(response)
+        setTour(response.data);
+      }
+    } catch (error) {
+      console.error("Failed to fetch tour:", error);
+    } finally {
+      setLoading(false);
+    }
+  }
+  useEffect(() => {
+    if (!router.isReady) return;
+    getTour(tourId);
+
+  }, []);
+
+  if (loading) return <div>Loading...</div>;
+
   return (
     <>
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-teal-50 to-teal-100 py-0 xl:py-2 xl:py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto ">
           <div className="text-center mb-3 xl:mb-8">
-            <h1 className=" text-2xl xl:text-4xl font-bold text-gray-800 mb-1">Complete Your Booking</h1>
+            <h1 className=" text-2xl xl:text-4xl font-bold text-gray-800 mb-1">Complete Your Booking </h1>
             <p className="text-gray-600 text-12 xl:text-16">Just a few more steps to confirm your adventure</p>
           </div>
 
@@ -64,10 +94,10 @@ function Checkout() {
                   Customer Information
                 </h2>
 
-                <div className="grid md:grid-cols-2 gap-8">
+                <div className="grid md:grid-cols-2 gap-4">
                   {/* Full Name */}
                   <div>
-                    <label className="block xs:text-sm text-12 xl:text-sm font-semibold text-gray-700 mb-2">Full Name *</label>
+                    <label className="block text-12 xl:text-sm font-semibold text-gray-700 mb-2">Full Name *</label>
                     <input
                       type="text"
                       name="fullName"
@@ -75,6 +105,21 @@ function Checkout() {
                       onChange={handleInputChange}
                       className="w-5/6 xs:w-full xl:w-full px-1 pb-1 xs:px-4  xl:px-4 xl:py-3 placeholder:text-11 xl:placeholder:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition text-gray-700"
                       placeholder="John Doe"
+                      required
+                    />
+                  </div>
+                  {/* Phone */}
+                  <div>
+                    <label className="block text-12 xl:text-sm font-semibold text-gray-700 mb-2">
+                      Number of People *
+                    </label>
+                    <input
+                      type="number"
+                      name="people"
+                      value={formData.people}
+                      onChange={handleInputChange}
+                      className="w-5/6 xs:w-full xl:w-full px-1 pb-1 xs:px-4 xl:px-4 xl:py-3 placeholder:text-11 xl:placeholder:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition text-gray-700"
+                      placeholder="4"
                       required
                     />
                   </div>
@@ -133,6 +178,16 @@ function Checkout() {
                   <div className="grid grid-cols-2 place-items-center">
                     <button
                       type="button"
+                      onClick={() => setPaymentMethod('card')}
+                      className={`xl:p-4 h-10 w-5/6 border-2 rounded-lg flex items-center justify-center transition text-11 xl:text-14 ${paymentMethod === 'card'
+                        ? 'border-teal-600 bg-teal-50 text-teal-700'
+                        : 'border-gray-300 text-gray-700 hover:border-teal-300'
+                        }`}
+                    >
+                      Credit Card
+                    </button>
+                    <button
+                      type="button"
                       onClick={() => setPaymentMethod('cash')}
                       className={`xl:p-4 h-10 w-5/6 border-2 rounded-lg flex items-center justify-center transition text-11 xl:text-14 ${paymentMethod === 'cash'
                         ? 'border-teal-600 bg-teal-50 text-teal-700'
@@ -142,16 +197,7 @@ function Checkout() {
                       <GiPayMoney className="w-5 h-5 mr-2" />
                       Cash
                     </button>
-                    <button
-                      type="button"
-                      onClick={() => setPaymentMethod('card')}
-                      className={`xl:p-4 h-10 w-5/6 border-2 rounded-lg flex items-center justify-center transition text-11 xl:text-14 ${paymentMethod === 'card'
-                        ? 'border-teal-600 bg-teal-50 text-teal-700'
-                        : 'border-gray-300 text-gray-700 hover:border-teal-300'
-                        }`}
-                    >
-                      Credit Card
-                    </button>
+
                   </div>
                 </div>
 
@@ -184,32 +230,32 @@ function Checkout() {
                           required
                         />
                       </div>
-                        <div>
-                          <label className="block text-12 xl:text-sm font-semibold text-gray-700 mb-2">Cardholder Name *</label>
-                          <input
-                            type="text"
-                            name="cardName"
-                            value={formData.cardName}
-                            onChange={handleInputChange}
+                      <div>
+                        <label className="block text-12 xl:text-sm font-semibold text-gray-700 mb-2">Cardholder Name *</label>
+                        <input
+                          type="text"
+                          name="cardName"
+                          value={formData.cardName}
+                          onChange={handleInputChange}
                           className="w-5/6 xs:w-full xl:w-full px-1 pb-1 xs:px-4 xl:px-4 xl:py-3 placeholder:text-11 xl:placeholder:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition text-gray-700"
-                            placeholder="John Doe"
-                            required
-                          />
-                        </div>
-                        <div>
-                          <label className="block text-12 xl:text-sm font-semibold text-gray-700 mb-2">CVC *</label>
-                          <input
-                            type="text"
-                            name="cardCvc"
-                            value={formData.cardCvc}
-                            onChange={handleInputChange}
+                          placeholder="John Doe"
+                          required
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-12 xl:text-sm font-semibold text-gray-700 mb-2">CVC *</label>
+                        <input
+                          type="text"
+                          name="cardCvc"
+                          value={formData.cardCvc}
+                          onChange={handleInputChange}
                           className="w-5/6 xs:w-full xl:w-full px-1 pb-1 xs:px-4 xl:px-4 xl:py-3 placeholder:text-11 xl:placeholder:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition text-gray-700"
-                            placeholder="123"
-                            maxLength={3}
-                            required
-                          />
-                        </div>
-                      
+                          placeholder="123"
+                          maxLength={3}
+                          required
+                        />
+                      </div>
+
                     </div>
                   </div>
                 )}
@@ -287,33 +333,30 @@ function Checkout() {
 
                 <div className="space-y-4 mb-3 xl:mb-6">
                   <div>
-                    <h3 className="font-bold text-13 xl:text-lg text-gray-800 mb-1">{bookingDetails.tourName}</h3>
-                    <p className="text-12 xl:text-sm text-gray-600">{bookingDetails.dates}</p>
+                    <h3 className="font-bold text-13 xl:text-lg text-gray-800 mb-1"> {tours.title}</h3>
+                    <p className="text-12 xl:text-sm text-gray-600"> {tours.availableDates}/{tours.duration} </p>
                   </div>
 
                   <div className="flex text-13 xl:text-16 items-center justify-between py-1 xl:py-3 border-t border-gray-200">
                     <span className="text-gray-700">Guests</span>
-                    <span className="font-semibold text-gray-800">{bookingDetails.guests} people</span>
+                    <span className="font-semibold text-gray-800"> {formData.people} people</span>
                   </div>
                 </div>
 
                 <div className="border-t text-13 xl:text-16 border-gray-200 pt-2 xl:pt-4 space-y-3 mb-2 xl:mb-6">
                   <div className="flex justify-between text-gray-700">
                     <span>Base Price</span>
-                    <span>${bookingDetails.basePrice.toFixed(2)}</span>
+                    <span>
+                      ${baseTotal}
+                    </span>
                   </div>
 
                   <div className="flex justify-between text-gray-700">
-                    <span>Taxes & Fees</span>
-                    <span>${bookingDetails.taxes.toFixed(2)}</span>
+                    <span>Discount</span>
+                    <span>
+                      -${discount}
+                    </span>
                   </div>
-
-                  {bookingDetails.discount > 0 && (
-                    <div className="flex justify-between text-teal-600">
-                      <span>Discount</span>
-                      <span>-${bookingDetails.discount.toFixed(2)}</span>
-                    </div>
-                  )}
                 </div>
 
                 <div className="border-t-2 border-teal-600 pt-4">
@@ -327,7 +370,7 @@ function Checkout() {
 
                 <div className="mt-3 xl:mt-6 bg-teal-50 rounded-lg p-2 xl:p-4 border border-teal-200">
                   <p className="text-12 xl:text-sm text-gray-700">
-                    <span className="font-semibold">Free cancellation</span> up to 48 hours before the tour starts
+                    <span className="font-semibold">Free cancellation</span> up to 24 hours before the tour starts
                   </p>
                 </div>
               </div>

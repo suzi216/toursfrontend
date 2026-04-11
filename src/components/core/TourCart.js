@@ -53,10 +53,10 @@ export default function TourCart({ tours = [], isPopular = false, deleteTour }) 
                                         <span className="font-medium text-gray-800">{tour.city}</span>
                                     </div>
 
-                                    <div>
+                                    {/* <div>
                                         <span className="text-gray-400 block text-[10px]">Type</span>
                                         <span className="font-medium text-gray-800">{tour.tourType}</span>
-                                    </div>
+                                    </div> */}
 
                                     <div>
                                         <span className="text-gray-400 block text-[10px]">Category</span>
@@ -65,7 +65,7 @@ export default function TourCart({ tours = [], isPopular = false, deleteTour }) 
 
                                     <div>
                                         <span className="text-gray-400 block text-[10px]">Duration</span>
-                                        <span className="font-medium text-gray-800">{tour.duration}</span>
+                                        <span className="font-medium text-gray-800">{tour.availableDates} / {tour.duration}</span>
                                     </div>
                                 </div>
                             </div>
@@ -82,38 +82,40 @@ export default function TourCart({ tours = [], isPopular = false, deleteTour }) 
                                 </div>
 
                                 <div className="text-[10px] text-emerald-600 font-medium">
-                                    €15 off for groups of 5+
+                                    10% off for groups of 5+
                                 </div>
                             </div>
 
-                        <div className="flex flex-col">
-                            {role !== "ADMIN" ? (
-                                <Link href={"/checkout"}>
-                                    <button className="w-full text-11 bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-2 px-3 xl:py-4 xl:px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg my-1">
+                            <div className="flex flex-col">
+                                {role !== "ADMIN" ? (
+                                    <Link
+                                        href={`/checkout/${tour.id}`}
+                                        className="w-full text-11 bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-2 px-3 xl:py-4 xl:px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg my-1 text-center block"
+                                    >
                                         Buy Now
+                                    </Link>
+                                ) : null}
+
+
+                                {role === "ADMIN" ? (
+                                    <Link href={`/tour/${tour.id}`}>
+                                        <button className="w-full text-11 bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-2 px-5 xl:py-4 xl:px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg">
+                                            Update Package
+                                        </button>
+                                    </Link>
+                                ) : null}
+
+                                {role === "ADMIN" ? (
+                                    <button
+                                        type="button"
+                                        className="w-full text-11 bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-2 px-5 xl:py-4 xl:px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg my-1"
+                                        onClick={() => deleteTour(tour.id)}
+                                    >
+                                        Delete Package
                                     </button>
-                                </Link>
-                            ) : null}
+                                ) : null}
 
-                            {role === "ADMIN" ? (
-                                <Link href={`/tour/${tour.id}`}>
-                                    <button className="w-full text-11 bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-2 px-5 xl:py-4 xl:px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg">
-                                        Update Package
-                                    </button>
-                                </Link>
-                            ) : null}
-
-                            {role === "ADMIN" ? (
-                                <button
-                                    type="button"
-                                    className="w-full text-11 bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-2 px-5 xl:py-4 xl:px-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg my-1"
-                                    onClick={() => deleteTour(tour.id)}
-                                >
-                                    Delete Package
-                                </button>
-                            ) : null}
-
-                        </div>
+                            </div>
                         </div>
 
                     </div>
