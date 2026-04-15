@@ -48,6 +48,7 @@ function Checkout() {
       [name]: type === 'checkbox' ? checked : value
     }));
   };
+
 const handleSubmit = async (e) => {
   e.preventDefault();
 
@@ -58,27 +59,18 @@ const handleSubmit = async (e) => {
     totalAmount
   };
 
-  console.log('Booking submitted:', finalData);
-
   try {
-    const data = new FormData();
-
-    Object.entries(finalData).forEach(([key, value]) => {
-      if (value !== undefined && value !== null) {
-        if (key === "itinerary") {
-          data.append(key, JSON.stringify(value));
-        } else {
-          data.append(key, value);
-        }
-      }
-    });
-
-    await BookingService.createBooking(data);
+    const response = await BookingService.createBooking(finalData);
+    
     alert("Booking created successfully");
 
   } catch (error) {
-    console.error("Error:", error);
-    alert("Something went wrong");
+
+    // Optional: better error message handling
+    const message = error?.response?.data?.message || error.message || "Something went wrong";
+
+    alert(message);
+
   }
 };
 
