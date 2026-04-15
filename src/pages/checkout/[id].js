@@ -3,7 +3,9 @@ import { GiPadlock, GiShield, GiCheckMark, GiPayMoney } from 'react-icons/gi';
 import { useRouter } from 'next/router';
 import Footer from '../../components/core/Footer';
 import { useState, useEffect } from 'react'
+import BookingService from '@/components/utils/services/BookingService';
 import TourService from '@/components/utils/services/TourService';
+
 import { validate as isUuid } from 'uuid';
 
 function Checkout() {
@@ -46,19 +48,39 @@ function Checkout() {
       [name]: type === 'checkbox' ? checked : value
     }));
   };
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const finalData = {
-      ...formData,
-      baseTotal,
-      discount,
-      totalAmount
-    };
-
-    console.log('Booking submitted:', finalData);
+  const finalData = {
+    ...formData,
+    baseTotal,
+    discount,
+    totalAmount
   };
+
+  console.log('Booking submitted:', finalData);
+
+  try {
+    const data = new FormData();
+
+    Object.entries(finalData).forEach(([key, value]) => {
+      if (value !== undefined && value !== null) {
+        if (key === "itinerary") {
+          data.append(key, JSON.stringify(value));
+        } else {
+          data.append(key, value);
+        }
+      }
+    });
+
+    await BookingService.createBooking(data);
+    alert("Booking created successfully");
+
+  } catch (error) {
+    console.error("Error:", error);
+    alert("Something went wrong");
+  }
+};
 
   const getTour = async (tourId) => {
     try {
