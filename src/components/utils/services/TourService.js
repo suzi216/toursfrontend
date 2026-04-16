@@ -1,6 +1,5 @@
 import API from '../API'
 
-// const TourApi = API("http://localhost:8080")
 const TourApi = API("https://tours-ff09.onrender.com")
 
 
@@ -19,7 +18,7 @@ const TourService = {
     return TourApi.delete(`/api/tours/${id}`);
   },
   getTour: (id) => {
-    return TourApi.get(`/api/tours/${id}`);
+    return TourApi.get(`/api/tours/public/${id}`);
   },
   getAnnouncements: (qs) => {
     return TourApi.get(`/api/university-announcements${qs ? `?${qs}` : ''}`)
