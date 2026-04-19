@@ -29,6 +29,7 @@ function Checkout() {
     promoCode: '',
     agreeTerms: false,
     tourId: '',
+    tourTitle: ''
   });
 
   const [paymentMethod, setPaymentMethod] = useState('card');
@@ -66,7 +67,6 @@ const handleSubmit = async (e) => {
 
   } catch (error) {
 
-    // Optional: better error message handling
     const message = error?.response?.data?.message || error.message || "Something went wrong";
 
     alert(message);
@@ -84,7 +84,8 @@ const handleSubmit = async (e) => {
 
       setFormData((prev) => ({
         ...prev,
-        tourId: response.data.id
+        tourId: response.data.id,
+        tourTitle: response.data.title
       }));
 
     } catch (error) {
