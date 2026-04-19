@@ -1,7 +1,7 @@
 import API from '../API'
 
-const BookingApi = API("http://localhost:8080")
-// const BookingApi = API("https://tours-ff09.onrender.com")
+// const BookingApi = API("http://localhost:8080")
+const BookingApi = API("https://tours-ff09.onrender.com")
 
 
 const BookingService = {
