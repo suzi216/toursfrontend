@@ -78,7 +78,7 @@ export default function UserHome() {
     setIsSubmitting(true);
 
     try {
-      const response = await ContactService.CreateCustomTourRequest(formData);
+      const response = await ContactService.createCustomTourRequest(formData);
 
       setSubmitSuccess(true);
       setFormData({

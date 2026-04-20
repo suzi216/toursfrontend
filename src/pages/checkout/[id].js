@@ -27,6 +27,8 @@ function Checkout() {
     cardCvc: '',
     cardName: '',
     promoCode: '',
+    startDate: '',
+    endDate: '',
     agreeTerms: false,
     tourId: '',
     tourTitle: ''
@@ -50,29 +52,29 @@ function Checkout() {
     }));
   };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  const finalData = {
-    ...formData,
-    baseTotal,
-    discount,
-    totalAmount
+    const finalData = {
+      ...formData,
+      baseTotal,
+      discount,
+      totalAmount
+    };
+
+    try {
+      const response = await BookingService.createBooking(finalData);
+
+      alert("Booking created successfully");
+
+    } catch (error) {
+
+      const message = error?.response?.data?.message || error.message || "Something went wrong";
+
+      alert(message);
+
+    }
   };
-
-  try {
-    const response = await BookingService.createBooking(finalData);
-    
-    alert("Booking created successfully");
-
-  } catch (error) {
-
-    const message = error?.response?.data?.message || error.message || "Something went wrong";
-
-    alert(message);
-
-  }
-};
 
   const getTour = async (tourId) => {
     try {
@@ -176,6 +178,35 @@ const handleSubmit = async (e) => {
                       className="w-5/6 xs:w-full xl:w-full px-1 pb-1 xs:px-4 xl:px-4 xl:py-3 placeholder:text-11 xl:placeholder:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition text-gray-700"
                       placeholder="+1 (555) 123-4567"
                       required
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs mb-1">
+                      Start Date
+                    </label>
+                    <input
+                      type="date"
+                      id="startDate"
+                      name="startDate"
+                      value={formData.startDate}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full rounded-md px-3 py-2 text-xs border border-gray-700 focus:border-yellow-300 focus:ring-1 focus:ring-yellow-300 outline-none"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs mb-1">
+                      End Date
+                    </label>
+                    <input
+                      type="date"
+                      id="endDate"
+                      name="endDate"
+                      value={formData.endDate}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full rounded-md px-3 py-2 text-xs border border-gray-700 focus:border-yellow-300 focus:ring-1 focus:ring-yellow-300 outline-none"
                     />
                   </div>
 
