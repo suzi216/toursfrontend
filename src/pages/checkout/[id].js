@@ -34,7 +34,7 @@ function Checkout() {
     tourTitle: ''
   });
 
-  const [paymentMethod, setPaymentMethod] = useState('card');
+  const [paymentMethod, setPaymentMethod] = useState('cash');
 
   const people = Number(formData.people || 0);
   const pricePerPerson = Number(tours?.pricePerPerson || 0);
@@ -259,7 +259,7 @@ function Checkout() {
                   </div>
                 </div>
 
-                {paymentMethod === 'card' && (
+                {/* {paymentMethod === 'card' && (
                   <div className="space-y-1 xl:space-y-6">
                     <div className="grid grid-cols-3 gap-2">
                       <div>
@@ -316,7 +316,7 @@ function Checkout() {
 
                     </div>
                   </div>
-                )}
+                )} */}
 
                 {paymentMethod === 'cash' && (
                   <div className="bg-teal-50 border border-teal-200 rounded-lg p-6 text-center">
