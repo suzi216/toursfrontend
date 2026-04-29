@@ -1,6 +1,14 @@
 import Header from '../components/core/Header'
 import Footer from '../components/core/Footer';
 import React from "react";
+import berat from '@/images/berat.jpg';
+import gjirokaster from '../images/gjirokaster.jpg';
+import butrint from '@/images/butrint.jpg';
+import himare from '../images/himar.jpg';
+import ohrid from '@/images/ohrid.jpg';
+import pellumbas from '../images/pellumbas.jpg';
+import syri from '../images/syri.jpg';
+
 import {
     GiCastle,
     GiRoad,
@@ -24,7 +32,8 @@ export default function Attractions() {
                 'Holy Trinity Church: A medieval Byzantine-era church in the Kalaja (castle) district.',
                 "St. Michael's Church: Small hilltop chapel with typical Byzantine architecture."
             ],
-            imageUrl: 'https://images.pexels.com/photos/10436262/pexels-photo-10436262.jpeg?auto=compress&cs=tinysrgb&w=800',
+            imageUrl: berat,
+
             icon: <GiCastle className="w-6 h-6" />
         },
         {
@@ -37,8 +46,8 @@ export default function Attractions() {
                 'Historic Stone Houses: Roofs are typically slate; the "monumental houses" are a key part of its charm.',
                 'Gjirokastër National Folk Festival: Every five years at the castle, celebrating traditional Albanian music and dance.'
             ],
-            imageUrl: 'https://images.pexels.com/photos/18882472/pexels-photo-18882472.jpeg?auto=compress&cs=tinysrgb&w=800',
-            icon: <GiMountains classNamse="w-6 h-6" />
+            imageUrl: gjirokaster,
+            icon: <GiMountains className="w-6 h-6" />
         },
         {
             id: 3,
@@ -51,7 +60,7 @@ export default function Attractions() {
                 'Baptistery of Butrint: With a mosaic floor, from the 6th century.',
                 'Biodiversity: The park supports ~1,200 species of plants and animals.'
             ],
-            imageUrl: 'https://images.pexels.com/photos/10436262/pexels-photo-10436262.jpeg?auto=compress&cs=tinysrgb&w=800',
+            imageUrl: butrint,
             icon: <GiRoad className="w-6 h-6" />
         },
         {
@@ -65,7 +74,7 @@ export default function Attractions() {
                 'There is a viewing deck above the spring; visitors often hike in from Sarandë or Gjirokastër.',
                 'Entrance fees apply (and it\'s recommended to go early to avoid crowds).'
             ],
-            imageUrl: 'https://images.pexels.com/photos/18882472/pexels-photo-18882472.jpeg?auto=compress&cs=tinysrgb&w=800',
+            imageUrl: syri,
             icon: <GiHidden className="w-6 h-6" />
         },
         {
@@ -78,7 +87,7 @@ export default function Attractions() {
                 'It has archaeological importance: evidence of ancient human activity and extinct cave bears.',
                 'The spot gives a nice nature + adventure feel, without being extremely remote.'
             ],
-            imageUrl: 'https://images.pexels.com/photos/10436262/pexels-photo-10436262.jpeg?auto=compress&cs=tinysrgb&w=800',
+            imageUrl: pellumbas,
             icon: <GiMountains className="w-6 h-6" />
         },
         {
@@ -91,7 +100,7 @@ export default function Attractions() {
                 'Several Orthodox churches inside, including Panagia Kassopitra and All Saints.',
                 'Offers great views of the sea and the coastline.'
             ],
-            imageUrl: 'https://images.pexels.com/photos/10436262/pexels-photo-10436262.jpeg?auto=compress&cs=tinysrgb&w=800',
+            imageUrl: himare,
             icon: <GiCastle className="w-6 h-6" />
         },
         {
@@ -103,7 +112,7 @@ export default function Attractions() {
                 "The lake's ecosystem is unique, with many endemic species.",
                 'The Albanian side (Pogradec area) is very scenic — perfect for relaxing or exploring nature.'
             ],
-            imageUrl: 'https://images.pexels.com/photos/18882472/pexels-photo-18882472.jpeg?auto=compress&cs=tinysrgb&w=800',
+            imageUrl: ohrid,
             icon: <GiWorld className="ws-6 h-6" />
         }
     ];
@@ -137,7 +146,7 @@ export default function Attractions() {
                                 <div className="lg:w-1/3">
                                     <div className="h-[250px] xl:h-[300px] relative overflow-hidden">
                                         <img
-                                            src={attraction.imageUrl}
+                                            src={attraction.imageUrl.src}
                                             alt={attraction.title}
                                             className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                                         />

@@ -12,7 +12,7 @@ export default function App({ Component, pageProps }) {
   return (
     <Provider store={store}>
 
-      <AuthContext.Provider>
+      <AuthContext.Provider store={store}>
         <Component {...pageProps} />
       </AuthContext.Provider>
     </Provider>
