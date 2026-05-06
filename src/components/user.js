@@ -401,11 +401,9 @@ export default function UserHome() {
                   />
                 </div>
 
-
-              </form>
                 {/* Submit */}
-              <div className="sm:col-span-3 flex justify-center mt-3">
-                <button
+<div className="sm:col-span-4 flex justify-center items-end mt-3">
+                  <button
                   type="submit"
                   className="px-10 py-2.5 rounded-full bg-yellow-300 text-gray-900 text-sm font-semibold
           hover:bg-yellow-400 transition-all duration-300 shadow-md shadow-yellow-300/20"
@@ -413,6 +411,8 @@ export default function UserHome() {
                   Send Request
                 </button>
               </div>
+              </form>
+
             </div>
           </div>
 
