@@ -10,9 +10,13 @@ import ContactService from '@/components/utils/services/ContactService';
 
 import dynamic from "next/dynamic";
 
-const AlbaniaMap = dynamic(() => import("./core/Map"), {
-  ssr: false,
-});
+// let AlbaniaMap = () => null;
+
+// if (typeof window !== "undefined") {
+//   AlbaniaMap = dynamic(() => import("./core/Map"), {
+//     ssr: false,
+//   });
+// }
 
 const mockTours = [
   {
@@ -247,8 +251,10 @@ export default function UserHome() {
           {/* Horizontal Scroll */}
           <div className="overflow-x-auto scroll-smooth no-scrollbar">
             <div className="flex gap-6 ">
-              <TourCart tours={tours} isPopular={tours.isPopular} />
-            </div>
+<div className="flex gap-6">
+  <TourCart tours={tours} />
+</div> 
+          </div>
           </div>
         </div>
       </div>
@@ -396,8 +402,6 @@ export default function UserHome() {
                 </div>
 
                 {/* Submit */}
-
-              </form>
               <div className="sm:col-span-3 flex justify-center mt-3">
                 <button
                   type="submit"
@@ -407,6 +411,8 @@ export default function UserHome() {
                   Send Request
                 </button>
               </div>
+              </form>
+
             </div>
           </div>
 
@@ -421,7 +427,7 @@ export default function UserHome() {
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-2 ">
 
           {/* LEFT: MAP */}
-          <div className='flex flex-col '>
+          {/* <div className='flex flex-col '>
 
             <div className="w-full relative ">
               <div className="flex items-center justify-between mb-2">
@@ -443,11 +449,70 @@ export default function UserHome() {
                   </div>
                 )}
 
-                {/* Soft Gradient Overlay */}
                 <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/10 via-transparent to-transparent" />
               </div>
             </div>
+            
+          </div> */}
+
+          {/* LEFT: BLOGS */}
+<div className="flex flex-col">
+  <div className="w-full">
+    
+    <div className="flex items-center justify-between mb-4">
+      <h1 className="text-lg xl:text-2xl font-bold text-gray-700">
+        Travel Stories & Guides
+      </h1>
+    </div>
+
+    <div className="grid gap-4">
+      
+      {/* Blog Card */}
+      {[
+        {
+          title: "Top 10 Hidden Beaches in Albania",
+          desc: "Discover untouched beaches with crystal-clear water along the Albanian Riviera.",
+          img: "https://images.pexels.com/photos/1320684/pexels-photo-1320684.jpeg"
+        },
+        {
+          title: "Best Food You Must Try in Albania",
+          desc: "From byrek to fresh seafood, explore authentic Albanian cuisine.",
+          img: "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg"
+        },
+        {
+          title: "A Complete Guide to Tirana Nightlife",
+          desc: "Bars, clubs, and rooftop spots you shouldn't miss in the capital.",
+          img: "https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg"
+        }
+      ].map((blog, i) => (
+        <div
+          key={i}
+          className="flex gap-4 bg-white rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden"
+        >
+          <img
+            src={blog.img}
+            alt={blog.title}
+            className="w-28 h-28 object-cover"
+          />
+
+          <div className="p-3 flex flex-col justify-center">
+            <h3 className="font-semibold text-gray-800 text-sm">
+              {blog.title}
+            </h3>
+            <p className="text-xs text-gray-500 mt-1 line-clamp-2">
+              {blog.desc}
+            </p>
+
+            <button className="text-xs mt-2 text-cyan-600 font-semibold hover:underline">
+              Read more →
+            </button>
           </div>
+        </div>
+      ))}
+
+    </div>
+  </div>
+</div>
 
           {/* RIGHT: CATEGORIES */}
           <div className="w-full flex items-center justify-center">
