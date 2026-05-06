@@ -401,6 +401,8 @@ export default function UserHome() {
                   />
                 </div>
 
+
+              </form>
                 {/* Submit */}
               <div className="sm:col-span-3 flex justify-center mt-3">
                 <button
@@ -411,8 +413,6 @@ export default function UserHome() {
                   Send Request
                 </button>
               </div>
-              </form>
-
             </div>
           </div>
 
