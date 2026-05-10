@@ -389,22 +389,112 @@ function Checkout() {
 
             {/* Booking Summary */}
             <div className="lg:col-span-1">
-              <div className="bg-white rounded-2xl shadow-lg p-4 xl:p-8 border border-teal-100 sticky top-8 ">
-                <h2 className="text-lg xl:text-2xl font-bold text-gray-800 mb-1 xl:mb-6">Booking Summary</h2>
+              <div className="bg-white rounded-2xl shadow-lg p-4 xl:p-8 border border-teal-100 sticky top-8">
 
+                {/* Header */}
+                <h2 className="text-lg xl:text-2xl font-bold text-gray-800 mb-1 xl:mb-6">
+                  Booking Summary
+                </h2>
+
+                {/* Tour Info */}
                 <div className="space-y-4 mb-3 xl:mb-6">
+
+                  {/* Title + Description */}
                   <div>
-                    <h3 className="font-bold text-13 xl:text-lg text-gray-800 mb-1"> {tours.title}</h3>
-                    <p className="text-12 xl:text-sm text-gray-600"> {tours.availableDates}/{tours.duration} </p>
+                    <h3 className="font-bold text-13 xl:text-lg text-gray-800 mb-1">
+                      {tours.title}
+                    </h3>
+
+                    <p className="text-12 xl:text-sm text-gray-600 mb-2">
+                      {tours.description}
+                    </p>
+
+                    <p className="font-bold text-12 xl:text-sm text-gray-600">
+                      {tours.duration}
+                    </p>
                   </div>
 
+                  {/* City */}
+                  <div className="flex text-13 xl:text-16 items-center justify-between py-1 xl:py-3 border-t border-gray-200">
+                    <span className="text-gray-700">City</span>
+                    <span className="font-semibold text-gray-800">
+                      {tours.city}
+                    </span>
+                  </div>
+                  {/* <div className="flex text-13 xl:text-16 items-center justify-between py-1 xl:py-3 border-t border-gray-200">
+                    <span className="text-gray-700">Itinerary</span>
+                    <span className="text-gray-800">
+                      {tours.itinerary}
+                    </span>
+                  </div> */}
+
+                  {/* Guests */}
                   <div className="flex text-13 xl:text-16 items-center justify-between py-1 xl:py-3 border-t border-gray-200">
                     <span className="text-gray-700">Guests</span>
-                    <span className="font-semibold text-gray-800"> {formData.people} </span>
+                    <span className="font-semibold text-gray-800">
+                      {formData.people}
+                    </span>
                   </div>
+
+                  {/* Group Size */}
+                  <div className="flex text-13 xl:text-16 items-center justify-between py-1 xl:py-3 border-t border-gray-200">
+                    <span className="text-gray-700">Group Size</span>
+                    <span className="font-semibold text-gray-800">
+                      {tours.minGroupSize} - {tours.maxGroupSize}
+                    </span>
+                  </div>
+
+                  {/* Guide Name */}
+                  {tours.guideName && (
+                    <div className="flex text-13 xl:text-16 items-center justify-between py-1 xl:py-3 border-t border-gray-200">
+                      <span className="text-gray-700">Guide</span>
+                      <span className="font-semibold text-gray-800">
+                        {tours.guideName}
+                      </span>
+                    </div>
+                  )}
+
+                  {/* Transportation */}
+                  {tours.transportationType && (
+                    <div className="flex text-13 xl:text-16 items-center justify-between py-1 xl:py-3 border-t border-gray-200">
+                      <span className="text-gray-700">Transport</span>
+                      <span className="font-semibold text-gray-800">
+                        {tours.transportationType}
+                      </span>
+                    </div>
+                  )}
+
+                  {/* Start Point */}
+                  {tours.startPoint && (
+                    <div className="flex text-13 xl:text-16 items-center justify-between py-1 xl:py-3 border-t border-gray-200">
+                      <span className="text-gray-700">Start Point</span>
+                      <span className="font-semibold text-gray-800">
+                        {tours.startPoint}
+                      </span>
+                    </div>
+                  )}
+
+                  {/* End Point */}
+                  {tours.endPoint && (
+                    <div className="flex text-13 xl:text-16 items-center justify-between py-1 xl:py-3 border-t border-gray-200">
+                      <span className="text-gray-700">End Point</span>
+                      <span className="font-semibold text-gray-800">
+                        {tours.endPoint}
+                      </span>
+                    </div>
+                  )}
                 </div>
 
+                {/* Pricing */}
                 <div className="border-t text-13 xl:text-16 border-gray-200 pt-2 xl:pt-4 space-y-3 mb-2 xl:mb-6">
+
+                  <div className="flex justify-between text-gray-700">
+                    <span>Price / Person</span>
+                    <span>
+                      ${tours.pricePerPerson}
+                    </span>
+                  </div>
+
                   <div className="flex justify-between text-gray-700">
                     <span>Base Price</span>
                     <span>
@@ -420,22 +510,43 @@ function Checkout() {
                   </div>
                 </div>
 
+                {/* Total */}
                 <div className="border-t-2 border-teal-600 pt-4">
                   <div className="flex justify-between items-center">
-                    <span className="text-lg xl:text-xl font-bold text-gray-800">Total Amount</span>
+                    <span className="text-lg xl:text-xl font-bold text-gray-800">
+                      Total Amount
+                    </span>
+
                     <span className="text-2xl xl:text-3xl font-bold bg-gradient-to-r from-teal-500 to-teal-600 bg-clip-text text-transparent">
                       ${totalAmount.toFixed(2)}
                     </span>
                   </div>
                 </div>
 
+                {/* Cancellation */}
                 <div className="mt-3 xl:mt-6 bg-teal-50 rounded-lg p-2 xl:p-4 border border-teal-200">
                   <p className="text-12 xl:text-sm text-gray-700">
-                    <span className="font-semibold">Free cancellation</span> up to 24 hours before the tour starts
+                    <span className="font-semibold">
+                      {tours.cancellationPolicy || "Free cancellation"}
+                    </span>
+
+                    {!tours.cancellationPolicy &&
+                      " up to 24 hours before the tour starts"}
                   </p>
                 </div>
+
+                {/* Pickup Info */}
+                {tours.pickupInfo && (
+                  <div className="mt-3 bg-gray-50 rounded-lg p-3 border border-gray-200">
+                    <p className="text-12 xl:text-sm text-gray-700">
+                      <span className="font-semibold">Pickup Info:</span>{" "}
+                      {tours.pickupInfo}
+                    </p>
+                  </div>
+                )}
               </div>
             </div>
+
           </div>
         </div>
       </div>

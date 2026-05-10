@@ -107,6 +107,17 @@ export default function UserHome() {
     }
   };
 
+        const deleteTour = async (tourId) => {
+        try {
+            await TourService.deleteTour(tourId);
+            alert("Tour deleted successfully");
+
+            getTours();
+        } catch (error) {
+            console.error("Failed to delete tour:", error);
+            alert("Failed to delete tour. Please try again.");
+        }
+    };
 
   const handleChange = (e) => {
     setFormData({
@@ -255,7 +266,7 @@ export default function UserHome() {
           <div className="overflow-x-auto scroll-smooth no-scrollbar">
             <div className="flex gap-6 ">
               <div className="flex gap-6">
-                <TourCart tours={tours} />
+                <TourCart tours={tours} deleteTour={deleteTour}/>
               </div>
             </div>
           </div>

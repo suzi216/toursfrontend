@@ -33,7 +33,7 @@ function CreateTour() {
         cancellationPolicy: '',
         status: 'draft',
         gallery: [""],
-        // itinerary: [] 
+        itinerary: '' 
 
     });
 
@@ -61,7 +61,6 @@ function CreateTour() {
         { value: 'SARANDA', label: 'SARANDA' }
     ]
 
-    const [itinerary, setItinerary] = useState([{ day: 'Day 1', description: '' }]);
     const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
     const { id: tourId } = router.query;
@@ -87,43 +86,6 @@ function CreateTour() {
     }
 
 
-
-    const addItem = (setter) => {
-        setter(prev => [...prev, '']);
-    };
-
-    const removeItem = (setter, index) => {
-        setter(prev => prev.filter((_, i) => i !== index));
-    };
-
-    const updateItem = (setter, index, value) => {
-        setter(prev => prev.map((item, i) => (i === index ? value : item)));
-    };
-
-    const addItineraryDay = () => {
-        setItinerary(prev => {
-            const newItinerary = [...prev, { day: `Day ${prev.length + 1}`, description: '' }];
-            setFormData(fd => ({ ...fd, itinerary: newItinerary }));
-            return newItinerary;
-        });
-    };
-
-
-    const updateItinerary = (index, field, value) => {
-        setItinerary(prev => {
-            const newItinerary = prev.map((item, i) => i === index ? { ...item, [field]: field === 'day' ? Number(value.replace(/\D/g, '')) : value } : item);
-            setFormData(fd => ({ ...fd, itinerary: newItinerary }));
-            return newItinerary;
-        });
-    };
-
-    const removeItineraryDay = (index) => {
-        setItinerary(prev => {
-            const newItinerary = prev.filter((_, i) => i !== index).map((item, i) => ({ ...item, day: i + 1 }));
-            setFormData(fd => ({ ...fd, itinerary: newItinerary }));
-            return newItinerary;
-        });
-    };
     function validatePayload(payload) {
         const errors = [];
 
@@ -150,6 +112,7 @@ function CreateTour() {
 
         return errors;
     }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -217,7 +180,7 @@ function CreateTour() {
                     cancellationPolicy: data.cancellationPolicy || '',
                     status: data.status || 'draft',
                     gallery: data.gallery?.length ? data.gallery : [''],
-                    // itinerary: data.itinerary || []
+                    itinerary: data.itinerary || ''
                 });
                 setTours(data);
             }
@@ -336,38 +299,14 @@ function CreateTour() {
 
                             <Section title="Itinerary">
                                 <div className="space-y-4">
-                                    {itinerary.map((item, index) => (
-                                        <div key={index} className="flex gap-4 items-start rounded-lg ">
-                                            <div className="flex-1 space-y-3">
-                                                <input
-                                                    type="text"
-                                                    value={item.day}
-                                                    onChange={(e) => updateItinerary(index, 'day', e.target.value)}
-                                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg"
-                                                />
-                                                <textarea
-                                                    value={item.description}
-                                                    onChange={(e) => updateItinerary(index, 'description', e.target.value)}
-                                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg"
-                                                    rows={2}
-                                                    placeholder='Description...'
-                                                />
-                                            </div>
-                                            {itinerary.length > 1 && (
-                                                <button type="button" onClick={() => removeItineraryDay(index)} className="p-2 text-red-500">
-                                                    <GiCancel />
-                                                </button>
-                                            )}
-                                        </div>
-                                    ))}
-
-                                    <button
-                                        type="button"
-                                        onClick={addItineraryDay}
-                                        className="flex items-center gap-2 px-4 py-2 text-teal-600"
-                                    >
-                                        Add Day
-                                    </button>
+                                    <TextArea
+                                        label="Itinerary"
+                                        name="itinerary"
+                                        value={formData.itinerary}
+                                        onChange={handleInputChange}
+                                        placeholder="A itenerary overview..."
+                                        rows={3}
+                                    />
                                 </div>
                             </Section>
 

@@ -49,7 +49,7 @@ export default function TourCart({ tours = [], isPopular = false, deleteTour }) 
 
                                 <div className="grid grid-cols-2 gap-y-1 gap-x-3 text-xs mb-4">
                                     <div>
-                                        <span className="text-gray-400 block text-[10px]">City</span>
+                                        {/* <span className="text-gray-400 block text-[10px]">City</span> */}
                                         <span className="font-medium text-gray-800">{tour.city}</span>
                                     </div>
 
@@ -64,9 +64,9 @@ export default function TourCart({ tours = [], isPopular = false, deleteTour }) 
                                     </div> */}
 
                                     <div>
-                                        <span className="text-gray-400 block text-[10px]">Duration</span>
+                                        {/* <span className="text-gray-400 block text-[10px]">Duration</span> */}
                                         <span className="font-medium text-gray-800">
-                                            {tour.availableDates} Dates flexible · {tour.duration}
+                                            {tour.availableDates} Flexible Date · {tour.duration}
                                         </span>                                  
                                           </div>
                                 </div>
