@@ -5,7 +5,8 @@ import Footer from '../../components/core/Footer';
 import { useState, useEffect } from 'react'
 import BookingService from '@/components/utils/services/BookingService';
 import TourService from '@/components/utils/services/TourService';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { validate as isUuid } from 'uuid';
 
 function Checkout() {
@@ -65,13 +66,13 @@ function Checkout() {
     try {
       const response = await BookingService.createBooking(finalData);
 
-      alert("Booking created successfully");
+      toast.success("Message sent successfully!");
 
     } catch (error) {
 
       const message = error?.response?.data?.message || error.message || "Something went wrong";
+      toast.error(message);
 
-      alert(message);
 
     }
   };
@@ -106,6 +107,8 @@ function Checkout() {
 
   return (
     <>
+      <ToastContainer />
+
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-teal-50 to-teal-100 py-0 xl:py-2 xl:py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto ">

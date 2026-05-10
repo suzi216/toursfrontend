@@ -3,6 +3,8 @@ import Footer from '@/components/core/Footer';
 import { GiEnvelope, GiPhone, GiPositionMarker, GiPaperPlane } from "react-icons/gi";
 import { useState } from 'react';
 import ContactService from '@/components/utils/services/ContactService';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Contact() {
 
@@ -31,12 +33,13 @@ export default function Contact() {
                 subject: '',
                 message: ''
             });
+      toast.success("Message sent successfully!");
 
             setTimeout(() => setSubmitSuccess(false), 3000);
 
         } catch (error) {
             console.error("Failed to create Email Contact:", error);
-            alert("Please try again.");
+  toast.error("Please try again.");
         } finally {
             setIsSubmitting(false);
         }
@@ -52,6 +55,8 @@ export default function Contact() {
 
     return (
         <>
+            <ToastContainer />
+
             < Header />
             <div className="min-h-screen bg-gradient-to-br from-gray-500 via-teal-600 to-gray-600 mt-2 xl:mt-5">
                 <div className="container mx-auto pt-3  py-6">

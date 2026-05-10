@@ -7,6 +7,8 @@ import TourCart from './core/TourCart';
 import TourService from '@/components/utils/services/TourService';
 import { GiMountainCave, GiPhotoCamera, GiKnifeFork, GiTicket, GiSeaStar, GiThunderball, GiPlainArrow } from 'react-icons/gi';
 import ContactService from '@/components/utils/services/ContactService';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import dynamic from "next/dynamic";
 
@@ -94,12 +96,12 @@ export default function UserHome() {
         email: '',
         phone: ''
       });
-
+      toast.success("Message sent successfully!");
       setTimeout(() => setSubmitSuccess(false), 3000);
 
     } catch (error) {
       console.error("Failed to create Email Contact:", error);
-      alert("Please try again.");
+      toast.error("Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -139,6 +141,7 @@ export default function UserHome() {
   }, [])
   return (
     <>
+        <ToastContainer />
 
       <Header />
 
@@ -251,10 +254,10 @@ export default function UserHome() {
           {/* Horizontal Scroll */}
           <div className="overflow-x-auto scroll-smooth no-scrollbar">
             <div className="flex gap-6 ">
-<div className="flex gap-6">
-  <TourCart tours={tours} />
-</div> 
-          </div>
+              <div className="flex gap-6">
+                <TourCart tours={tours} />
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -402,15 +405,16 @@ export default function UserHome() {
                 </div>
 
                 {/* Submit */}
-<div className="sm:col-span-4 flex justify-center items-end mt-3">
+                <div className="sm:col-span-4 flex justify-center items-end mt-3">
                   <button
-                  type="submit"
-                  className="px-10 py-2.5 rounded-full bg-yellow-300 text-gray-900 text-sm font-semibold
+                    type="submit"
+                    className="px-10 py-2.5 rounded-full bg-yellow-300 text-gray-900 text-sm font-semibold
           hover:bg-yellow-400 transition-all duration-300 shadow-md shadow-yellow-300/20"
-                >
-                  Send Request
-                </button>
-              </div>
+                  >
+                    Send Request
+                  </button>
+
+                </div>
               </form>
 
             </div>
@@ -456,63 +460,63 @@ export default function UserHome() {
           </div> */}
 
           {/* LEFT: BLOGS */}
-<div className="flex flex-col">
-  <div className="w-full">
-    
-    <div className="flex items-center justify-between mb-4">
-      <h1 className="text-lg xl:text-2xl font-bold text-gray-700">
-        Travel Stories & Guides
-      </h1>
-    </div>
+          <div className="flex flex-col">
+            <div className="w-full">
 
-    <div className="grid gap-4">
-      
-      {/* Blog Card */}
-      {[
-        {
-          title: "Top 10 Hidden Beaches in Albania",
-          desc: "Discover untouched beaches with crystal-clear water along the Albanian Riviera.",
-          img: "https://images.pexels.com/photos/1320684/pexels-photo-1320684.jpeg"
-        },
-        {
-          title: "Best Food You Must Try in Albania",
-          desc: "From byrek to fresh seafood, explore authentic Albanian cuisine.",
-          img: "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg"
-        },
-        {
-          title: "A Complete Guide to Tirana Nightlife",
-          desc: "Bars, clubs, and rooftop spots you shouldn't miss in the capital.",
-          img: "https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg"
-        }
-      ].map((blog, i) => (
-        <div
-          key={i}
-          className="flex gap-4 bg-white rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden"
-        >
-          <img
-            src={blog.img}
-            alt={blog.title}
-            className="w-28 h-28 object-cover"
-          />
+              <div className="flex items-center justify-between mb-4">
+                <h1 className="text-lg xl:text-2xl font-bold text-gray-700">
+                  Travel Stories & Guides
+                </h1>
+              </div>
 
-          <div className="p-3 flex flex-col justify-center">
-            <h3 className="font-semibold text-gray-800 text-sm">
-              {blog.title}
-            </h3>
-            <p className="text-xs text-gray-500 mt-1 line-clamp-2">
-              {blog.desc}
-            </p>
+              <div className="grid gap-4">
 
-            <button className="text-xs mt-2 text-cyan-600 font-semibold hover:underline">
-              Read more →
-            </button>
+                {/* Blog Card */}
+                {[
+                  {
+                    title: "Top 10 Hidden Beaches in Albania",
+                    desc: "Discover untouched beaches with crystal-clear water along the Albanian Riviera.",
+                    img: "https://images.pexels.com/photos/1320684/pexels-photo-1320684.jpeg"
+                  },
+                  {
+                    title: "Best Food You Must Try in Albania",
+                    desc: "From byrek to fresh seafood, explore authentic Albanian cuisine.",
+                    img: "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg"
+                  },
+                  {
+                    title: "A Complete Guide to Tirana Nightlife",
+                    desc: "Bars, clubs, and rooftop spots you shouldn't miss in the capital.",
+                    img: "https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg"
+                  }
+                ].map((blog, i) => (
+                  <div
+                    key={i}
+                    className="flex gap-4 bg-white rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden"
+                  >
+                    <img
+                      src={blog.img}
+                      alt={blog.title}
+                      className="w-28 h-28 object-cover"
+                    />
+
+                    <div className="p-3 flex flex-col justify-center">
+                      <h3 className="font-semibold text-gray-800 text-sm">
+                        {blog.title}
+                      </h3>
+                      <p className="text-xs text-gray-500 mt-1 line-clamp-2">
+                        {blog.desc}
+                      </p>
+
+                      <button className="text-xs mt-2 text-cyan-600 font-semibold hover:underline">
+                        Read more →
+                      </button>
+                    </div>
+                  </div>
+                ))}
+
+              </div>
+            </div>
           </div>
-        </div>
-      ))}
-
-    </div>
-  </div>
-</div>
 
           {/* RIGHT: CATEGORIES */}
           <div className="w-full flex items-center justify-center">
