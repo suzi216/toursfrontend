@@ -8,7 +8,7 @@ const ContactService = {
     createEmail: (data) => {
         return ContactApi.post('/api/contact', data);
     },
-    CreateCustomTourRequest: (data) => {
+    createCustomTourRequest: (data) => {
         return ContactApi.post('/api/contact/custom-tour', data);
     },
 
