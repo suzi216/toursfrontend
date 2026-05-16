@@ -1,31 +1,40 @@
 
 import Link from "next/link";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "@/pages/_app";
 import { useSelector } from 'react-redux'
 import { roleSelector } from '@/redux/slices/authSlice'
 import { useEffect } from 'react'
 
 
-export default function TourCart({ tours = [], isPopular = false, deleteTour }) {
+export default function TourCart({ tours = [], isPopular = false, deleteTour, variant }) {
     const role = useSelector(roleSelector)
+    const isTours = variant === "tours";
+const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
+         setIsMobile(window.innerWidth < 768);
+ 
     }, []);
+
     return (
         <>
             {tours.map((tour) => (
                 <div
                     key={tour.id}
-                    className="group relative flex-shrink-0 xs:w-[300px] lg:w-[220px] xl:w-[270px] bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
+                    className={`flex  gap-3 ${isTours  && !isMobile
+                        ? "w-full flex-row border border-gray-200 p-2 rounded-xl"
+                        : "flex-col group relative flex-shrink-0 xs:w-[300px] lg:w-[220px] rounded-xl"
+                        }`}
                 >
 
-                    {/* Image */}
-                    <div className="relative xs:h-[150px] lg:h-[140px] xl:h-[160px] overflow-hidden">
+                    <div className={`flex   ${isTours && !isMobile
+                        ? "h-[200px] w-[550px]"
+                        : ""
+                        }`}>
                         <img
                             src="https://images.pexels.com/photos/533769/pexels-photo-533769.jpeg?auto=compress&cs=tinysrgb&w=800"
                             alt={tour.title}
-                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                         />
 
                         {isPopular && <span className="absolute top-3 left-3 bg-teal-600 text-white text-xs font-semibold px-3 py-1 rounded-full">
@@ -33,18 +42,19 @@ export default function TourCart({ tours = [], isPopular = false, deleteTour }) 
                         </span>}
                     </div>
 
-                    {/* Content */}
-                    <div className="flex flex-col justify-between ">
+                    <div className="flex flex-col ">
 
-                        <div className="bg-white  shadow-sm hover:shadow-xl transition-all duration-300 p-2 flex flex-col justify-between">
+                        <div className="flex bg-white shadow-sm hover:shadow-xl transition-all duration-300 p-1 flex flex-col justify-between">
                             {/* Top Content */}
                             <div>
                                 <h3 className="text-base font-semibold text-gray-900 mb-1">
                                     {tour.title}
                                 </h3>
 
-                                <p className="text-xs text-gray-600 mb-1 leading-relaxed">
-                                    {tour.description}
+                                <p className="text-10 text-gray-600 mb-2 leading-relaxed">
+                                    {isTours
+                                        ? tour.description
+                                        : (tour.description.match(/.*?[.!?](\s|$)/)?.[0] || tour.description)}
                                 </p>
 
                                 <div className="grid grid-cols-2 gap-y-1 gap-x-3 text-xs mb-4">
@@ -53,10 +63,10 @@ export default function TourCart({ tours = [], isPopular = false, deleteTour }) 
                                         <span className="font-medium text-gray-800">{tour.city}</span>
                                     </div>
 
-                                    {/* <div>
-                                        <span className="text-gray-400 block text-[10px]">Type</span>
-                                        <span className="font-medium text-gray-800">{tour.tourType}</span>
-                                    </div> */}
+                                    <div>
+
+                                        <span className="font-medium text-gray-800">{tour.duration}</span>
+                                    </div>
 
                                     {/* <div>
                                         <span className="text-gray-400 block text-[10px]">Category</span>
@@ -66,14 +76,14 @@ export default function TourCart({ tours = [], isPopular = false, deleteTour }) 
                                     <div>
                                         {/* <span className="text-gray-400 block text-[10px]">Duration</span> */}
                                         <span className="font-medium text-gray-800">
-                                            {tour.availableDates} Flexible Date · {tour.duration}
-                                        </span>                                  
-                                          </div>
+                                            {tour.availableDates} Flexible Date
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
 
                             {/* Price Section */}
-                            <div className="border-t border-gray-100 pt-1">
+                            <div className="border-t border-gray-100 ">
                                 <div className="text-[10px] text-gray-500">From</div>
 
                                 <div className="flex items-end gap-1">
@@ -87,21 +97,29 @@ export default function TourCart({ tours = [], isPopular = false, deleteTour }) 
                                     10% off for groups of 5+
                                 </div>
                             </div>
-
-                            <div className="flex flex-col">
+                            <div className={`flex flex-col ${isTours ? "items-start" : ""}`}>
                                 {role !== "ADMIN" ? (
                                     <Link
                                         href={`/checkout/${tour.id}`}
-                                        className="w-full text-11 bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-2 px-3 xl:py-3 xl:px-5 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg my-1 text-center block"
+                                        className={`bg-gradient-to-r mt-1 from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg text-center block
+                                                   ${isTours
+                                                ? "w-fit px-3 py-1 text-[10px]"
+                                                : "w-full px-3 py-2 xl:px-5 xl:py-3 text-11"
+                                            }`}
                                     >
                                         Order Now
                                     </Link>
                                 ) : null}
 
-
                                 {role === "ADMIN" ? (
                                     <Link href={`/tour/${tour.id}`}>
-                                        <button className="w-full text-11 bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-2 px-5 xl:py-3 xl:px-5 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg">
+                                        <button
+                                            className={`bg-gradient-to-r mb-1 from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg text-center block
+                                                 ${isTours
+                                                    ? "w-fit px-3 py-1 text-[10px]"
+                                                    : "w-full px-3 py-2 xl:px-5 xl:py-3 text-11"
+                                                }`}
+                                        >
                                             Update Package
                                         </button>
                                     </Link>
@@ -110,13 +128,16 @@ export default function TourCart({ tours = [], isPopular = false, deleteTour }) 
                                 {role === "ADMIN" ? (
                                     <button
                                         type="button"
-                                        className="w-full text-11 bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold py-2 px-5 xl:py-3 xl:px-5 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg my-1"
                                         onClick={() => deleteTour(tour.id)}
+                                        className={`bg-gradient-to-r from-teal-600 to-teal-700 hover:bg-emerald-800 text-white font-semibold rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg text-center block
+                                       ${isTours
+                                                ? "w-fit px-3 py-1 text-[10px]"
+                                                : "w-full px-3 py-2 xl:px-5 xl:py-3 text-11"
+                                            }`}
                                     >
                                         Delete Package
                                     </button>
                                 ) : null}
-
                             </div>
                         </div>
 

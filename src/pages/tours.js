@@ -108,12 +108,12 @@ export default function Tours() {
 
                     <div className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow lg:w-full">
                         <div className="mt-3">
-                            <div className="grid gap-4 place-items-center sm:grid-cols-2 md:grid-cols-4">
+                            <div className="flex flex-col gap-2">
                                 <TourCart
                                     tours={tours}
                                     deleteTour={deleteTour}
+                                    variant="tours"
                                 />
-
                             </div>
                         </div>
                     </div>
