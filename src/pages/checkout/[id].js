@@ -195,7 +195,7 @@ function Checkout() {
                       value={formData.startDate}
                       onChange={handleInputChange}
                       required
-                      className="w-full rounded-md px-3 py-2 text-xs border border-gray-700 focus:border-yellow-300 focus:ring-1 focus:ring-yellow-300 outline-none"
+                      className="w-5/6 xs:w-full xl:w-full px-1 pb-1 xs:px-4 xl:px-4 xl:py-3 placeholder:text-11 xl:placeholder:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition text-gray-500 text-12 p-1"
                     />
                   </div>
                   <div>
@@ -209,7 +209,7 @@ function Checkout() {
                       value={formData.endDate}
                       onChange={handleInputChange}
                       required
-                      className="w-full rounded-md px-3 py-2 text-xs border border-gray-700 focus:border-yellow-300 focus:ring-1 focus:ring-yellow-300 outline-none"
+                      className="w-5/6 xs:w-full xl:w-full px-1 pb-1 xs:px-4 xl:px-4 xl:py-3 placeholder:text-11 xl:placeholder:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition text-gray-500 text-12 p-1"
                     />
                   </div>
 

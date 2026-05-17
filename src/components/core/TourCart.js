@@ -10,11 +10,11 @@ import { useEffect } from 'react'
 export default function TourCart({ tours = [], isPopular = false, deleteTour, variant }) {
     const role = useSelector(roleSelector)
     const isTours = variant === "tours";
-const [isMobile, setIsMobile] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
-         setIsMobile(window.innerWidth < 768);
- 
+        setIsMobile(window.innerWidth < 768);
+
     }, []);
 
     return (
@@ -22,7 +22,7 @@ const [isMobile, setIsMobile] = useState(false);
             {tours.map((tour) => (
                 <div
                     key={tour.id}
-                    className={`flex  gap-3 ${isTours  && !isMobile
+                    className={`flex  gap-3 ${isTours && !isMobile
                         ? "w-full flex-row border border-gray-200 p-2 rounded-xl"
                         : "flex-col group relative flex-shrink-0 xs:w-[300px] lg:w-[220px] rounded-xl"
                         }`}
