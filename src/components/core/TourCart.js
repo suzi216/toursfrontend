@@ -13,8 +13,21 @@ export default function TourCart({ tours = [], isPopular = false, deleteTour, va
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
-        setIsMobile(window.innerWidth < 768);
+        const mediaQuery = window.matchMedia("(max-width: 767px)");
 
+        const handleResize = (e) => {
+            setIsMobile(e.matches);
+        };
+
+        // Set initial value
+        setIsMobile(mediaQuery.matches);
+
+        // Listen for changes
+        mediaQuery.addEventListener("change", handleResize);
+
+        return () => {
+            mediaQuery.removeEventListener("change", handleResize);
+        };
     }, []);
 
     return (
